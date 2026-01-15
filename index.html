@@ -33,6 +33,16 @@
             padding: 0 4%; z-index: 1000; transition: background 0.3s;
         }
 
+        /* Mobile nav toggle */
+        .nav-toggle {
+            display: none;
+            background: transparent;
+            border: 0;
+            color: var(--text-white);
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+
         .logo { color: var(--netflix-red); font-weight: 800; font-size: 1.8rem; letter-spacing: -1px; }
         .nav-links a { color: var(--text-white); text-decoration: none; margin-left: 25px; font-size: 0.9rem; font-weight: 500; }
 
@@ -48,7 +58,10 @@
         }
 
         .hero h1 { font-size: 4.5rem; max-width: 800px; line-height: 1.1; margin-bottom: 20px; }
-        .hero p { font-size: 1.4rem; color: var(--text-gray); max-width: 600px; margin-bottom: 35px; }
+        /* Responsive hero sizing */
+        .hero { padding-top: calc(70px + 20px); }
+        .hero h1 { font-size: clamp(2rem, 6vw, 4.5rem); max-width: 900px; }
+        .hero p { font-size: clamp(1rem, 2.2vw, 1.4rem); color: var(--text-gray); max-width: 700px; margin-bottom: 35px; }
         .badge { background: var(--netflix-red); padding: 5px 12px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; display: inline-block; margin-bottom: 15px; }
 
         /* Claude presentation styles for grids, boxes, charts, tables */
@@ -97,7 +110,9 @@
         .skill-category { padding: 25px; background: rgba(255,255,255,0.05); border-radius: 12px; border-left: 3px solid var(--netflix-red); }
 
         .comparison-table { width: 100%; margin-top: 20px; border-collapse: collapse; }
-        .comparison-table th, .comparison-table td { padding: 20px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
+        .comparison-table { min-width: 680px; width: 100%; table-layout: auto; }
+        .comparison-table th, .comparison-table td { padding: 20px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); white-space: normal; word-break: break-word; }
         .comparison-table th { background: rgba(229,9,20,0.08); color: var(--netflix-red); font-weight: 700; }
 
         .progress-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 10px 0; overflow: hidden; }
@@ -121,9 +136,19 @@
         /* Why Netflix AIMS slide specific adjustments */
         .why-netflix .card h3 { text-align: center; }
         .why-netflix .card h3 + p { text-align: center; }
-        .why-netflix .ready-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
-        .why-netflix .ready-grid > div { text-align: center; }
+        .why-netflix .ready-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; align-items: start; }
+        .why-netflix .ready-grid > div { text-align: center; padding: 18px; }
         .why-netflix .ready-grid svg { display: block; margin: 0 auto; }
+
+        /* Ready-grid responsive breakpoints */
+        @media (max-width: 1024px) {
+            .why-netflix .ready-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .why-netflix .ready-grid { display: flex; flex-direction: column; gap: 12px; }
+            .why-netflix .ready-grid > div { width: 100%; padding: 14px; }
+        }
 
         .btn { background: var(--netflix-red); color: #fff; padding: 15px 35px; text-decoration: none; font-weight: 700; border-radius: 8px; }
 
@@ -140,10 +165,30 @@
         footer { padding: 50px 4%; text-align: center; border-top: 1px solid #333; }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            h2 { font-size: 2rem; }
+            /* Nav: show toggle, collapse links */
+            .nav-toggle { display: block; }
+            .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: linear-gradient(180deg, rgba(0,0,0,0.95), rgba(0,0,0,0.9)); flex-direction: column; padding: 12px 4%; gap: 8px; }
+            .nav-links.open { display: flex; }
+            .nav-links a { margin: 8px 0; font-size: 1rem; }
+
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.6rem; }
             .timeline-item { grid-template-columns: 1fr; }
-            .slide { padding: 40px 20px; }
+            .slide { padding: 30px 18px; }
+            .chart-container, .chart-box { height: 280px; }
+            .impact-grid, .grid-3, .skills-grid { grid-template-columns: 1fr; }
+            .comparison-table { min-width: 100%; }
+            .card { padding: 20px; }
+            .athlete-banner { padding: 30px 16px; }
+            .why-netflix .ready-grid { grid-template-columns: 1fr; }
+            .why-netflix .card ul { text-align: center; }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* Tablet adjustments */
+            .hero h1 { font-size: clamp(2.4rem, 4.2vw, 3.6rem); }
+            .chart-container, .chart-box { height: 340px; }
+            .grid-3 { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -151,8 +196,11 @@
 
     <!-- Gemini Primary Nav -->
     <nav id="navbar">
-        <div class="logo">RHAM KETMAYURA</div>
-        <div class="nav-links">
+        <div style="display:flex;align-items:center;gap:12px;">
+            <div class="logo">RHAM KETMAYURA</div>
+            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        </div>
+        <div class="nav-links" id="navLinks">
             <a href="#vision">Vision</a>
             <a href="#impact">Impact</a>
             <a href="#deepdive">Deep Dive</a>
@@ -308,6 +356,7 @@
         <div class="slide">
             <h2>Unique Competitive Advantage</h2>
             <p class="subtitle">What makes me different from other candidates</p>
+            <div class="table-responsive">
             <table class="comparison-table" style="width:100%;border-collapse:collapse;margin-top:18px;color:var(--text-white);">
                 <thead>
                     <tr>
@@ -326,6 +375,7 @@
                     <tr><td style="padding:12px">GenAI Expertise</td><td style="padding:12px">Attended workshops, used ChatGPT</td><td style="padding:12px;color:var(--netflix-red)">Leading Fortune 500 GenAI transformations, 4 Google AI certs (2024)</td></tr>
                 </tbody>
             </table>
+            </div>
         </div>
 
         <!-- SLIDE 6: 10X IMPACT POTENTIAL -->
@@ -417,7 +467,7 @@
     <!-- Gemini Footer -->
     <footer>
         <p style="color:var(--text-gray); margin-bottom: 20px;">Ready to drive the future of AIMS at Netflix.</p>
-        <a href="https://forms.gle/3pZUAeJbUmmcCHz49" target="_blank" class="btn">Connect with Rham</a>
+        <a href="https://forms.gle/3pZUAeJbUmmcCHz49" target="_blank"  class="btn">Connect with Rham</a>
     </footer>
 
     <!-- Combined scripts: initialize icons, nav effect, and Claude charts -->
@@ -536,6 +586,21 @@
                 setTimeout(() => { bar.style.width = width; }, 500);
             });
         });
+
+        // Mobile nav toggle
+        (function(){
+            const toggle = document.querySelector('.nav-toggle');
+            const links = document.getElementById('navLinks');
+            if (toggle && links) {
+                toggle.addEventListener('click', () => {
+                    links.classList.toggle('open');
+                    const expanded = links.classList.contains('open');
+                    toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                });
+                // Close menu when a link is clicked (mobile)
+                links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+            }
+        })();
     </script>
 </body>
 </html>
