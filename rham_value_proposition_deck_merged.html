@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rham Ketmayura — Merged Value Proposition</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <style>
+        :root {
+            --netflix-red: #E50914;
+            --netflix-black: #141414;
+            --netflix-dark-gray: #181818;
+            --netflix-light-gray: #2f2f2f;
+            --text-white: #ffffff;
+            --text-gray: #b3b3b3;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+            color: var(--text-white);
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%; height: 70px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 4%; z-index: 1000; transition: background 0.3s;
+        }
+
+        .logo { color: var(--netflix-red); font-weight: 800; font-size: 1.8rem; letter-spacing: -1px; }
+        .nav-links a { color: var(--text-white); text-decoration: none; margin-left: 25px; font-size: 0.9rem; font-weight: 500; }
+
+        /* Hero Section (Gemini exact) */
+        section.hero {
+            height: 100vh;
+            display: flex; flex-direction: column; justify-content: center;
+            padding: 0 4%;
+            background: linear-gradient(70deg, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.2) 100%),
+                        url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=1974');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 { font-size: 4.5rem; max-width: 800px; line-height: 1.1; margin-bottom: 20px; }
+        .hero p { font-size: 1.4rem; color: var(--text-gray); max-width: 600px; margin-bottom: 35px; }
+        .badge { background: var(--netflix-red); padding: 5px 12px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; display: inline-block; margin-bottom: 15px; }
+
+        /* Claude presentation styles for grids, boxes, charts, tables */
+        .presentation { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+        .slide {
+            min-height: 100vh;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 30px; color: var(--netflix-red); }
+
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+        .card {
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(229, 9, 20, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .stat-card { padding: 30px; background: linear-gradient(135deg, rgba(229, 9, 20, 0.2) 0%, rgba(255, 107, 107, 0.1) 100%); border-radius: 15px; border: 1px solid rgba(229, 9, 20, 0.3); }
+        .stat-number { font-size: 3rem; font-weight: 800; color: var(--netflix-red); margin-bottom: 10px; }
+
+        .chart-container { position: relative; height: 400px; margin: 40px 0; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 15px; }
+        .chart-box { position: relative; height: 320px; margin-top: 20px; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 12px; }
+
+        .timeline { position: relative; padding: 40px 0; }
+        .timeline-item { display: grid; grid-template-columns: 200px 1fr; gap: 40px; margin-bottom: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px; border-left: 4px solid var(--netflix-red); }
+        .timeline-year { font-size: 1.5rem; font-weight: 700; color: var(--netflix-red); }
+
+        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
+        .impact-card { padding: 30px; background: linear-gradient(135deg, rgba(229,9,20,0.08) 0%, rgba(0,0,0,0.25) 100%); border-radius: 15px; border: 1px solid rgba(255,255,255,0.06); }
+        .impact-metric { font-size: 2.5rem; font-weight: 800; color: var(--netflix-red); margin-bottom: 10px; }
+        .impact-description { color: #cccccc; line-height: 1.6; }
+
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
+        .skill-category { padding: 25px; background: rgba(255,255,255,0.05); border-radius: 12px; border-left: 3px solid var(--netflix-red); }
+
+        .comparison-table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+        .comparison-table th, .comparison-table td { padding: 20px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .comparison-table th { background: rgba(229,9,20,0.08); color: var(--netflix-red); font-weight: 700; }
+
+        .progress-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 10px 0; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--netflix-red) 0%, #ff6b6b 100%); border-radius: 10px; transition: width 1s ease; }
+
+        /* Hover interactions (ported from Claude) */
+        .stat-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3); }
+
+        .timeline-item { transition: transform 0.3s ease, background 0.2s ease; }
+        .timeline-item:hover { transform: translateX(10px); background: rgba(255,255,255,0.08); }
+
+        .comparison-table tr:hover { background: rgba(255,255,255,0.05); }
+
+        .card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+        .card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
+
+        .btn { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .btn:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+
+        /* Why Netflix AIMS slide specific adjustments */
+        .why-netflix .card h3 { text-align: center; }
+        .why-netflix .card h3 + p { text-align: center; }
+        .why-netflix .ready-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+        .why-netflix .ready-grid > div { text-align: center; }
+        .why-netflix .ready-grid svg { display: block; margin: 0 auto; }
+
+        .btn { background: var(--netflix-red); color: #fff; padding: 15px 35px; text-decoration: none; font-weight: 700; border-radius: 8px; }
+
+        /* Athlete banner (from Gemini collatedv2) */
+        .athlete-banner { background: linear-gradient(90deg, #E50914 0%, #000 100%); padding: 60px 24px; border-radius: 15px; margin-top: 30px; text-align: left; }
+        .athlete-banner h2 { color: #fff; margin-bottom: 10px; text-align: center; }
+        .athlete-banner p { max-width: 900px; margin: 0; color: rgba(255,255,255,0.95); }
+
+        @media (max-width: 768px) {
+            .athlete-banner { text-align: center; }
+            .athlete-banner p { margin: 0 auto; }
+        }
+
+        footer { padding: 50px 4%; text-align: center; border-top: 1px solid #333; }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .timeline-item { grid-template-columns: 1fr; }
+            .slide { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Gemini Primary Nav -->
+    <nav id="navbar">
+        <div class="logo">RHAM KETMAYURA</div>
+        <div class="nav-links">
+            <a href="#vision">Vision</a>
+            <a href="#impact">Impact</a>
+            <a href="#deepdive">Deep Dive</a>
+            <a href="#leadership">Leadership</a>
+        </div>
+    </nav>
+
+    <!-- Gemini Hero (replaces Claude hero) -->
+    <section class="hero" id="vision">
+        <div class="badge">PRINCIPAL TPM (L7) | AIMS</div>
+        <h1>Scaling Member Joy through AI Precision.</h1>
+        <p>Expertise in bridging the gap between non-linear AI research and high-scale production systems for Netflix-scale personalization.</p>
+        <div style="margin-top:18px;"><a href="#impact" class="btn">View ROI & Metrics</a></div>
+    </section>
+
+    <!-- Claude sections (starting from SLIDE 2 onward) -->
+    <div class="presentation" id="content">
+
+        <!-- SLIDE 2: AI/ML TIMELINE -->
+        <div class="slide" id="deepdive">
+            <h2>AI/ML Product Journey: 2016 → 2026</h2>
+            <p class="subtitle">A Pioneer in AI Product Leadership - Before It Was Mainstream</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2016-2018<br><span style="font-size: 0.9rem; color: #aaa;">GM North America</span></div>
+                    <div class="timeline-content">
+                        <h4>Built ML Recommendations (Pre-ChatGPT Era) 🚀</h4>
+                        <p><strong>What:</strong> Pioneered ML-powered recommendation system for Shop+Click+Drive using Neural Networks, Decision Trees, Collaborative Filtering</p>
+                        <p><strong>Impact:</strong> +50% traffic, 30% of vehicle sales online, millions of users served</p>
+                        <p><strong>Why It Matters:</strong> Built production AI systems 4 years before mainstream AI adoption</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2018-2019<br><span style="font-size: 0.9rem; color: #aaa;">IBM</span></div>
+                    <div class="timeline-content">
+                        <h4>Led Watson AI Product Strategy 🧠</h4>
+                        <p><strong>What:</strong> IBM Watson AI + Adobe Sensei AI integration for personalization, search, recommendations at scale</p>
+                        <p><strong>Impact:</strong> 2.13% revenue increase, +14 NPS points, 612% ROI on Pepsi implementation</p>
+                        <p><strong>Why It Matters:</strong> Proved ability to translate AI research into measurable business results</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2019-Present<br><span style="font-size: 0.9rem; color: #aaa;">TCS</span></div>
+                    <div class="timeline-content">
+                        <h4>Driving GenAI Transformations ⚡</h4>
+                        <p><strong>What:</strong> Leading GenAI/LLM product initiatives for Fortune 500 (AIG, Vanguard, Zurich, Carnival)</p>
+                        <p><strong>Impact:</strong> 20-40% operational efficiency improvements, M&A security integration leadership</p>
+                        <p><strong>Why It Matters:</strong> At forefront of GenAI revolution, partnering with C-level on AI strategy</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2024<br><span style="font-size: 0.9rem; color: #aaa;">Continuous Learning</span></div>
+                    <div class="timeline-content">
+                        <h4>Stayed Current with AI Evolution 📚</h4>
+                        <p><strong>What:</strong> Completed 4 Google AI certifications (Vertex AI, Transformers, BERT, Encoder-Decoder)</p>
+                        <p><strong>Why It Matters:</strong> Growth mindset - continuously learning as AI landscape evolves</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: MEASURABLE IMPACT -->
+        <div class="slide" id="impact">
+            <h2>Measurable Impact: Results That Matter</h2>
+            <p class="subtitle">Every initiative backed by data and business outcomes</p>
+            <div class="grid-3" style="margin-top:18px;">
+                <div class="impact-card card">
+                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">612%</div>
+                    <div class="impact-description" style="color:var(--text-gray)"><strong>ROI on AI-Powered Route Optimization</strong><br>IBM Watson AI at Pepsi Frito-Lay - World's largest Salesforce Field Service implementation</div>
+                </div>
+                <div class="impact-card card">
+                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">+50%</div>
+                    <div class="impact-description" style="color:var(--text-gray)"><strong>Traffic Increase Through ML Recommendations</strong><br>Shop+Click+Drive at GM - Built recommendation engine from scratch</div>
+                </div>
+                <div class="impact-card card">
+                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">30%</div>
+                    <div class="impact-description" style="color:var(--text-gray)"><strong>Vehicle Sales Captured Online</strong><br>AI-powered platform became critical sales channel during COVID</div>
+                </div>
+                <div class="impact-card card">
+                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">+14</div>
+                    <div class="impact-description" style="color:var(--text-gray)"><strong>NPS Points Improvement</strong><br>Watson AI personalization increased customer satisfaction measurably</div>
+                </div>
+                <div class="impact-card card">
+                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">$28M+</div>
+                    <div class="impact-description" style="color:var(--text-gray)"><strong>Revenue from AI POCs</strong><br>Incubated proof-of-concepts that generated real business value</div>
+                </div>
+                <div class="impact-card card">
+                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">20-40%</div>
+                    <div class="impact-description" style="color:var(--text-gray)"><strong>OpEx Reduction via GenAI</strong><br>Current transformations delivering operational efficiency at scale</div>
+                </div>
+            </div>
+
+            <div class="chart-box" style="margin-top:20px;">
+                <canvas id="impactChart"></canvas>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: CORE COMPETENCIES -->
+        <div class="slide" id="leadership">
+            <h2>Core Competencies: AI/ML Product Excellence</h2>
+            <p class="subtitle">Deep expertise across the AI product lifecycle</p>
+            <div class="grid-3" style="margin-top:18px;">
+                <div class="skill-category card">
+                    <h4>🎯 AI/ML Systems</h4>
+                    <ul style="color:var(--text-gray);">
+                        <li>Recommendation Systems (Collaborative & Content-Based)</li>
+                        <li>Personalization at Scale (Real-Time, Behavioral)</li>
+                        <li>Search & Discovery Systems</li>
+                        <li>GenAI & Large Language Models (LLMs)</li>
+                        <li>Neural Networks, Decision Trees, Ensemble Methods</li>
+                    </ul>
+                </div>
+                <div class="skill-category card">
+                    <h4>🚀 Strategic Leadership</h4>
+                    <ul style="color:var(--text-gray);">
+                        <li>C-Level Partnership & Stakeholder Management</li>
+                        <li>Vision & Strategy Definition</li>
+                        <li>OKR Planning & Execution</li>
+                        <li>Multi-Year Roadmap Development</li>
+                        <li>Investment & Resource Allocation</li>
+                    </ul>
+                </div>
+                <div class="skill-category card">
+                    <h4>⚡ Program Execution</h4>
+                    <ul style="color:var(--text-gray);">
+                        <li>0-1 Product Development</li>
+                        <li>Cross-Functional Team Leadership (120+ people)</li>
+                        <li>Research to Production Translation</li>
+                        <li>A/B Testing & Experimentation</li>
+                        <li>Member Impact Measurement</li>
+                    </ul>
+                </div>
+                <div class="skill-category card">
+                    <h4>🛠️ Technical Tools</h4>
+                    <ul style="color:var(--text-gray);">
+                        <li>ML Platforms: SageMaker, Watson AI, Vertex AI</li>
+                        <li>Analytics: Adobe Analytics, Google Analytics</li>
+                        <li>Monitoring: Splunk, ELK, Dynatrace</li>
+                        <li>Cloud: AWS, Azure, GCP</li>
+                        <li>Engineering: Python, Java, SQL, APIs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">Technical Depth Visualization</h3>
+            <div class="chart-box" style="margin-top:12px;"><canvas id="skillsRadar"></canvas></div>
+        </div>
+
+        <!-- SLIDE 5: COMPETITIVE ADVANTAGE -->
+        <div class="slide">
+            <h2>Unique Competitive Advantage</h2>
+            <p class="subtitle">What makes me different from other candidates</p>
+            <table class="comparison-table" style="width:100%;border-collapse:collapse;margin-top:18px;color:var(--text-white);">
+                <thead>
+                    <tr>
+                        <th style="padding:12px;text-align:left;background:rgba(229,9,20,0.08)">Attribute</th>
+                        <th style="padding:12px;text-align:left">Typical Candidate</th>
+                        <th style="padding:12px;text-align:left;color:var(--netflix-red)">Rham Ketmayura</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="padding:12px">AI/ML Experience</td><td style="padding:12px">Started post-2022 (ChatGPT era)</td><td style="padding:12px;color:var(--netflix-red)">Started 2016 - 6+ years pre-GenAI boom</td></tr>
+                    <tr><td style="padding:12px">Recommendation Systems</td><td style="padding:12px">Theoretical knowledge or small-scale</td><td style="padding:12px;color:var(--netflix-red)">Built production system serving millions at GM</td></tr>
+                    <tr><td style="padding:12px">Strategic Partnership</td><td style="padding:12px">Reports to directors/senior managers</td><td style="padding:12px;color:var(--netflix-red)">Direct partner to CEOs, CTOs, CPOs</td></tr>
+                    <tr><td style="padding:12px">Measurable Results</td><td style="padding:12px">"Managed successful projects"</td><td style="padding:12px;color:var(--netflix-red)">612% ROI, $28M revenue, +14 NPS, 2.13% revenue increase</td></tr>
+                    <tr><td style="padding:12px">Scale Experience</td><td style="padding:12px">Managed 10-30 person teams</td><td style="padding:12px;color:var(--netflix-red)">Led 120+ across 8 countries, 3 continents</td></tr>
+                    <tr><td style="padding:12px">Elite Performance</td><td style="padding:12px">Strong work ethic</td><td style="padding:12px;color:var(--netflix-red)">World-ranked athlete (#113), NCAA National Champion</td></tr>
+                    <tr><td style="padding:12px">GenAI Expertise</td><td style="padding:12px">Attended workshops, used ChatGPT</td><td style="padding:12px;color:var(--netflix-red)">Leading Fortune 500 GenAI transformations, 4 Google AI certs (2024)</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SLIDE 6: 10X IMPACT POTENTIAL -->
+        <div class="slide">
+            <h2>10x Impact Potential for Netflix AIMS</h2>
+            <p class="subtitle">How I'll multiply team effectiveness</p>
+            <div style="display:grid;gap:16px;margin-top:18px;">
+                <div class="card">
+                    <h3 style="color:var(--netflix-red)">Impact Multiplier #1: Velocity 🚀</h3>
+                    <p style="color:var(--text-gray)">Accelerate AI initiatives by 40-60% through proven frameworks</p>
+                    <div class="progress-bar" style="background:rgba(255,255,255,0.06);height:10px;border-radius:10px;margin-top:8px;"><div class="progress-fill" style="width:60%;height:100%;background:linear-gradient(90deg,var(--netflix-red),#ff6b6b);border-radius:10px"></div></div>
+                </div>
+                <div class="card">
+                    <h3 style="color:var(--netflix-red)">Impact Multiplier #2: Alignment 🎯</h3>
+                    <p style="color:var(--text-gray)">Reduce wasted effort by 30% through crystal-clear cross-functional alignment</p>
+                    <div class="progress-bar" style="background:rgba(255,255,255,0.06);height:10px;border-radius:10px;margin-top:8px;"><div class="progress-fill" style="width:30%;height:100%;background:linear-gradient(90deg,var(--netflix-red),#ff6b6b);border-radius:10px"></div></div>
+                </div>
+                <div class="card">
+                    <h3 style="color:var(--netflix-red)">Impact Multiplier #3: Member Value 💎</h3>
+                    <p style="color:var(--text-gray)">Increase shipped value by 50% through rigorous member impact focus</p>
+                    <div class="progress-bar" style="background:rgba(255,255,255,0.06);height:10px;border-radius:10px;margin-top:8px;"><div class="progress-fill" style="width:50%;height:100%;background:linear-gradient(90deg,var(--netflix-red),#ff6b6b);border-radius:10px"></div></div>
+                </div>
+            </div>
+
+            <div class="chart-box" style="margin-top:18px;"><canvas id="impactMultiplier"></canvas></div>
+        </div>
+
+        <!-- SLIDE 7: WHY NETFLIX -->
+        <div class="slide why-netflix">
+            <h2>Why Netflix AIMS?</h2>
+            <p class="subtitle">Perfect alignment of experience, passion, and opportunity</p>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:18px;">
+                <div class="card">
+                    <h3 style="color:var(--netflix-red)">💡 What I Bring</h3>
+                    <ul style="list-style:none;padding:0;color:var(--text-gray);">
+                        <li>🎯 Cross-functional execution at 100M+ scale</li>
+                        <li>🎯 Operating rhythm establishment</li>
+                        <li>🎯 GenAI/LLM product experience</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="color:var(--netflix-red)">The Perfect Intersection</h3>
+                    <p style="color:var(--text-gray)">AIMS is redefining how <span style="color:var(--netflix-red)">270 million members</span> discover stories they love through AI. I've spent 6+ years building the exact systems AIMS focuses on - recommendations, personalization, search.</p>
+                </div>
+            </div>
+
+            <div class="athlete-banner">
+                <h2 style="margin-bottom: 10px; color: #fff;">Elite Performance Mindset</h2>
+                <p style="max-width: 900px; font-size: 1.1rem; line-height: 1.6; color: rgba(255,255,255,0.95); margin: 0 auto;">As a former <strong>NCAA D1 National Champion & World-Ranked Tennis Pro (#113)</strong>, I bring a high-stakes decision-making discipline that thrives within Netflix's "Context not Control" culture.</p>
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                    <h2 style="margin-bottom: 20px;">Ready to Discuss:</h2>
+                    <div class="ready-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto;">
+                        <div style="padding: 20px;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🎯</div>
+                            <p style="color: #ccc;">How I'll help AIMS achieve 2-3x more impact</p>
+                        </div>
+                        <div style="padding: 20px;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🚀</div>
+                            <p style="color: #ccc;">My frameworks for accelerating AI initiatives</p>
+                        </div>
+                        <div style="padding: 20px;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">💡</div>
+                            <p style="color: #ccc;">Strategic vision for AI-driven member experiences</p>
+                        </div>
+                    </div>
+            </div>
+            </div>
+
+            <!-- <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                    <h3 style="margin-bottom: 20px;">Ready to Discuss:</h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto;">
+                        <div style="padding: 20px;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🎯</div>
+                            <p style="color: #ccc;">How I'll help AIMS achieve 2-3x more impact</p>
+                        </div>
+                        <div style="padding: 20px;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">🚀</div>
+                            <p style="color: #ccc;">My frameworks for accelerating AI initiatives</p>
+                        </div>
+                        <div style="padding: 20px;">
+                            <div style="font-size: 2rem; margin-bottom: 10px;">💡</div>
+                            <p style="color: #ccc;">Strategic vision for AI-driven member experiences</p>
+                        </div>
+                    </div> -->
+            </div>
+
+        </div>
+
+    <!-- Gemini Footer -->
+    <footer>
+        <p style="color:var(--text-gray); margin-bottom: 20px;">Ready to drive the future of AIMS at Netflix.</p>
+        <a href="mailto:Rham.Ketmayura@gmail.com" class="btn">Connect with Rham</a>
+    </footer>
+
+    <!-- Combined scripts: initialize icons, nav effect, and Claude charts -->
+    <script>
+        if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons();
+
+        // Nav effect from Gemini
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) nav.style.background = 'rgba(0,0,0,0.95)';
+            else nav.style.background = 'transparent';
+        });
+
+        // Claude: Impact Chart
+        (function(){
+            try {
+                const impactEl = document.getElementById('impactChart');
+                if (impactEl && impactEl.getContext) {
+                    const impactCtx = impactEl.getContext('2d');
+                    new Chart(impactCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['GM (2016-18)', 'IBM (2018-19)', 'TCS (2019-Present)'],
+                            datasets: [
+                                {
+                                    label: 'Revenue Impact ($M)',
+                                    data: [50, 28, 75],
+                                    backgroundColor: 'rgba(229, 9, 20, 0.7)',
+                                    borderColor: '#e50914',
+                                    borderWidth: 2
+                                },
+                                {
+                                    label: 'ROI (%)',
+                                    data: [150, 612, 250],
+                                    backgroundColor: 'rgba(255, 107, 107, 0.7)',
+                                    borderColor: '#ff6b6b',
+                                    borderWidth: 2
+                                }
+                            ]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { labels: { color: '#ffffff', font: { size: 14 } } },
+                                title: { display: true, text: 'Measurable Business Impact Across Roles', color: '#e50914', font: { size: 18, weight: 'bold' } }
+                            },
+                            scales: { y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#ffffff' } }, x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#ffffff' } } }
+                        }
+                    });
+                }
+            } catch (e) { console.error('impactChart error', e); }
+        })();
+
+        // Claude: Skills Radar
+        (function(){
+            try {
+                const skillsEl = document.getElementById('skillsRadar');
+                if (skillsEl && skillsEl.getContext) {
+                    const skillsCtx = skillsEl.getContext('2d');
+                    new Chart(skillsCtx, {
+                        type: 'radar',
+                        data: {
+                            labels: ['AI/ML Technical Depth','Strategic Partnership','Cross-Functional Leadership','Product Execution','Member Impact Focus','Recommendations & Personalization','GenAI/LLM Expertise','Organizational Scaling'],
+                            datasets: [{
+                                label: 'Rham Ketmayura',
+                                data: [95,90,95,92,95,98,88,90],
+                                backgroundColor: 'rgba(229, 9, 20, 0.3)',
+                                borderColor: '#e50914',
+                                borderWidth: 3,
+                                pointBackgroundColor: '#e50914',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: '#e50914'
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { labels: { color: '#ffffff', font: { size: 14 } } }, title: { display: true, text: 'Core Competencies Assessment (Self-Rated + Validated by Results)', color: '#e50914', font: { size: 18, weight: 'bold' } } },
+                            scales: { r: { angleLines: { color: 'rgba(255,255,255,0.2)' }, grid: { color: 'rgba(255,255,255,0.2)' }, pointLabels: { color: '#ffffff', font: { size: 12 } }, ticks: { display: false, color: '#ffffff', backdropColor: 'transparent' }, suggestedMin: 0, suggestedMax: 100 } }
+                        }
+                    });
+                }
+            } catch (e) { console.error('skillsRadar error', e); }
+        })();
+
+        // Claude: Impact Multiplier
+        (function(){
+            try {
+                const multiEl = document.getElementById('impactMultiplier');
+                if (multiEl && multiEl.getContext) {
+                    const multiplierCtx = multiEl.getContext('2d');
+                    new Chart(multiplierCtx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Current State', 'Month 3', 'Month 6', 'Month 12', 'Year 2'],
+                            datasets: [{ label: 'Team Effectiveness (Baseline = 1.0x)', data: [1.0, 1.5, 2.0, 2.7, 3.2], backgroundColor: 'rgba(229, 9, 20, 0.1)', borderColor: '#e50914', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 6, pointBackgroundColor: '#e50914', pointBorderColor: '#fff', pointBorderWidth: 2 }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { labels: { color: '#ffffff', font: { size: 14 } } }, title: { display: true, text: 'Projected Team Effectiveness Multiplier (Based on Historical Performance)', color: '#e50914', font: { size: 18, weight: 'bold' } } },
+                            scales: { y: { beginAtZero: true, max: 3.5, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#ffffff', callback: function(value){ return value.toFixed(1) + 'x'; } }, title: { display: true, text: 'Effectiveness Multiplier', color: '#ffffff' } }, x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#ffffff' } } }
+                        }
+                    });
+                }
+            } catch (e) { console.error('impactMultiplier error', e); }
+        })();
+
+        // Animate progress bars (Claude)
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.progress-fill').forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => { bar.style.width = width; }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
