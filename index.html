@@ -142,12 +142,28 @@
 
         /* Ready-grid responsive breakpoints */
         @media (max-width: 1024px) {
-            .why-netflix .ready-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-netflix .ready-grid { grid-template-columns: repeat(2, 1fr) !important; display: grid !important; }
         }
 
+        /* Enforced mobile stacking: each ready-grid child becomes a full-width row at popular mobile breakpoints */
         @media (max-width: 600px) {
-            .why-netflix .ready-grid { display: flex; flex-direction: column; gap: 12px; }
-            .why-netflix .ready-grid > div { width: 100%; padding: 14px; }
+            .why-netflix .ready-grid {
+                display: grid !important;
+                grid-template-columns: 1fr !important;
+                grid-auto-rows: auto !important;
+                gap: 12px !important;
+            }
+            .why-netflix .ready-grid > div {
+                padding: 14px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+                grid-column: 1 / -1 !important;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .why-netflix .ready-grid { grid-template-columns: 1fr !important; }
+            .why-netflix .ready-grid > div { padding: 12px !important; }
         }
 
         .btn { background: var(--netflix-red); color: #fff; padding: 15px 35px; text-decoration: none; font-weight: 700; border-radius: 8px; }
