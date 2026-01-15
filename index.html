@@ -64,6 +64,8 @@
         .hero p { font-size: clamp(1rem, 2.2vw, 1.4rem); color: var(--text-gray); max-width: 700px; margin-bottom: 35px; }
         .badge { background: var(--netflix-red); padding: 5px 12px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; display: inline-block; margin-bottom: 15px; }
 
+        
+
         /* Claude presentation styles for grids, boxes, charts, tables */
         .presentation { max-width: 1400px; margin: 0 auto; padding: 20px; }
 
@@ -166,6 +168,25 @@
             .why-netflix .ready-grid > div { padding: 12px !important; }
         }
 
+        /* Serve a mobile-optimized hero background at common mobile breakpoints */
+        @media (max-width: 600px) {
+            section.hero {
+                background-image: linear-gradient(70deg, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.2) 100%), url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&q=60&w=800');
+                background-position: center top;
+                background-size: cover;
+            }
+        }
+
+        @media (max-width: 400px) {
+            section.hero {
+                background-image: linear-gradient(70deg, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.2) 100%), url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&q=60&w=600');
+                background-position: center top;
+                background-size: cover;
+            }
+        }
+
+        
+
         .btn { background: var(--netflix-red); color: #fff; padding: 15px 35px; text-decoration: none; font-weight: 700; border-radius: 8px; }
 
         /* Athlete banner (from Gemini collatedv2) */
@@ -206,6 +227,16 @@
             .chart-container, .chart-box { height: 340px; }
             .grid-3 { grid-template-columns: repeat(2, 1fr); }
         }
+        /* Reduce comparison table font-size and padding on small screens */
+        @media (max-width: 600px) {
+            .comparison-table th, .comparison-table td { font-size: 13px; padding: 8px; }
+            .comparison-table { font-size: 13px; }
+        }
+
+        @media (max-width: 400px) {
+            .comparison-table th, .comparison-table td { font-size: 12px; padding: 6px; }
+            .comparison-table { font-size: 12px; }
+        }
     </style>
 </head>
 <body>
@@ -244,9 +275,9 @@
                     <div class="timeline-year">2016-2018<br><span style="font-size: 0.9rem; color: #aaa;">GM North America</span></div>
                     <div class="timeline-content">
                         <h4>Built ML Recommendations (Pre-ChatGPT Era) 🚀</h4>
-                        <p><strong>What:</strong> Pioneered ML-powered recommendation system for Shop+Click+Drive using Neural Networks, Decision Trees, Collaborative Filtering</p>
+                        <p><strong>What:</strong> Pioneered ML-powered recommendation system for GM brand sites & Shop+Click+Drive using Neural Networks, Decision Trees, Collaborative Filtering</p>
                         <p><strong>Impact:</strong> +50% traffic, 30% of vehicle sales online, millions of users served</p>
-                        <p><strong>Why It Matters:</strong> Built production AI systems 4 years before mainstream AI adoption</p>
+                        <p><strong>Why It Matters:</strong> Built production AI systems 4 years before mainstream AI adoption, vital revenue stream during COVID</p>
                     </div>
                 </div>
 
@@ -264,7 +295,7 @@
                     <div class="timeline-year">2019-Present<br><span style="font-size: 0.9rem; color: #aaa;">TCS</span></div>
                     <div class="timeline-content">
                         <h4>Driving GenAI Transformations ⚡</h4>
-                        <p><strong>What:</strong> Leading GenAI/LLM product initiatives for Fortune 500 (AIG, Vanguard, Zurich, Carnival)</p>
+                        <p><strong>What:</strong> Leading AI & Cyberecurity program initiatives for Fortune 500 (AIG, Vanguard, Zurich, Carnival)</p>
                         <p><strong>Impact:</strong> 20-40% operational efficiency improvements, M&A security integration leadership</p>
                         <p><strong>Why It Matters:</strong> At forefront of GenAI revolution, partnering with C-level on AI strategy</p>
                     </div>
@@ -383,8 +414,8 @@
                 </thead>
                 <tbody>
                     <tr><td style="padding:12px">AI/ML Experience</td><td style="padding:12px">Started post-2022 (ChatGPT era)</td><td style="padding:12px;color:var(--netflix-red)">Started 2016 - 6+ years pre-GenAI boom</td></tr>
-                    <tr><td style="padding:12px">Recommendation Systems</td><td style="padding:12px">Theoretical knowledge or small-scale</td><td style="padding:12px;color:var(--netflix-red)">Built production system serving millions at GM</td></tr>
-                    <tr><td style="padding:12px">Strategic Partnership</td><td style="padding:12px">Reports to directors/senior managers</td><td style="padding:12px;color:var(--netflix-red)">Direct partner to CEOs, CTOs, CPOs</td></tr>
+                    <tr><td style="padding:12px">Recommendation Systems</td><td style="padding:12px">Theoretical knowledge or small-scale</td><td style="padding:12px;color:var(--netflix-red)">Built production system serving millions at GM, IBM, TCS</td></tr>
+                    <tr><td style="padding:12px">Strategic Partnership</td><td style="padding:12px">Reports to directors/senior managers</td><td style="padding:12px;color:var(--netflix-red)">Direct partner to CEOs, CIOs, CTOs, CFOs</td></tr>
                     <tr><td style="padding:12px">Measurable Results</td><td style="padding:12px">"Managed successful projects"</td><td style="padding:12px;color:var(--netflix-red)">612% ROI, $28M revenue, +14 NPS, 2.13% revenue increase</td></tr>
                     <tr><td style="padding:12px">Scale Experience</td><td style="padding:12px">Managed 10-30 person teams</td><td style="padding:12px;color:var(--netflix-red)">Led 120+ across 8 countries, 3 continents</td></tr>
                     <tr><td style="padding:12px">Elite Performance</td><td style="padding:12px">Strong work ethic</td><td style="padding:12px;color:var(--netflix-red)">World-ranked athlete (#113), NCAA National Champion</td></tr>
@@ -547,10 +578,10 @@
                     new Chart(skillsCtx, {
                         type: 'radar',
                         data: {
-                            labels: ['AI/ML Technical Depth','Strategic Partnership','Cross-Functional Leadership','Product Execution','Member Impact Focus','Recommendations & Personalization','GenAI/LLM Expertise','Organizational Scaling'],
+                            labels: ['AI/ML Technical Depth','Strategic Partnership','Cross-Functional Leadership', 'Responsible AI','Program Execution','Recommendations & Personalization','AI Infrastructure','Organizational Scaling'],
                             datasets: [{
                                 label: 'Rham Ketmayura',
-                                data: [95,90,95,92,95,98,88,90],
+                                data: [92,90,95,78,98,90,70,90],
                                 backgroundColor: 'rgba(229, 9, 20, 0.3)',
                                 borderColor: '#e50914',
                                 borderWidth: 3,
