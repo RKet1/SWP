@@ -591,14 +591,14 @@
                         type: 'radar',
                         data: {
                             labels: [
-                                ['AI/ML','Technical Depth'],
-                                ['Strategic','Partnership'],
-                                ['Cross-Functional','Leadership'],
-                                ['Responsible','AI'],
-                                ['Program','Execution'],
-                                ['Recommendations &','Personalization'],
-                                ['AI','Infrastructure'],
-                                ['Organizational','Scaling']
+                                'AI/ML Technical Depth',
+                                'Strategic Partnership',
+                                'Cross-Functional Leadership',
+                                'Responsible AI',
+                                'Program Execution',
+                                'Recommendations & Personalization',
+                                'AI Infrastructure',
+                                'Organizational Scaling'
                             ],
                             datasets: [{
                                 label: 'Rham Ketmayura',
@@ -616,7 +616,7 @@
                             responsive: true,
                             maintainAspectRatio: false,
                             plugins: { legend: { labels: { color: '#ffffff', font: { size: 14 } } }, title: { display: true, text: 'Core Competencies Assessment (Self-Rated + Validated by Results)', color: '#e50914', font: { size: 18, weight: 'bold' } } },
-                            scales: { r: { angleLines: { color: 'rgba(255,255,255,0.2)' }, grid: { color: 'rgba(255,255,255,0.2)' }, pointLabels: { color: '#ffffff', font: { size: function(ctx) { const w = ctx.chart.width; if (w <= 400) return 10; if (w <= 600) return 12; return 14; } }, padding: 8 }, ticks: { display: false, color: '#ffffff', backdropColor: 'transparent' }, suggestedMin: 0, suggestedMax: 100 } }
+                            scales: { r: { angleLines: { color: 'rgba(255,255,255,0.2)' }, grid: { color: 'rgba(255,255,255,0.2)' }, pointLabels: { color: '#ffffff', font: { size: function(ctx) { const w = ctx.chart.width; if (w <= 400) return 10; if (w <= 600) return 12; return 14; } }, padding: function(ctx) { return ctx.chart.width > 600 ? 16 : 8; }, textAlign: function(ctx) { return ctx.chart.width > 600 ? 'left' : 'center'; } }, ticks: { display: false, color: '#ffffff', backdropColor: 'transparent' }, suggestedMin: 0, suggestedMax: 100 } }
                         }
                     });
                 }
