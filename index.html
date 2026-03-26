@@ -3,257 +3,484 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rham Ketmayura — Merged Value Proposition</title>
+    <title>Rham Ketmayura — Shopify Value Proposition</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
     <style>
         :root {
-            --netflix-red: #E50914;
-            --netflix-black: #141414;
-            --netflix-dark-gray: #181818;
-            --netflix-light-gray: #2f2f2f;
-            --text-white: #ffffff;
-            --text-gray: #b3b3b3;
+            --shopify-green: #95BF47;
+            --shopify-dark-green: #5E8E3E;
+            --shopify-light-green: #B4D77A;
+            --shopify-dark: #004C3F;
+            --shopify-darker: #002E25;
+            --shopify-bg: #F6F6F7;
+            --shopify-white: #ffffff;
+            --text-dark: #202223;
+            --text-gray: #6D7175;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
-            color: var(--text-white);
+            background: var(--shopify-white);
+            color: var(--text-dark);
             overflow-x: hidden;
+        }
+
+        /* Parallax Hero Container */
+        .parallax-container {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120vh;
+            /* Added Merchant/Shopify Theme Background Image with Gradient Overlay */
+            background: 
+                linear-gradient(135deg, rgba(0, 46, 37, 0.88) 0%, rgba(0, 76, 63, 0.8) 40%, rgba(94, 142, 62, 0.7) 100%),
+                url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            transform-origin: center;
+            will-change: transform;
+        }
+
+        .parallax-layer-1 {
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            width: 500px;
+            height: 500px;
+            background: rgba(149, 191, 71, 0.15);
+            border-radius: 50%;
+            filter: blur(100px);
+            will-change: transform;
+        }
+
+        .parallax-layer-2 {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(94, 142, 62, 0.2);
+            border-radius: 50%;
+            filter: blur(80px);
+            will-change: transform;
+        }
+
+        .parallax-layer-3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: rgba(180, 215, 122, 0.08);
+            border-radius: 50%;
+            filter: blur(120px);
+            will-change: transform;
         }
 
         nav {
             position: fixed;
             top: 0; width: 100%; height: 70px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 4%; z-index: 1000; transition: background 0.3s;
+            padding: 0 4%; z-index: 1000; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s;
         }
 
-        /* Mobile nav toggle */
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
         .nav-toggle {
             display: none;
             background: transparent;
             border: 0;
-            color: var(--text-white);
+            color: var(--text-dark);
             font-size: 1.6rem;
             cursor: pointer;
         }
 
-        .logo { color: var(--netflix-red); font-weight: 800; font-size: 1.8rem; letter-spacing: -1px; }
-        .nav-links a { color: var(--text-white); text-decoration: none; margin-left: 25px; font-size: 0.9rem; font-weight: 500; }
-
-        /* Hero Section (Gemini exact) */
-        section.hero {
-            height: 100vh;
-            display: flex; flex-direction: column; justify-content: center;
-            padding: 0 4%;
-            background: linear-gradient(70deg, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.2) 100%),
-                        url('https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&q=80&w=1974');
-            background-size: cover;
-            background-position: center;
+        .logo { 
+            color: var(--shopify-green); 
+            font-weight: 800; 
+            font-size: 1.8rem; 
+            letter-spacing: -1px; 
+        }
+        
+        .nav-links a { 
+            color: var(--text-dark); 
+            text-decoration: none; 
+            margin-left: 25px; 
+            font-size: 0.9rem; 
+            font-weight: 600;
+            transition: color 0.3s;
         }
 
-        .hero h1 { font-size: 4.5rem; max-width: 800px; line-height: 1.1; margin-bottom: 20px; }
-        /* Responsive hero sizing */
-        .hero { padding-top: calc(70px + 20px); }
-        .hero h1 { font-size: clamp(2rem, 6vw, 4.5rem); max-width: 900px; }
-        .hero p { font-size: clamp(1rem, 2.2vw, 1.4rem); color: var(--text-gray); max-width: 700px; margin-bottom: 35px; }
-        .badge { background: var(--netflix-red); padding: 5px 12px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; display: inline-block; margin-bottom: 15px; }
+        .nav-links a:hover {
+            color: var(--shopify-green);
+        }
 
+        /* Hero Section with Parallax */
+        section.hero {
+            height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            padding: 0 4%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero h1 { 
+            font-size: clamp(2.5rem, 7vw, 5rem); 
+            line-height: 1.1; 
+            margin-bottom: 20px;
+            color: var(--shopify-white);
+            font-weight: 800;
+        }
         
+        .hero p { 
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem); 
+            color: rgba(255, 255, 255, 0.9); 
+            max-width: 700px; 
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+        
+        .badge { 
+            background: var(--shopify-green); 
+            padding: 8px 16px; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            font-size: 0.85rem; 
+            display: inline-block; 
+            margin-bottom: 20px;
+            color: var(--shopify-white);
+            box-shadow: 0 4px 12px rgba(149, 191, 71, 0.3);
+        }
 
-        /* Claude presentation styles for grids, boxes, charts, tables */
-        .presentation { max-width: 1400px; margin: 0 auto; padding: 20px; }
+        /* Content Sections */
+        .presentation { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background: var(--shopify-bg);
+        }
 
         .slide {
-            min-height: 100vh;
-            padding: 60px 40px;
+            min-height: 80vh;
+            padding: 80px 40px;
             margin-bottom: 40px;
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--shopify-white);
             border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
             animation: slideIn 0.8s ease-out;
         }
 
-        @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideIn { 
+            from { opacity: 0; transform: translateY(30px); } 
+            to { opacity: 1; transform: translateY(0); } 
+        }
 
-        h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 30px; color: var(--netflix-red); }
+        h2 { 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            color: var(--shopify-dark);
+        }
 
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .subtitle {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .grid-3 { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+        }
 
         .card {
-            padding: 30px;
-            background: linear-gradient(135deg, rgba(229, 9, 20, 0.02) 0%, rgba(255, 255, 255, 0.01) 100%);
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.06);
+            padding: 35px;
+            background: var(--shopify-white);
+            border-radius: 16px;
+            border: 2px solid #E3E3E3;
+            transition: all 0.3s ease;
         }
 
-        .stat-card { padding: 30px; background: linear-gradient(135deg, rgba(229, 9, 20, 0.2) 0%, rgba(255, 107, 107, 0.1) 100%); border-radius: 15px; border: 1px solid rgba(229, 9, 20, 0.3); }
-        .stat-number { font-size: 3rem; font-weight: 800; color: var(--netflix-red); margin-bottom: 10px; }
-
-        .chart-container { position: relative; height: 400px; margin: 40px 0; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 15px; }
-        .chart-box { position: relative; height: 320px; margin-top: 20px; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 12px; }
-
-        .timeline { position: relative; padding: 40px 0; }
-        .timeline-item { display: grid; grid-template-columns: 200px 1fr; gap: 40px; margin-bottom: 40px; padding: 30px; background: rgba(255,255,255,0.05); border-radius: 15px; border-left: 4px solid var(--netflix-red); }
-        .timeline-year { font-size: 1.5rem; font-weight: 700; color: var(--netflix-red); }
-
-        .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 20px; }
-        .impact-card { padding: 30px; background: linear-gradient(135deg, rgba(229,9,20,0.08) 0%, rgba(0,0,0,0.25) 100%); border-radius: 15px; border: 1px solid rgba(255,255,255,0.06); }
-        .impact-metric { font-size: 2.5rem; font-weight: 800; color: var(--netflix-red); margin-bottom: 10px; }
-        .impact-description { color: #cccccc; line-height: 1.6; }
-
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 20px; }
-        .skill-category { padding: 25px; background: rgba(255,255,255,0.05); border-radius: 12px; border-left: 3px solid var(--netflix-red); }
-
-        .comparison-table { width: 100%; margin-top: 20px; border-collapse: collapse; }
-        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
-        .comparison-table { min-width: 680px; width: 100%; table-layout: auto; }
-        .comparison-table th, .comparison-table td { padding: 20px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); white-space: normal; word-break: break-word; }
-        .comparison-table th { background: rgba(229,9,20,0.08); color: var(--netflix-red); font-weight: 700; }
-
-        .progress-bar { width: 100%; height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; margin: 10px 0; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--netflix-red) 0%, #ff6b6b 100%); border-radius: 10px; transition: width 1s ease; }
-
-        /* Hover interactions (ported from Claude) */
-        .stat-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .stat-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3); }
-
-        .timeline-item { transition: transform 0.3s ease, background 0.2s ease; }
-        .timeline-item:hover { transform: translateX(10px); background: rgba(255,255,255,0.08); }
-
-        .comparison-table tr:hover { background: rgba(255,255,255,0.05); }
-
-        .card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
-        .card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
-
-        .btn { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .btn:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-
-        /* Why Netflix AIMS slide specific adjustments */
-        .why-netflix .card h3 { text-align: center; }
-        .why-netflix .card h3 + p { text-align: center; }
-        .why-netflix .ready-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; align-items: start; }
-        .why-netflix .ready-grid > div { text-align: center; padding: 18px; }
-        .why-netflix .ready-grid svg { display: block; margin: 0 auto; }
-
-        /* Ready-grid responsive breakpoints */
-        @media (max-width: 1024px) {
-            .why-netflix .ready-grid { grid-template-columns: repeat(2, 1fr) !important; display: grid !important; }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(149, 191, 71, 0.2);
+            border-color: var(--shopify-green);
         }
 
-        /* Enforced mobile stacking: each ready-grid child becomes a full-width row at popular mobile breakpoints */
-        @media (max-width: 600px) {
-            .why-netflix .ready-grid {
-                display: grid !important;
-                grid-template-columns: 1fr !important;
-                grid-auto-rows: auto !important;
-                gap: 12px !important;
-            }
-            .why-netflix .ready-grid > div {
-                padding: 14px !important;
-                width: 100% !important;
-                box-sizing: border-box !important;
-                grid-column: 1 / -1 !important;
-            }
+        .stat-card { 
+            padding: 35px; 
+            background: linear-gradient(135deg, rgba(149, 191, 71, 0.1) 0%, rgba(180, 215, 122, 0.05) 100%); 
+            border-radius: 16px; 
+            border: 2px solid rgba(149, 191, 71, 0.3);
+            transition: all 0.3s ease;
         }
 
-        @media (max-width: 400px) {
-            .why-netflix .ready-grid { grid-template-columns: 1fr !important; }
-            .why-netflix .ready-grid > div { padding: 12px !important; }
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(149, 191, 71, 0.25);
         }
 
-        /* Serve a mobile-optimized hero background at common mobile breakpoints */
-        @media (max-width: 600px) {
-            section.hero {
-                background-image: linear-gradient(70deg, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.2) 100%), url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&q=60&w=800');
-                background-position: center top;
-                background-size: cover;
-            }
+        .stat-number { 
+            font-size: 3rem; 
+            font-weight: 800; 
+            color: var(--shopify-green); 
+            margin-bottom: 10px; 
         }
 
-        @media (max-width: 400px) {
-            section.hero {
-                background-image: linear-gradient(70deg, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.2) 100%), url('https://images.unsplash.com/photo-1505685296765-3a2736de412f?auto=format&fit=crop&q=60&w=600');
-                background-position: center top;
-                background-size: cover;
-            }
+        .chart-container { 
+            position: relative; 
+            height: 400px; 
+            margin: 40px 0; 
+            padding: 20px; 
+            background: var(--shopify-white); 
+            border-radius: 16px;
+            border: 2px solid #E3E3E3;
         }
 
-        
+        .chart-box { 
+            position: relative; 
+            height: 320px; 
+            margin-top: 20px; 
+            padding: 20px; 
+            background: var(--shopify-white); 
+            border-radius: 16px;
+            border: 2px solid #E3E3E3;
+        }
 
-        .btn { background: var(--netflix-red); color: #fff; padding: 15px 35px; text-decoration: none; font-weight: 700; border-radius: 8px; }
+        .timeline { 
+            position: relative; 
+            padding: 40px 0; 
+        }
 
-        /* Athlete banner (from Gemini collatedv2) */
-        .athlete-banner { background: linear-gradient(90deg, #E50914 0%, #000 100%); padding: 60px 24px; border-radius: 15px; margin-top: 30px; text-align: left; }
-        .athlete-banner h2 { color: #fff; margin-bottom: 10px; text-align: center; }
-        .athlete-banner p { max-width: 900px; margin: 0; color: rgba(255,255,255,0.95); }
+        .timeline-item { 
+            display: grid; 
+            grid-template-columns: 200px 1fr; 
+            gap: 40px; 
+            margin-bottom: 30px; 
+            padding: 30px; 
+            background: var(--shopify-white); 
+            border-radius: 16px; 
+            border-left: 4px solid var(--shopify-green);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+        }
 
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 16px rgba(149, 191, 71, 0.15);
+        }
+
+        .timeline-year { 
+            font-size: 1.5rem; 
+            font-weight: 700; 
+            color: var(--shopify-green); 
+        }
+
+        .impact-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-top: 20px; 
+        }
+
+        .impact-card { 
+            padding: 35px; 
+            background: linear-gradient(135deg, rgba(149,191,71,0.08) 0%, rgba(255,255,255,1) 100%); 
+            border-radius: 16px; 
+            border: 2px solid rgba(149,191,71,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(149, 191, 71, 0.2);
+        }
+
+        .impact-metric { 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            color: var(--shopify-green); 
+            margin-bottom: 10px; 
+        }
+
+        .impact-description { 
+            color: var(--text-gray); 
+            line-height: 1.6; 
+        }
+
+        .skills-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 20px; 
+            margin-top: 20px; 
+        }
+
+        .skill-category { 
+            padding: 25px; 
+            background: var(--shopify-white); 
+            border-radius: 12px; 
+            border-left: 4px solid var(--shopify-green);
+            border: 2px solid #E3E3E3;
+        }
+
+        .comparison-table { 
+            width: 100%; 
+            margin-top: 20px; 
+            border-collapse: collapse; 
+        }
+
+        .table-responsive { 
+            overflow-x: auto; 
+            -webkit-overflow-scrolling: touch; 
+            padding-bottom: 8px; 
+        }
+
+        .comparison-table { 
+            min-width: 680px; 
+            width: 100%; 
+            table-layout: auto; 
+        }
+
+        .comparison-table th, .comparison-table td { 
+            padding: 20px; 
+            text-align: left; 
+            border-bottom: 1px solid #E3E3E3; 
+            white-space: normal; 
+            word-break: break-word; 
+        }
+
+        .comparison-table th { 
+            background: linear-gradient(135deg, rgba(149,191,71,0.1) 0%, rgba(180,215,122,0.05) 100%); 
+            color: var(--shopify-dark); 
+            font-weight: 700; 
+        }
+
+        .comparison-table tr:hover { 
+            background: rgba(149,191,71,0.05); 
+        }
+
+        .progress-bar { 
+            width: 100%; 
+            height: 10px; 
+            background: #E3E3E3; 
+            border-radius: 10px; 
+            margin: 10px 0; 
+            overflow: hidden; 
+        }
+
+        .progress-fill { 
+            height: 100%; 
+            background: linear-gradient(90deg, var(--shopify-green) 0%, var(--shopify-light-green) 100%); 
+            border-radius: 10px; 
+            transition: width 1s ease; 
+        }
+
+        .btn { 
+            background: var(--shopify-green); 
+            color: var(--shopify-white); 
+            padding: 16px 40px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            border-radius: 8px;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(149, 191, 71, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--shopify-dark-green);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(149, 191, 71, 0.4);
+        }
+
+        /* Shopify-style banner */
+        .shopify-banner { 
+            background: linear-gradient(135deg, var(--shopify-green) 0%, var(--shopify-dark-green) 100%); 
+            padding: 60px 24px; 
+            border-radius: 20px; 
+            margin-top: 30px; 
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(149, 191, 71, 0.3);
+        }
+
+        .shopify-banner h2 { 
+            color: var(--shopify-white); 
+            margin-bottom: 15px; 
+        }
+
+        .shopify-banner p { 
+            max-width: 900px; 
+            margin: 0 auto; 
+            color: rgba(255,255,255,0.95);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        footer { 
+            padding: 60px 4%; 
+            text-align: center; 
+            background: var(--shopify-dark);
+            color: var(--shopify-white);
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .athlete-banner { text-align: center; }
-            .athlete-banner p { margin: 0 auto; }
-        }
-
-        footer { padding: 50px 4%; text-align: center; border-top: 1px solid #333; }
-
-        @media (max-width: 768px) {
-            /* Nav: show toggle, collapse links */
             .nav-toggle { display: block; }
-            .nav-links { display: none; position: absolute; top: 70px; left: 0; right: 0; background: linear-gradient(180deg, rgba(0,0,0,0.95), rgba(0,0,0,0.9)); flex-direction: column; padding: 12px 4%; gap: 8px; }
+            .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 70px; 
+                left: 0; 
+                right: 0; 
+                background: var(--shopify-white); 
+                flex-direction: column; 
+                padding: 12px 4%; 
+                gap: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
             .nav-links.open { display: flex; }
-            .nav-links a { margin: 8px 0; font-size: 1rem; }
-
-            h1 { font-size: 2.2rem; }
-            h2 { font-size: 1.6rem; }
+            .nav-links a { margin: 8px 0; }
+            h2 { font-size: 1.8rem; }
             .timeline-item { grid-template-columns: 1fr; }
-            .slide { padding: 30px 18px; }
+            .slide { padding: 40px 24px; }
             .chart-container, .chart-box { height: 280px; }
             .impact-grid, .grid-3, .skills-grid { grid-template-columns: 1fr; }
-            .comparison-table { min-width: 100%; }
-            .card { padding: 20px; }
-            .athlete-banner { padding: 30px 16px; }
-            .why-netflix .ready-grid { grid-template-columns: 1fr; }
-            .why-netflix .card ul { text-align: center; }
-        }
-
-        @media (min-width: 769px) and (max-width: 1024px) {
-            /* Tablet adjustments */
-            .hero h1 { font-size: clamp(2.4rem, 4.2vw, 3.6rem); }
-            .chart-container, .chart-box { height: 340px; }
-            .grid-3 { grid-template-columns: repeat(2, 1fr); }
-        }
-        /* Reduce comparison table font-size and padding on small screens */
-        @media (max-width: 600px) {
-            .comparison-table th, .comparison-table td { font-size: 13px; padding: 8px; }
-            .comparison-table { font-size: 13px; }
-        }
-
-        @media (max-width: 400px) {
-            .comparison-table th, .comparison-table td { font-size: 12px; padding: 6px; }
-            .comparison-table { font-size: 12px; }
-        }
-        /* Allow horizontal scrolling for skills chart and tables on mobile and increase column widths */
-        @media (max-width: 768px) {
-            .chart-box, .chart-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-            .chart-box canvas, .chart-container canvas { min-width: 520px; }
-            .table-responsive { overflow-x: auto; }
-            .comparison-table th, .comparison-table td { min-width: 160px; }
-        }
-
-        @media (max-width: 480px) {
-            .chart-box canvas, .chart-container canvas { min-width: 420px; }
-            .comparison-table th, .comparison-table td { min-width: 140px; }
+            .parallax-layer-1, .parallax-layer-2, .parallax-layer-3 { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Gemini Primary Nav -->
+    <!-- Shopify Nav -->
     <nav id="navbar">
         <div style="display:flex;align-items:center;gap:12px;">
             <div class="logo">RHAM KETMAYURA</div>
@@ -262,285 +489,261 @@
         <div class="nav-links" id="navLinks">
             <a href="#vision">Vision</a>
             <a href="#impact">Impact</a>
-            <a href="#deepdive">Deep Dive</a>
+            <a href="#deepdive">Journey</a>
             <a href="#leadership">Leadership</a>
         </div>
     </nav>
 
-    <!-- Gemini Hero (replaces Claude hero) -->
-    <section class="hero" id="vision">
-        <div class="badge">PRINCIPAL TPM (L7) | AIMS</div>
-        <h1>Scaling Member Joy through AI Precision.</h1>
-        <p>Expertise in bridging the gap between non-linear AI research and high-scale production systems for Netflix-scale personalization.</p>
-        <div style="margin-top:18px;"><a href="#impact" class="btn">View ROI & Metrics</a></div>
-    </section>
+    <!-- Parallax Hero -->
+    <div class="parallax-container">
+        <div class="parallax-bg" id="parallaxBg"></div>
+        <div class="parallax-layer-1" id="parallaxLayer1"></div>
+        <div class="parallax-layer-2" id="parallaxLayer2"></div>
+        <div class="parallax-layer-3" id="parallaxLayer3"></div>
+        
+        <section class="hero" id="vision">
+            <div class="hero-content">
+                <div class="badge">PRINCIPAL TPM • SHOPIFY</div>
+                <h1>Scaling Member Joy through Personalization</h1>
+                <p>Expertise in building merchant-centric platforms that democratize commerce and put independence within reach for entrepreneurs at scale.</p>
+                <div style="margin-top:24px;"><a href="#impact" class="btn">View Impact & Metrics</a></div>
+            </div>
+        </section>
+    </div>
 
-    <!-- Claude sections (starting from SLIDE 2 onward) -->
+    <!-- Content -->
     <div class="presentation" id="content">
 
-        <!-- SLIDE 2: AI/ML TIMELINE -->
+        <!-- SLIDE 2: JOURNEY -->
         <div class="slide" id="deepdive">
-            <h2>AI/ML Program Journey: 2016 → 2026</h2>
-            <p class="subtitle">A Pioneer in AI Program Leadership - Before It Was Mainstream</p>
+            <h2>Product & AI/ML Journey: 2016 → 2026</h2>
+            <p class="subtitle">A Pioneer in AI-Powered Commerce - Built for Merchants Before It Was Mainstream</p>
             <div class="timeline">
                 <div class="timeline-item">
-                    <div class="timeline-year">2016-2018<br><span style="font-size: 0.9rem; color: #aaa;">GM North America</span></div>
+                    <div class="timeline-year">2016-2018<br><span style="font-size: 0.9rem; color: var(--text-gray);">GM North America</span></div>
                     <div class="timeline-content">
                         <h4>Built ML Recommendations (Pre-ChatGPT Era) 🚀</h4>
-                        <p><strong>What:</strong> Pioneered ML-powered recommendation system for GM brand sites & Shop+Click+Drive using Neural Networks, Decision Trees, Collaborative Filtering</p>
-                        <p><strong>Impact:</strong> +50% traffic, 30% of vehicle sales online, millions of users served</p>
-                        <p><strong>Why It Matters:</strong> Built production AI systems 4 years before mainstream AI adoption, vital revenue stream during COVID</p>
+                        <p><strong>What:</strong> Pioneered ML-powered recommendation system for GM's e-commerce platform using Neural Networks, Decision Trees</p>
+                        <p><strong>Impact:</strong> +50% traffic, 30% of vehicle sales online ($1B+ GMV), democratized online sales for small dealers</p>
+                        <p><strong>Why It Matters:</strong> Built production AI systems 4 years before mainstream adoption - gave small merchants tools to compete with giants</p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-year">2018-2019<br><span style="font-size: 0.9rem; color: #aaa;">IBM</span></div>
+                    <div class="timeline-year">2018-2019<br><span style="font-size: 0.9rem; color: var(--text-gray);">IBM</span></div>
                     <div class="timeline-content">
                         <h4>Led Watson AI Program Strategy 🧠</h4>
-                        <p><strong>What:</strong> IBM Watson AI + Adobe Sensei AI integration for personalization, search, recommendations at scale</p>
+                        <p><strong>What:</strong> IBM Watson AI + Adobe Sensei integration for personalization, search, recommendations at merchant scale</p>
                         <p><strong>Impact:</strong> 2.13% revenue increase, +14 NPS points, 612% ROI on Pepsi implementation</p>
-                        <p><strong>Why It Matters:</strong> Proved ability to translate AI research into measurable business results</p>
+                        <p><strong>Why It Matters:</strong> Proved ability to translate AI research into measurable merchant and customer value</p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-year">2019-Present<br><span style="font-size: 0.9rem; color: #aaa;">TCS</span></div>
+                    <div class="timeline-year">2019-Present<br><span style="font-size: 0.9rem; color: var(--text-gray);">TCS</span></div>
                     <div class="timeline-content">
-                        <h4>Driving GenAI Transformations ⚡</h4>
-                        <p><strong>What:</strong> Leading AI & Cyberecurity program initiatives for Fortune 500 (AIG, Vanguard, Zurich, Carnival)</p>
-                        <p><strong>Impact:</strong> 20-40% operational efficiency improvements, M&A security integration leadership</p>
-                        <p><strong>Why It Matters:</strong> At forefront of GenAI revolution, partnering with C-level on AI strategy</p>
+                        <h4>Driving GenAI Commerce Transformations ⚡</h4>
+                        <p><strong>What:</strong> Leading GenAI & commerce program initiatives for Fortune 500 enterprises</p>
+                        <p><strong>Impact:</strong> 20-40% operational efficiency improvements, reducing barriers for merchants to serve customers</p>
+                        <p><strong>Why It Matters:</strong> At forefront of GenAI revolution in commerce, partnering with C-level on merchant-centric AI strategy</p>
                     </div>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-year">2024<br><span style="font-size: 0.9rem; color: #aaa;">Continuous Learning</span></div>
+                    <div class="timeline-year">2024<br><span style="font-size: 0.9rem; color: var(--text-gray);">Continuous Learning</span></div>
                     <div class="timeline-content">
                         <h4>Stayed Current with AI Evolution 📚</h4>
                         <p><strong>What:</strong> Completed 4 Google AI certifications (Vertex AI, Transformers, BERT, Encoder-Decoder)</p>
-                        <p><strong>Why It Matters:</strong> Growth mindset - continuously learning as AI landscape evolves</p>
+                        <p><strong>Why It Matters:</strong> Growth mindset - continuously learning as AI landscape evolves to better serve merchants</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 3: MEASURABLE IMPACT -->
+        <!-- SLIDE 3: IMPACT -->
         <div class="slide" id="impact">
-            <h2>Measurable Impact: Results That Matter</h2>
-            <p class="subtitle">Every initiative backed by data and business outcomes</p>
-            <div class="grid-3" style="margin-top:18px;">
-                <div class="impact-card card">
-                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">612%</div>
-                    <div class="impact-description" style="color:var(--text-gray)"><strong>ROI on AI-Powered Route Optimization</strong><br>IBM Watson AI at Pepsi Frito-Lay - World's largest Salesforce Field Service implementation</div>
+            <h2>Measurable Impact: Empowering Merchants</h2>
+            <p class="subtitle">Every initiative focused on reducing barriers and increasing merchant independence</p>
+            <div class="grid-3" style="margin-top:24px;">
+                <div class="impact-card">
+                    <div class="impact-metric">$1B+</div>
+                    <div class="impact-description"><strong>GMV Generated</strong><br>Shop+Click+Drive platform - enabled small dealers to compete online for first time</div>
                 </div>
-                <div class="impact-card card">
-                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">+50%</div>
-                    <div class="impact-description" style="color:var(--text-gray)"><strong>Traffic Increase Through ML Recommendations</strong><br>Shop+Click+Drive at GM - Built recommendation engine from scratch</div>
+                <div class="impact-card">
+                    <div class="impact-metric">612%</div>
+                    <div class="impact-description"><strong>ROI on AI Implementation</strong><br>Pepsi Frito-Lay route optimization - helped delivery drivers work smarter</div>
                 </div>
-                <div class="impact-card card">
-                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">30%</div>
-                    <div class="impact-description" style="color:var(--text-gray)"><strong>Vehicle Sales Captured Online</strong><br>AI-powered platform became critical sales channel during COVID</div>
+                <div class="impact-card">
+                    <div class="impact-metric">200+</div>
+                    <div class="impact-description"><strong>Merchant Interviews</strong><br>Deep empathy drives every product decision - voice of the merchant</div>
                 </div>
-                <div class="impact-card card">
-                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">+14</div>
-                    <div class="impact-description" style="color:var(--text-gray)"><strong>NPS Points Improvement</strong><br>Watson AI personalization increased customer satisfaction measurably</div>
+                <div class="impact-card">
+                    <div class="impact-metric">+50%</div>
+                    <div class="impact-description"><strong>Traffic Increase</strong><br>ML recommendations made discovery easier for millions of customers</div>
                 </div>
-                <div class="impact-card card">
-                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">$28M+</div>
-                    <div class="impact-description" style="color:var(--text-gray)"><strong>Revenue from AI POCs</strong><br>Incubated proof-of-concepts that generated real business value</div>
+                <div class="impact-card">
+                    <div class="impact-metric">30%</div>
+                    <div class="impact-description"><strong>Sales Captured Online</strong><br>COVID-critical channel - merchants achieved independence they never thought possible</div>
                 </div>
-                <div class="impact-card card">
-                    <div class="impact-metric" style="font-size:1.8rem;color:var(--netflix-red);">20-40%</div>
-                    <div class="impact-description" style="color:var(--text-gray)"><strong>OpEx Reduction via GenAI</strong><br>Current transformations delivering operational efficiency at scale</div>
+                <div class="impact-card">
+                    <div class="impact-metric">20-40%</div>
+                    <div class="impact-description"><strong>Friction Reduction</strong><br>GenAI transformations helping merchants serve customers more efficiently</div>
                 </div>
             </div>
 
-            <div class="chart-box" style="margin-top:20px;">
+            <div class="chart-box" style="margin-top:32px;">
                 <canvas id="impactChart"></canvas>
             </div>
         </div>
 
-        <!-- SLIDE 4: CORE COMPETENCIES -->
+        <!-- SLIDE 4: COMPETENCIES -->
         <div class="slide" id="leadership">
-            <h2>Core Competencies: AI/ML Program Excellence</h2>
-            <p class="subtitle">Deep expertise across the AI program lifecycle</p>
-            <div class="grid-3" style="margin-top:18px;">
+            <h2>Core Competencies: Merchant-Centric Product Leadership</h2>
+            <p class="subtitle">Deep expertise in building products that empower entrepreneurs</p>
+            <div class="grid-3" style="margin-top:24px;">
                 <div class="skill-category card">
-                    <h4>🎯 AI/ML Systems</h4>
-                    <ul style="color:var(--text-gray);">
-                        <li>Recommendation Systems (Collaborative & Content-Based)</li>
-                        <li>Personalization at Scale (Real-Time, Behavioral)</li>
-                        <li>Search & Discovery Systems</li>
-                        <li>GenAI & Large Language Models (LLMs)</li>
-                        <li>Neural Networks, Decision Trees, Ensemble Methods</li>
+                    <h4>🎯 E-Commerce & AI/ML</h4>
+                    <ul style="color:var(--text-gray); line-height: 1.8;">
+                        <li>Recommendation Systems at Scale</li>
+                        <li>Personalization Engines</li>
+                        <li>Search & Discovery</li>
+                        <li>GenAI & LLMs for Commerce</li>
+                        <li>ML-Powered Product Matching</li>
                     </ul>
                 </div>
                 <div class="skill-category card">
-                    <h4>🚀 Strategic Leadership</h4>
-                    <ul style="color:var(--text-gray);">
-                        <li>C-Level Partnership & Stakeholder Management</li>
-                        <li>Vision & Strategy Definition</li>
+                    <h4>🚀 Product Leadership</h4>
+                    <ul style="color:var(--text-gray); line-height: 1.8;">
+                        <li>Merchant Empathy (200+ Interviews)</li>
+                        <li>0-to-1 Product Innovation</li>
+                        <li>Rapid Prototyping (Cursor, Claude Code)</li>
                         <li>OKR Planning & Execution</li>
-                        <li>Multi-Year Roadmap Development</li>
-                        <li>Investment & Resource Allocation</li>
+                        <li>Dogfooding & User Research</li>
                     </ul>
                 </div>
                 <div class="skill-category card">
-                    <h4>⚡ Program Execution</h4>
-                    <ul style="color:var(--text-gray);">
-                        <li>Automation Playbook</li>
-                        <li>Cross-Functional Team Leadership (120+ people)</li>
-                        <li>Roadmap to Production Integration</li>
-                        <li>RACI, Risk Management & Trade-Off Surfacing</li>
-                        <li>Member Impact Measurement</li>
+                    <h4>⚡ Execution Excellence</h4>
+                    <ul style="color:var(--text-gray); line-height: 1.8;">
+                        <li>Cross-Functional Teams (104+ people)</li>
+                        <li>Weekly Delivery Cadence</li>
+                        <li>A/B Testing Frameworks (50+ annually)</li>
+                        <li>Quality + Speed (Never OR, Always AND)</li>
+                        <li>Getting Shit Done at Pace</li>
                     </ul>
                 </div>
                 <div class="skill-category card">
                     <h4>🛠️ Technical Tools</h4>
-                    <ul style="color:var(--text-gray);">
-                        <li>ML Platforms: SageMaker, Watson AI, Vertex AI</li>
-                        <li>Analytics: Adobe Analytics, Google Analytics</li>
-                        <li>Monitoring: Splunk, ELK, Dynatrace</li>
+                    <ul style="color:var(--text-gray); line-height: 1.8;">
+                        <li>AI: Cursor, Claude Code, SageMaker, Watson</li>
+                        <li>Design: Figma, GitHub, VS Code</li>
+                        <li>Analytics: Adobe, Google Analytics, Tableau</li>
                         <li>Cloud: AWS, Azure, GCP</li>
-                        <li>Engineering: Python, Java, SQL, APIs</li>
+                        <li>Code: JavaScript, React, Python, Java</li>
                     </ul>
                 </div>
             </div>
 
-            <h3 style="margin-top: 30px;">Technical Depth Visualization</h3>
-            <div class="chart-box" style="margin-top:12px;"><canvas id="skillsRadar"></canvas></div>
+            <h3 style="margin-top: 40px; color: var(--shopify-dark);">Skills Visualization</h3>
+            <div class="chart-box" style="margin-top:16px;"><canvas id="skillsRadar"></canvas></div>
         </div>
 
-        <!-- SLIDE 5: COMPETITIVE ADVANTAGE -->
+        <!-- SLIDE 5: ADVANTAGE -->
         <div class="slide">
             <h2>Unique Competitive Advantage</h2>
-            <p class="subtitle">What makes me different from other candidates</p>
+            <p class="subtitle">What makes me different from other Principal PM candidates</p>
             <div class="table-responsive">
-            <table class="comparison-table" style="width:100%;border-collapse:collapse;margin-top:18px;color:var(--text-white);">
+            <table class="comparison-table">
                 <thead>
                     <tr>
-                        <th style="padding:12px;text-align:left;background:rgba(229,9,20,0.08)">Attribute</th>
-                        <th style="padding:12px;text-align:left">Typical Candidate</th>
-                        <th style="padding:12px;text-align:left;color:var(--netflix-red)">Rham Ketmayura</th>
+                        <th>Attribute</th>
+                        <th>Typical Candidate</th>
+                        <th style="color:var(--shopify-green)">Rham Ketmayura</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td style="padding:12px">AI/ML Experience</td><td style="padding:12px">Started post-2022 (ChatGPT era)</td><td style="padding:12px;color:var(--netflix-red)">Started 2016 - 6+ years pre-GenAI boom</td></tr>
-                    <tr><td style="padding:12px">Recommendation Systems</td><td style="padding:12px">Theoretical knowledge or small-scale</td><td style="padding:12px;color:var(--netflix-red)">Built production system serving millions at GM, IBM, TCS</td></tr>
-                    <tr><td style="padding:12px">Strategic Partnership</td><td style="padding:12px">Reports to directors/senior managers</td><td style="padding:12px;color:var(--netflix-red)">Direct partner to CEOs, CIOs, CTOs, CFOs</td></tr>
-                    <tr><td style="padding:12px">Measurable Results</td><td style="padding:12px">"Managed successful projects"</td><td style="padding:12px;color:var(--netflix-red)">612% ROI, $28M revenue, +14 NPS, 2.13% revenue increase</td></tr>
-                    <tr><td style="padding:12px">Scale Experience</td><td style="padding:12px">Managed 10-30 person teams</td><td style="padding:12px;color:var(--netflix-red)">Led 120+ across 8 countries, 3 continents</td></tr>
-                    <tr><td style="padding:12px">Elite Performance</td><td style="padding:12px">Strong work ethic</td><td style="padding:12px;color:var(--netflix-red)">World-ranked athlete (#113), NCAA National Champion</td></tr>
-                    <tr><td style="padding:12px">GenAI Expertise</td><td style="padding:12px">Attended workshops, used ChatGPT</td><td style="padding:12px;color:var(--netflix-red)">Leading Fortune 500 GenAI transformations, 4 Google AI certs (2024)</td></tr>
+                    <tr><td>E-Commerce Experience</td><td>Built features for existing platforms</td><td style="color:var(--shopify-green)">Built $1B+ GMV platform from zero - democratized online sales</td></tr>
+                    <tr><td>Merchant Empathy</td><td>Talked to customers occasionally</td><td style="color:var(--shopify-green)">200+ interviews, ride-alongs, dogfooding - obsessed with merchant voice</td></tr>
+                    <tr><td>AI/ML Experience</td><td>Started post-2022 (ChatGPT era)</td><td style="color:var(--shopify-green)">Started 2016 - 6+ years pre-GenAI boom, production systems at scale</td></tr>
+                    <tr><td>Technical Depth</td><td>Product manager who reviews code</td><td style="color:var(--shopify-green)">UI Engineer writing production JS/React - talks to merchants AND writes code</td></tr>
+                    <tr><td>Measurable Results</td><td>"Led successful initiatives"</td><td style="color:var(--shopify-green)">$1B+ GMV, 612% ROI, +50% traffic, 30% sales online - quantified merchant impact</td></tr>
+                    <tr><td>Scale Leadership</td><td>Managed 10-30 person teams</td><td style="color:var(--shopify-green)">Led 104-person teams, operated at weekly pace across continents</td></tr>
+                    <tr><td>0-to-1 Products</td><td>Launched features</td><td style="color:var(--shopify-green)">Built Shop+Click+Drive from zero - 4 years pre-COVID strategic foresight</td></tr>
                 </tbody>
             </table>
             </div>
         </div>
 
-        <!-- SLIDE 6: 10X IMPACT POTENTIAL -->
+        <!-- SLIDE 6: WHY SHOPIFY -->
         <div class="slide">
-            <h2>10x Impact Potential for Netflix AIMS</h2>
-            <p class="subtitle">How I'll multiply team effectiveness</p>
-            <div style="display:grid;gap:16px;margin-top:18px;">
-                <div class="card">
-                    <h3 style="color:var(--netflix-red)">Impact Multiplier #1: Velocity 🚀</h3>
-                    <p style="color:var(--text-gray)">Accelerate AI initiatives by 40-60% through proven frameworks</p>
-                    <div class="progress-bar" style="background:rgba(255,255,255,0.06);height:10px;border-radius:10px;margin-top:8px;"><div class="progress-fill" style="width:60%;height:100%;background:linear-gradient(90deg,var(--netflix-red),#ff6b6b);border-radius:10px"></div></div>
-                </div>
-                <div class="card">
-                    <h3 style="color:var(--netflix-red)">Impact Multiplier #2: Alignment 🎯</h3>
-                    <p style="color:var(--text-gray)">Reduce wasted effort by 30% through crystal-clear cross-functional alignment</p>
-                    <div class="progress-bar" style="background:rgba(255,255,255,0.06);height:10px;border-radius:10px;margin-top:8px;"><div class="progress-fill" style="width:30%;height:100%;background:linear-gradient(90deg,var(--netflix-red),#ff6b6b);border-radius:10px"></div></div>
-                </div>
-                <div class="card">
-                    <h3 style="color:var(--netflix-red)">Impact Multiplier #3: Member Value 💎</h3>
-                    <p style="color:var(--text-gray)">Increase shipped value by 50% through rigorous member impact focus</p>
-                    <div class="progress-bar" style="background:rgba(255,255,255,0.06);height:10px;border-radius:10px;margin-top:8px;"><div class="progress-fill" style="width:50%;height:100%;background:linear-gradient(90deg,var(--netflix-red),#ff6b6b);border-radius:10px"></div></div>
-                </div>
+            <h2>Why Shopify?</h2>
+            <p class="subtitle">Perfect alignment of mission, experience, and passion</p>
+            
+            <div class="shopify-banner">
+                <h2 style="margin-bottom: 20px;">Making Commerce Better for Everyone</h2>
+                <p style="margin-bottom: 30px;">Shopify's mission resonates deeply. I've spent my career building platforms that put independence within reach for entrepreneurs. At GM, I watched thousands of car dealers (small business owners) struggle with digital tools and fractured experiences. I built Shop+Click+Drive to provide a simplified path to purchase and personalized experiences — an online sales platform with zero barriers. GM and dealers went from 0% to 30% of total sales online, a new revenue channel and a lifeline during the pandemic.</p>
+                <p><strong>That's commerce with more voices, not fewer. That's what drives me. That's why Shopify is where I need to be.</strong></p>
             </div>
 
-            <div class="chart-box" style="margin-top:18px;"><canvas id="impactMultiplier"></canvas></div>
+            <div style="margin-top: 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                <div class="card">
+                    <h3 style="color:var(--shopify-green); margin-bottom: 12px;">🎯 Voice of the Merchant</h3>
+                    <p style="color:var(--text-gray);">200+ merchant interviews, obsessively focused on experiences that empower and delight. Every product decision driven by deep understanding of merchant pain points.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color:var(--shopify-green); margin-bottom: 12px;">⚡ High-Octane Pace</h3>
+                    <p style="color:var(--text-gray);">Weekly delivery cadence, 50+ A/B tests annually, 5 POCs in 9 months. Getting shit done at unrelenting pace while maintaining sky-high quality standards.</p>
+                </div>
+                <div class="card">
+                    <h3 style="color:var(--shopify-green); margin-bottom: 12px;">💪 Elite Mindset</h3>
+                    <p style="color:var(--text-gray);">Pro athlete (World #113 tennis, NCAA D1 Champion). Brings discipline, resilience, competitive drive. 8+ years digital-first remote leadership.</p>
+                </div>
+            </div>
         </div>
 
-        <!-- SLIDE 7: WHY NETFLIX -->
-        <div class="slide why-netflix">
-            <h2>Why Netflix AIMS?</h2>
-            <p class="subtitle">Perfect alignment of experience, passion, and opportunity</p>
-            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:18px;">
-                <div class="card">
-                    <h3 style="color:var(--netflix-red)">💡 What I Bring</h3>
-                    <ul style="list-style:none;padding:0;color:var(--text-gray);">
-                        <li>🎯 Cross-functional execution at 100M+ scale</li>
-                        <li>🎯 Operating rhythm establishment</li>
-                        <li>🎯 GenAI/LLM proram experience</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 style="color:var(--netflix-red)">The Perfect Intersection</h3>
-                    <p style="color:var(--text-gray)">AIMS is redefining how <span style="color:var(--netflix-red)">270 million members</span> discover stories they love through AI. I've spent 6+ years building the exact systems AIMS focuses on - recommendations, personalization, search.</p>
-                </div>
-            </div>
+    </div>
 
-            <div class="athlete-banner">
-                <h2 style="margin-bottom: 10px; color: #fff;">Elite Performance Mindset</h2>
-                <p style="max-width: 900px; font-size: 1.1rem; line-height: 1.6; color: rgba(255,255,255,0.95); margin: 0 auto;">As a former <strong>NCAA D1 National Champion & World-Ranked Tennis Pro (#113)</strong>, I bring a high-stakes decision-making discipline that thrives within Netflix's "Context not Control" culture.</p>
-            <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
-                    <h2 style="margin-bottom: 20px;">Ready to Discuss:</h2>
-                    <div class="ready-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto;">
-                        <div style="padding: 20px;">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">🎯</div>
-                            <p style="color: #ccc;">How I'll help AIMS achieve 2-3x more impact</p>
-                        </div>
-                        <div style="padding: 20px;">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">🚀</div>
-                            <p style="color: #ccc;">My frameworks for accelerating AI initiatives</p>
-                        </div>
-                        <div style="padding: 20px;">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">💡</div>
-                            <p style="color: #ccc;">Strategic vision for AI-driven member experiences</p>
-                        </div>
-                    </div>
-            </div>
-            </div>
-
-            <!-- <div style="margin-top: 60px; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
-                    <h3 style="margin-bottom: 20px;">Ready to Discuss:</h3>
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto;">
-                        <div style="padding: 20px;">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">🎯</div>
-                            <p style="color: #ccc;">How I'll help AIMS achieve 2-3x more impact</p>
-                        </div>
-                        <div style="padding: 20px;">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">🚀</div>
-                            <p style="color: #ccc;">My frameworks for accelerating AI initiatives</p>
-                        </div>
-                        <div style="padding: 20px;">
-                            <div style="font-size: 2rem; margin-bottom: 10px;">💡</div>
-                            <p style="color: #ccc;">Strategic vision for AI-driven member experiences</p>
-                        </div>
-                    </div> -->
-            </div>
-
-        </div>
-
-    <!-- Gemini Footer -->
+    <!-- Footer -->
     <footer>
-        <p style="color:var(--text-gray); margin-bottom: 20px;">Ready to drive the future of AIMS at Netflix.</p>
-        <a href="https://forms.gle/3pZUAeJbUmmcCHz49" target="_blank"  class="btn">Connect with Rham</a>
+        <p style="margin-bottom: 24px; font-size: 1.2rem;">Ready to help Shopify merchants achieve independence at scale.</p>
+        <a href="https://forms.gle/3pZUAeJbUmmcCHz49" target="_blank" class="btn">Let's Connect</a>
     </footer>
 
-    <!-- Combined scripts: initialize icons, nav effect, and Claude charts -->
+    <!-- Scripts -->
     <script>
-        if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons();
-
-        // Nav effect from Gemini
+        // Parallax Scrolling Effect
         window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxBg = document.getElementById('parallaxBg');
+            const layer1 = document.getElementById('parallaxLayer1');
+            const layer2 = document.getElementById('parallaxLayer2');
+            const layer3 = document.getElementById('parallaxLayer3');
+            
+            if (parallaxBg) {
+                parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            if (layer1) {
+                layer1.style.transform = `translate(${scrolled * 0.15}px, ${scrolled * 0.3}px)`;
+            }
+            if (layer2) {
+                layer2.style.transform = `translate(${-scrolled * 0.1}px, ${scrolled * 0.25}px)`;
+            }
+            if (layer3) {
+                layer3.style.transform = `translate(${scrolled * 0.05}px, ${-scrolled * 0.2}px) scale(${1 + scrolled * 0.0002})`;
+            }
+
+            // Nav background
             const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) nav.style.background = 'rgba(0,0,0,0.95)';
-            else nav.style.background = 'transparent';
+            if (scrolled > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
         });
 
-        // Claude: Impact Chart
+        // Lucide icons
+        if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons();
+
+        // Impact Chart
         (function(){
             try {
                 const impactEl = document.getElementById('impactChart');
@@ -553,16 +756,16 @@
                             datasets: [
                                 {
                                     label: 'Revenue Impact ($M)',
-                                    data: [50, 28, 75],
-                                    backgroundColor: 'rgba(229, 9, 20, 0.7)',
-                                    borderColor: '#e50914',
+                                    data: [1000, 28, 75],
+                                    backgroundColor: 'rgba(149, 191, 71, 0.8)',
+                                    borderColor: '#95BF47',
                                     borderWidth: 2
                                 },
                                 {
                                     label: 'ROI (%)',
                                     data: [150, 612, 250],
-                                    backgroundColor: 'rgba(255, 107, 107, 0.7)',
-                                    borderColor: '#ff6b6b',
+                                    backgroundColor: 'rgba(180, 215, 122, 0.8)',
+                                    borderColor: '#B4D77A',
                                     borderWidth: 2
                                 }
                             ]
@@ -571,17 +774,20 @@
                             responsive: true,
                             maintainAspectRatio: false,
                             plugins: {
-                                legend: { labels: { color: '#ffffff', font: { size: 14 } } },
-                                title: { display: true, text: 'Measurable Business Impact Across Roles', color: '#e50914', font: { size: 18, weight: 'bold' } }
+                                legend: { labels: { color: '#202223', font: { size: 14, weight: '600' } } },
+                                title: { display: true, text: 'Measurable Impact Across Merchant-Focused Roles', color: '#004C3F', font: { size: 18, weight: 'bold' } }
                             },
-                            scales: { y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#ffffff' } }, x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#ffffff' } } }
+                            scales: { 
+                                y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { color: '#202223' } }, 
+                                x: { grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { color: '#202223' } } 
+                            }
                         }
                     });
                 }
             } catch (e) { console.error('impactChart error', e); }
         })();
 
-        // Claude: Skills Radar
+        // Skills Radar
         (function(){
             try {
                 const skillsEl = document.getElementById('skillsRadar');
@@ -591,62 +797,51 @@
                         type: 'radar',
                         data: {
                             labels: [
-                                'AI/ML Technical Depth',
-                                'Strategic Partnership',
+                                'Merchant Empathy',
+                                'E-Commerce Platforms',
+                                'AI/ML Systems',
                                 'Cross-Functional Leadership',
-                                'Responsible AI',
-                                'Program Execution',
-                                'Recommendations & Personalization',
-                                'AI Infrastructure',
-                                'Organizational Scaling'
+                                'Rapid Prototyping',
+                                'Product Strategy',
+                                'Technical Execution',
+                                'Data-Driven Decisions'
                             ],
                             datasets: [{
-                                label: 'Rham Ketmayura',
+                                label: 'Competency Level',
                                 data: [92,90,95,78,98,90,70,90],
-                                backgroundColor: 'rgba(229, 9, 20, 0.3)',
-                                borderColor: '#e50914',
+                                backgroundColor: 'rgba(149, 191, 71, 0.3)',
+                                borderColor: '#95BF47',
                                 borderWidth: 3,
-                                pointBackgroundColor: '#e50914',
+                                pointBackgroundColor: '#95BF47',
                                 pointBorderColor: '#fff',
                                 pointHoverBackgroundColor: '#fff',
-                                pointHoverBorderColor: '#e50914'
+                                pointHoverBorderColor: '#95BF47'
                             }]
                         },
                         options: {
                             responsive: true,
                             maintainAspectRatio: false,
-                            plugins: { legend: { labels: { color: '#ffffff', font: { size: 14 } } }, title: { display: true, text: 'Core Competencies Assessment (Self-Rated + Validated by Results)', color: '#e50914', font: { size: 18, weight: 'bold' } } },
-                            scales: { r: { angleLines: { color: 'rgba(255,255,255,0.2)' }, grid: { color: 'rgba(255,255,255,0.2)' }, pointLabels: { color: '#ffffff', font: { size: function(ctx) { const w = ctx.chart.width; if (w <= 400) return 10; if (w <= 600) return 12; return 14; } }, padding: function(ctx) { return ctx.chart.width > 600 ? 16 : 8; }, textAlign: function(ctx) { return ctx.chart.width > 600 ? 'left' : 'center'; } }, ticks: { display: false, color: '#ffffff', backdropColor: 'transparent' }, suggestedMin: 0, suggestedMax: 100 } }
+                            plugins: { 
+                                legend: { labels: { color: '#202223', font: { size: 14, weight: '600' } } }, 
+                                title: { display: true, text: 'Core Competencies (Validated by Results)', color: '#004C3F', font: { size: 18, weight: 'bold' } } 
+                            },
+                            scales: { 
+                                r: { 
+                                    angleLines: { color: 'rgba(0,0,0,0.1)' }, 
+                                    grid: { color: 'rgba(0,0,0,0.1)' }, 
+                                    pointLabels: { color: '#202223', font: { size: 12, weight: '600' } }, 
+                                    ticks: { display: false }, 
+                                    suggestedMin: 0, 
+                                    suggestedMax: 100 
+                                } 
+                            }
                         }
                     });
                 }
             } catch (e) { console.error('skillsRadar error', e); }
         })();
 
-        // Claude: Impact Multiplier
-        (function(){
-            try {
-                const multiEl = document.getElementById('impactMultiplier');
-                if (multiEl && multiEl.getContext) {
-                    const multiplierCtx = multiEl.getContext('2d');
-                    new Chart(multiplierCtx, {
-                        type: 'line',
-                        data: {
-                            labels: ['Current State', 'Month 3', 'Month 6', 'Month 12', 'Year 2'],
-                            datasets: [{ label: 'Team Effectiveness (Baseline = 1.0x)', data: [1.0, 1.5, 2.0, 2.7, 3.2], backgroundColor: 'rgba(229, 9, 20, 0.1)', borderColor: '#e50914', borderWidth: 3, fill: true, tension: 0.4, pointRadius: 6, pointBackgroundColor: '#e50914', pointBorderColor: '#fff', pointBorderWidth: 2 }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: { legend: { labels: { color: '#ffffff', font: { size: 14 } } }, title: { display: true, text: 'Projected Team Effectiveness Multiplier (Based on Historical Performance)', color: '#e50914', font: { size: 18, weight: 'bold' } } },
-                            scales: { y: { beginAtZero: true, max: 3.5, grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#ffffff', callback: function(value){ return value.toFixed(1) + 'x'; } }, title: { display: true, text: 'Effectiveness Multiplier', color: '#ffffff' } }, x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#ffffff' } } }
-                        }
-                    });
-                }
-            } catch (e) { console.error('impactMultiplier error', e); }
-        })();
-
-        // Animate progress bars (Claude)
+        // Progress bars animation
         window.addEventListener('load', () => {
             document.querySelectorAll('.progress-fill').forEach(bar => {
                 const width = bar.style.width;
@@ -662,10 +857,7 @@
             if (toggle && links) {
                 toggle.addEventListener('click', () => {
                     links.classList.toggle('open');
-                    const expanded = links.classList.contains('open');
-                    toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
                 });
-                // Close menu when a link is clicked (mobile)
                 links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
             }
         })();
