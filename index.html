@@ -1,866 +1,1355 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rham Ketmayura — Shopify Value Proposition</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
-    <style>
-        :root {
-            --shopify-green: #95BF47;
-            --shopify-dark-green: #5E8E3E;
-            --shopify-light-green: #B4D77A;
-            --shopify-dark: #004C3F;
-            --shopify-darker: #002E25;
-            --shopify-bg: #F6F6F7;
-            --shopify-white: #ffffff;
-            --text-dark: #202223;
-            --text-gray: #6D7175;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#8A9A5B">
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<!-- ============================ SEO / GEO ============================ -->
+<title>AURA — Connected Wellness Ecosystem: AI Skin Analysis, Telehealth & Travel-Aware Skincare</title>
+<meta name="description" content="AURA is a connected luxury wellness ecosystem: AI skin analysis, personalized skincare, haircare and nutrition, telehealth with dermatologists and dietitians, location-aware Travel Mode routines, and a loyalty rewards program. Wellness guidance, not medical advice.">
+<meta name="keywords" content="AI skin analysis, luxury skincare, haircare, telehealth dermatologist, holistic dietitian, personalized skincare, travel skincare routine, wellness rewards, curated beauty products, skin and nutrition">
+<link rel="canonical" href="https://aura-wellness.com/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="AURA">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="AURA">
+<meta property="og:title" content="AURA — Connected Wellness Ecosystem">
+<meta property="og:description" content="AI skin analysis, telehealth, travel-aware routines, and luxury rewards.">
+<meta property="og:url" content="https://aura-wellness.com/">
+<meta property="og:image" content="https://aura-wellness.com/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AURA — Connected Wellness Ecosystem">
+<meta name="twitter:description" content="AI skin analysis, telehealth, travel-aware routines, and luxury rewards.">
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: var(--shopify-white);
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"></noscript>
 
-        /* Parallax Hero Container */
-        .parallax-container {
-            height: 100vh;
-            overflow: hidden;
-            position: relative;
-        }
+<!-- JSON-LD: Organization -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"AURA","url":"https://aura-wellness.com/","logo":"https://aura-wellness.com/logo.png","description":"AURA is a connected luxury wellness ecosystem spanning AI skin analysis, personalized skincare and haircare, telehealth with dermatologists and dietitians, location-aware routines, and a loyalty rewards program.","sameAs":["https://instagram.com/aura","https://www.linkedin.com/company/aura"]}
+</script>
+<!-- JSON-LD: MobileApplication -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"AURA","applicationCategory":"HealthApplication","operatingSystem":"iOS, Android, Web","offers":[{"@type":"Offer","name":"Discovery","price":"49","priceCurrency":"USD"},{"@type":"Offer","name":"Elevate","price":"129","priceCurrency":"USD"},{"@type":"Offer","name":"Prestige","price":"299","priceCurrency":"USD"}],"description":"AI computer vision skin analysis with personalized skincare, haircare and nutrition; on-demand telehealth with dermatologists and dietitians; location-aware travel routines; and luxury loyalty rewards. Wellness guidance, not medical advice.","featureList":["AI skin analysis","Personalized skincare & haircare","Telehealth consultations","Travel Mode location-aware routines","Loyalty points & rewards","Curated product recommendations"]}
+</script>
+<!-- JSON-LD: FAQ (strong GEO signal) -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is AURA?","acceptedAnswer":{"@type":"Answer","text":"AURA is a connected luxury wellness ecosystem that uses AI computer vision to analyze your skin and recommends personalized skincare, haircare and nutrition, with on-demand telehealth and location-aware routines. It provides wellness guidance, not medical advice."}},{"@type":"Question","name":"Does AURA offer telehealth with real providers?","acceptedAnswer":{"@type":"Answer","text":"AURA connects members with licensed dermatologists and registered dietitians for virtual consultations. AURA itself does not diagnose or treat conditions; consultations are provided by independent licensed professionals."}},{"@type":"Question","name":"What is Travel Mode?","acceptedAnswer":{"@type":"Answer","text":"Travel Mode adapts your skincare routine and product recommendations to your destination's climate and environmental factors, such as UV index, dryness, pollution or humidity."}},{"@type":"Question","name":"Does AURA diagnose skin conditions?","acceptedAnswer":{"@type":"Answer","text":"No. AURA's AI provides cosmetic wellness estimates, not a medical diagnosis. For diagnosis or treatment, consult a licensed dermatologist or physician, and a registered dietitian for nutrition."}}]}
+</script>
 
-        .parallax-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 120vh;
-            /* Added Merchant/Shopify Theme Background Image with Gradient Overlay */
-            background: 
-                linear-gradient(135deg, rgba(0, 46, 37, 0.88) 0%, rgba(0, 76, 63, 0.8) 40%, rgba(94, 142, 62, 0.7) 100%),
-                url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
-            transform-origin: center;
-            will-change: transform;
-        }
+<style>
+:root{
+  --sage:#8A9A5B; --sage-d:#728248; --gold:#FCD34D; --ink:#1c1917;
+  --stone-50:#fafaf9; --stone-100:#f5f5f4; --stone-200:#e7e5e4; --stone-300:#d6d3d1;
+  --stone-400:#a8a29e; --stone-500:#78716c; --stone-700:#44403c;
+  --serif:'Playfair Display',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-gradient(circle at 50% 0%,#4a4a4d,#2c2c2e);overflow:hidden}
+.serif{font-family:var(--serif)}
 
-        .parallax-layer-1 {
-            position: absolute;
-            top: 10%;
-            right: 5%;
-            width: 500px;
-            height: 500px;
-            background: rgba(149, 191, 71, 0.15);
-            border-radius: 50%;
-            filter: blur(100px);
-            will-change: transform;
-        }
+/* Preview toolbar */
+.previewbar{position:fixed;top:0;left:0;right:0;height:56px;z-index:100;display:flex;align-items:center;gap:6px;padding:0 16px;
+  background:rgba(20,20,22,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);overflow-x:auto;scrollbar-width:none}
+.previewbar::-webkit-scrollbar{display:none}
+.previewbar .title{font-family:var(--serif);color:#fff;letter-spacing:.16em;font-size:15px;margin-right:8px;white-space:nowrap}
+.previewbar .title b{color:var(--gold)}
+.seg{display:flex;gap:4px;background:rgba(255,255,255,.06);padding:4px;border-radius:12px}
+.seg button{background:none;border:none;color:rgba(255,255,255,.6);font-family:var(--sans);font-size:12px;font-weight:500;padding:7px 12px;border-radius:8px;cursor:pointer;white-space:nowrap}
+.seg button.on{background:var(--sage);color:#fff}
+.seg button:hover:not(.on){color:#fff}
+.previewbar .spacer{flex:1}
+.iconbtn{background:rgba(255,255,255,.06);border:none;color:rgba(255,255,255,.7);width:36px;height:36px;border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.iconbtn:hover{color:#fff;background:rgba(255,255,255,.12)}
+.iconbtn[disabled]{opacity:.3;cursor:not-allowed}
 
-        .parallax-layer-2 {
-            position: absolute;
-            bottom: 10%;
-            left: 5%;
-            width: 400px;
-            height: 400px;
-            background: rgba(94, 142, 62, 0.2);
-            border-radius: 50%;
-            filter: blur(80px);
-            will-change: transform;
-        }
+/* Stage + device */
+.stage{position:fixed;top:56px;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;overflow:auto}
+.scaler{transform-origin:center center}
+.device{position:relative;background:#0a0a0a;border-radius:48px;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.device[data-form="tablet"]{border-radius:34px;padding:14px}
+.device[data-os="web"]{border-radius:12px;padding:0;background:#1a1a1c}
+.screen{position:relative;width:100%;height:100%;background:var(--stone-50);overflow:hidden;border-radius:38px;display:flex;flex-direction:column}
+.device[data-form="tablet"] .screen{border-radius:22px}
+.device[data-os="web"] .screen{border-radius:0 0 12px 12px}
+.osbar{height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:relative;z-index:5;font-size:13px;font-weight:600;color:#1c1917}
+.device[data-form="tablet"] .osbar{height:34px;font-size:12px}
+.osbar .sigs{display:flex;align-items:center;gap:5px}
+.island{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:108px;height:30px;background:#000;border-radius:18px;z-index:10}
+.device[data-os="android"] .island,.device[data-os="web"] .island{display:none}
+.punch{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:11px;height:11px;background:#000;border-radius:50%;z-index:10}
+.device[data-os="ios"] .punch,.device[data-os="web"] .punch{display:none}
+.homebar{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:134px;height:5px;background:#1c1917;opacity:.28;border-radius:3px;z-index:40}
+.device[data-os="android"] .homebar{width:108px}
+.device[data-os="web"] .homebar{display:none}
+.webchrome{display:none}
+.device[data-os="web"] .webchrome{display:flex;align-items:center;gap:10px;height:40px;background:#2a2a2c;padding:0 14px;border-radius:12px 12px 0 0;flex-shrink:0}
+.webchrome .tl{display:flex;gap:7px}
+.webchrome .tl i{width:12px;height:12px;border-radius:50%;display:block}
+.webchrome .addr{flex:1;background:#39393b;border-radius:7px;height:24px;display:flex;align-items:center;padding:0 12px;color:#bbb;font-size:12px;gap:7px}
 
-        .parallax-layer-3 {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: rgba(180, 215, 122, 0.08);
-            border-radius: 50%;
-            filter: blur(120px);
-            will-change: transform;
-        }
+/* App shell */
+.app{flex:1;display:flex;flex-direction:column;min-height:0;position:relative}
+.appbar{height:50px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--stone-100)}
+.appbar .brand{font-family:var(--serif);letter-spacing:.18em;font-size:16px;color:#1c1917;line-height:1}
+.appbar .brand b{color:var(--gold)}
+/* Mobile primary-nav right cluster (cart + loyalty) */
+.appbar-right{display:flex;align-items:center;gap:12px}
+.appbar-cart{position:relative;background:none;border:none;color:var(--stone-500);cursor:pointer;display:flex;align-items:center;padding:0}
+.navbadge{position:absolute;top:-5px;right:-7px;min-width:16px;height:16px;border-radius:999px;background:var(--sage);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px;border:1.5px solid #fff}
+.appbar-cart:hover{color:var(--ink)}
+.appbar-loyalty{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--sage-d);white-space:nowrap}
+.appbar-loyalty b{color:var(--ink);font-weight:700}
+.appbar-loyalty .tier{text-transform:uppercase;letter-spacing:.04em;font-size:10px}
+.appbar-loyalty svg{color:var(--gold)}
+/* Brand + loyalty block (top nav, under logo) */
+.brandblock{display:flex;flex-direction:column;justify-content:center;line-height:1.1;cursor:pointer}
+.appbar .brand{cursor:pointer}
+.brandloyalty{display:flex;align-items:center;gap:5px;font-size:10.5px;font-weight:600;color:var(--sage-d);letter-spacing:.02em;margin-top:3px;text-transform:uppercase}
+.brandloyalty b{color:var(--ink);font-weight:700}
+.brandloyalty svg{color:var(--gold)}
+.device[data-os="web"] .appbar{display:none}
+.applayout{flex:1;display:flex;min-height:0}
+.content{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;min-height:0}
+.content::-webkit-scrollbar{display:none}
+.view{padding:8px 20px 110px;max-width:100%}
 
-        nav {
-            position: fixed;
-            top: 0; width: 100%; height: 70px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 4%; z-index: 1000; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: all 0.3s;
-        }
+/* Horizontal top nav (tablet/web) */
+.topnav{display:none;align-items:center;gap:6px;padding:12px 22px;border-bottom:1px solid var(--stone-200);background:#fff;flex-shrink:0}
+.topnav .tn-logo{font-family:var(--serif);letter-spacing:.16em;font-size:20px;color:#1c1917;margin-right:14px;white-space:nowrap}
+.topnav .tn-logo b{color:var(--gold)}
+.topnav .tn-items{display:flex;align-items:center;gap:2px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.topnav .tn-items::-webkit-scrollbar{display:none}
+.topnav .tn-items button{display:flex;align-items:center;gap:7px;background:none;border:none;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--stone-500);padding:9px 12px;border-radius:10px;cursor:pointer;white-space:nowrap}
+.topnav .tn-items button.on{background:rgba(138,154,91,.12);color:var(--sage-d)}
+.topnav .tn-items button:hover:not(.on){background:var(--stone-100)}
+.topnav .tn-loc{display:flex;align-items:center;gap:6px;border:1px solid var(--stone-200);background:#fff;cursor:pointer;font-family:var(--sans);font-size:13px;font-weight:500;color:var(--stone-700);padding:8px 12px;border-radius:999px;white-space:nowrap}
+.topnav .tn-loc:hover{background:var(--stone-100)}
+.topnav .tn-cta{display:flex;align-items:center;gap:7px;border:none;cursor:pointer;white-space:nowrap;font-family:var(--sans);font-size:14px;font-weight:500;color:#fff;padding:10px 16px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--sage-d))}
+.topnav .tn-right{margin-left:auto;display:flex;align-items:center;gap:8px}
 
-        nav.scrolled {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-        }
+/* Bottom nav (phone) */
+.bottomnav{position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--stone-200);padding:8px 8px 22px;display:flex;justify-content:space-around;align-items:flex-end;z-index:30}
+.bottomnav button{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px;width:54px;cursor:pointer;color:var(--stone-400);font-family:var(--sans)}
+.bottomnav button.on{color:var(--sage-d)}
+.bottomnav button span{font-size:10px}
+.bottomnav .scan{margin-top:-24px}
+.bottomnav .scan .fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 6px 18px rgba(114,130,72,.45);background:linear-gradient(135deg,var(--sage),var(--sage-d))}
 
-        .nav-toggle {
-            display: none;
-            background: transparent;
-            border: 0;
-            color: var(--text-dark);
-            font-size: 1.6rem;
-            cursor: pointer;
-        }
+.screen[data-form="tablet"] .topnav,.screen[data-form="desktop"] .topnav{display:flex}
+.screen[data-form="tablet"] .bottomnav,.screen[data-form="desktop"] .bottomnav{display:none}
+.screen[data-form="tablet"] .appbar,.screen[data-form="desktop"] .appbar{display:none}
+.screen[data-form="tablet"] .view,.screen[data-form="desktop"] .view{padding:24px 32px;max-width:960px;margin:0 auto}
+.screen[data-form="tablet"] .cardgrid,.screen[data-form="desktop"] .cardgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.screen[data-form="tablet"] .cardgrid>*,.screen[data-form="desktop"] .cardgrid>*{margin-bottom:0}
 
-        .logo { 
-            color: var(--shopify-green); 
-            font-weight: 800; 
-            font-size: 1.8rem; 
-            letter-spacing: -1px; 
-        }
-        
-        .nav-links a { 
-            color: var(--text-dark); 
-            text-decoration: none; 
-            margin-left: 25px; 
-            font-size: 0.9rem; 
-            font-weight: 600;
-            transition: color 0.3s;
-        }
+/* Shared UI */
+.eyebrow{font-size:13px;color:var(--stone-400);margin-bottom:2px}
+.h1{font-family:var(--serif);font-size:30px;line-height:1.1;color:#1c1917;margin-bottom:18px}
+.h3{font-family:var(--serif);font-size:18px;color:#1c1917}
+.pill{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:500;padding:3px 9px;border-radius:999px}
+.pill.sage{background:rgba(138,154,91,.15);color:var(--sage-d)}
+.pill.gold{background:#fef3c7;color:#b45309}
+.pill.ink{background:var(--stone-200);color:var(--stone-500)}
+.card{background:#fff;border:1px solid var(--stone-200);border-radius:18px}
+.reveal{opacity:0;transform:translateY(12px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .5s,transform .5s}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important}}
+.hero{position:relative;overflow:hidden;border-radius:24px;padding:24px;color:#fff;cursor:pointer;background:linear-gradient(135deg,#1c1917,#2a2622)}
+.hero .blob{position:absolute;right:-32px;top:-32px;width:160px;height:160px;border-radius:50%;background:var(--sage);opacity:.2}
+.hero .ic{width:44px;height:44px;border-radius:50%;background:var(--sage);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.hero h2{font-family:var(--serif);font-size:21px;margin-bottom:4px}
+.hero p{color:rgba(255,255,255,.6);font-size:14px;margin-bottom:16px;max-width:15rem}
+.hero .go{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:500;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px}
+.row{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--stone-100);border-radius:16px;padding:12px 16px;margin-bottom:8px}
+.row .ic{width:36px;height:36px;border-radius:50%;background:rgba(138,154,91,.12);display:flex;align-items:center;justify-content:center;color:var(--sage-d);flex-shrink:0;font-size:13px;font-weight:700}
+.row .step{font-size:14px;font-weight:500;color:var(--stone-700)}
+.row .time{font-size:12px;color:var(--stone-400)}
+.btn{width:100%;padding:14px;border:none;border-radius:12px;color:#fff;font-size:14px;font-weight:500;background:var(--sage);display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;font-family:var(--sans)}
+.btn:active{transform:scale(.99)}
+.btn.ghost{background:transparent;color:var(--stone-500)}
+.btn.dark{background:var(--ink)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.disclaimer{display:flex;gap:8px;background:var(--stone-100);border:1px solid var(--stone-200);border-radius:14px;padding:10px 12px;font-size:11px;line-height:1.4;color:var(--stone-500)}
+.disclaimer.warn{background:rgba(252,211,77,.13);border-color:rgba(252,211,77,.4);color:#92710f}
+.disclaimer svg{flex-shrink:0;margin-top:1px}
+.bar{height:6px;border-radius:999px;background:var(--stone-100);overflow:hidden;margin-top:6px}
+.bar>i{display:block;height:100%;border-radius:999px}
+.ring{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.ring>div{width:48px;height:48px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:18px;color:var(--stone-700)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{background:#fff;border:1px solid var(--stone-200);border-radius:16px;padding:16px;text-align:left;cursor:pointer;font-family:var(--sans);overflow:hidden;transition:box-shadow .2s,transform .2s,border-color .2s}
+.tile:hover{box-shadow:0 10px 24px rgba(0,0,0,.08);border-color:var(--stone-300);transform:translateY(-2px)}
+.tile:focus-visible{outline:2px solid var(--sage);outline-offset:-2px}
+.tile p.t{font-family:var(--serif);font-size:14px;font-weight:600;color:var(--stone-800);margin-top:10px}
+.tile p.s{font-size:12px;color:var(--stone-400)}
+.tile .ic{color:var(--sage-d);transition:transform .2s ease;transform-origin:left center}
+.tile:hover .ic,.tile:focus-visible .ic{transform:scale(1.05)}
+.flexb{display:flex;align-items:center;justify-content:space-between}
+.mb8{margin-bottom:8px}.mb12{margin-bottom:12px}.mb16{margin-bottom:16px}.mb20{margin-bottom:20px}
+.legal{font-size:11px;line-height:1.5;color:var(--stone-400);padding:0 4px}
+.legal p{margin-bottom:8px}.legal .hd{font-weight:600;color:var(--stone-500)}
+.list{background:#fff;border:1px solid var(--stone-100);border-radius:16px;overflow:hidden}
+.list .li{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-top:1px solid var(--stone-100)}
+.list .li:first-child{border-top:none}
+.li span{font-size:14px;color:var(--stone-700)}
 
-        .nav-links a:hover {
-            color: var(--shopify-green);
-        }
+/* Loyalty card */
+.loyalty{border-radius:22px;padding:20px;color:#fff;background:linear-gradient(135deg,var(--sage),var(--sage-d));position:relative;overflow:hidden}
+.loyalty .lab{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.75)}
+.loyalty .pts{font-family:var(--serif);font-size:38px;line-height:1;margin:6px 0}
+.loyalty .tier{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:999px}
+.loyalty .redeem{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px;cursor:pointer}
 
-        /* Hero Section with Parallax */
-        section.hero {
-            height: 100vh;
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center;
-            padding: 0 4%;
-            position: relative;
-            z-index: 1;
-        }
+/* Travel pill (home) */
+.travelpill{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--stone-200);border-radius:999px;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:500;color:var(--stone-700)}
+.travelpill .uv{font-size:11px;color:var(--stone-400)}
+.travelpill:hover{background:var(--stone-100)}
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-        }
+/* Product cards */
+.prod{display:flex;gap:14px;background:#fff;border:1px solid var(--stone-100);border-radius:16px;padding:14px;margin-bottom:12px;overflow:hidden}
+.prod .thumb{width:72px;height:72px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:30px;background:linear-gradient(135deg,rgba(138,154,91,.13),rgba(252,211,77,.13))}
+.prod .name{font-weight:500;color:var(--stone-700);font-size:14px}
+.prod .brand{font-size:12px;color:var(--stone-400);margin-bottom:6px}
+.prod .meta{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--stone-400);margin-bottom:8px}
+.prod .price{font-family:var(--serif);font-size:17px}
+.save{font-size:12px;font-weight:500;padding:6px 12px;border-radius:8px;border:1px solid var(--stone-200);background:#fff;color:var(--stone-500);display:inline-flex;align-items:center;gap:4px;cursor:pointer;font-family:var(--sans)}
+.save.on{border-color:var(--sage);color:var(--sage-d)}
+.prodbtns{display:flex;align-items:center;gap:8px;flex-shrink:0;min-width:0}
+.addcart{width:34px;height:30px;border-radius:8px;border:1px solid var(--stone-200);background:#fff;color:var(--sage-d);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;padding:0}
+.addcart:hover{background:rgba(138,154,91,.1);border-color:var(--sage)}
+.save:focus-visible,.addcart:focus-visible{outline:2px solid var(--sage);outline-offset:1px}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-bottom:14px;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.fchip{flex-shrink:0;border:1px solid var(--stone-200);background:#fff;color:var(--stone-500);font-size:12px;font-weight:500;padding:7px 14px;border-radius:999px;cursor:pointer;font-family:var(--sans);white-space:nowrap}
+.fchip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 
-        .hero h1 { 
-            font-size: clamp(2.5rem, 7vw, 5rem); 
-            line-height: 1.1; 
-            margin-bottom: 20px;
-            color: var(--shopify-white);
-            font-weight: 800;
-        }
-        
-        .hero p { 
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem); 
-            color: rgba(255, 255, 255, 0.9); 
-            max-width: 700px; 
-            margin-bottom: 35px;
-            line-height: 1.6;
-        }
-        
-        .badge { 
-            background: var(--shopify-green); 
-            padding: 8px 16px; 
-            border-radius: 50px; 
-            font-weight: bold; 
-            font-size: 0.85rem; 
-            display: inline-block; 
-            margin-bottom: 20px;
-            color: var(--shopify-white);
-            box-shadow: 0 4px 12px rgba(149, 191, 71, 0.3);
-        }
+/* Food cards */
+.food{background:#fff;border:1px solid var(--stone-100);border-radius:16px;padding:16px;margin-bottom:12px}
+.food .top{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.food .emoji{width:44px;height:44px;border-radius:50%;background:rgba(138,154,91,.12);display:flex;align-items:center;justify-content:center;font-size:20px}
 
-        /* Content Sections */
-        .presentation { 
-            max-width: 1400px; 
-            margin: 0 auto; 
-            padding: 20px; 
-            background: var(--shopify-bg);
-        }
+/* Consult */
+.expert{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--stone-100);border-radius:16px;padding:14px;margin-bottom:12px}
+.expert .av{width:52px;height:52px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-size:20px;background:linear-gradient(135deg,var(--sage),var(--sage-d))}
+.expert .nm{font-weight:600;color:var(--stone-700);font-size:15px}
+.expert .ro{font-size:12px;color:var(--sage-d);font-weight:500}
+.expert .sp{font-size:12px;color:var(--stone-400)}
+.expert .rate{text-align:right;flex-shrink:0}
+.expert .rate b{font-family:var(--serif);font-size:16px;color:var(--stone-700)}
+.expert .rate span{display:block;font-size:11px;color:var(--stone-400)}
+.bookbtn{font-size:12px;font-weight:500;padding:7px 14px;border-radius:9px;border:none;background:var(--sage);color:#fff;cursor:pointer;font-family:var(--sans)}
 
-        .slide {
-            min-height: 80vh;
-            padding: 80px 40px;
-            margin-bottom: 40px;
-            background: var(--shopify-white);
-            border-radius: 20px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-            animation: slideIn 0.8s ease-out;
-        }
+/* Moments / rewards */
+.moment{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--stone-100);border-radius:16px;padding:14px;margin-bottom:12px}
+.moment .ico{width:52px;height:52px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--stone-100)}
+.moment .nm{font-weight:500;color:var(--stone-700);font-size:14px}
+.moment .lo{font-size:12px;color:var(--stone-400)}
+.moment .cost{font-family:var(--serif);font-size:15px;color:var(--sage-d)}
+.redeembtn{font-size:12px;font-weight:500;padding:7px 14px;border-radius:9px;border:none;cursor:pointer;font-family:var(--sans);background:var(--ink);color:#fff;white-space:nowrap}
+.redeembtn[disabled]{background:var(--stone-200);color:var(--stone-400);cursor:not-allowed}
 
-        @keyframes slideIn { 
-            from { opacity: 0; transform: translateY(30px); } 
-            to { opacity: 1; transform: translateY(0); } 
-        }
+/* Tiers */
+.tier-card{border:1.5px solid var(--stone-200);border-radius:16px;padding:16px;margin-bottom:12px}
+.tier-card.cur{border-color:var(--sage);background:rgba(138,154,91,.05)}
+.tier-card .tn{font-family:var(--serif);font-size:18px;color:var(--stone-800)}
+.tier-card .tp{font-size:13px;color:var(--stone-400);margin-bottom:10px}
+.tier-card .tp b{font-family:var(--serif);font-size:20px;color:var(--stone-700)}
+.tier-card .ben{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--stone-500);margin-bottom:5px}
+.tier-card .ben svg{color:var(--sage-d);flex-shrink:0}
+.upbtn{margin-top:10px;width:100%;padding:10px;border:none;border-radius:10px;background:var(--ink);color:#fff;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--sans)}
 
-        h2 { 
-            font-size: 2.5rem; 
-            font-weight: 800; 
-            margin-bottom: 15px; 
-            color: var(--shopify-dark);
-        }
+/* Wallet */
+.wcard{border-radius:14px;padding:14px 16px;margin-bottom:10px;color:#fff;display:flex;align-items:center;justify-content:space-between}
+.wcard.visa{background:linear-gradient(135deg,#1a1a2e,#3a3a5e)}
+.wcard.apple{background:linear-gradient(135deg,#333,#555)}
+.wcard .wt{font-size:13px;font-weight:600}
+.wcard .wn{font-size:12px;opacity:.7;font-family:monospace;letter-spacing:1px}
+.voucher{display:flex;align-items:center;gap:12px;background:#fff;border:1px dashed var(--stone-300);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.voucher .vic{width:38px;height:38px;border-radius:9px;background:rgba(252,211,77,.18);color:#b45309;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.voucher .vt{font-size:14px;font-weight:600;color:var(--stone-700)}
+.voucher .vx{font-size:11px;color:var(--stone-400)}
+.voucher .vv{margin-left:auto;font-family:var(--serif);font-size:15px;color:var(--sage-d)}
 
-        .subtitle {
-            color: var(--text-gray);
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-        }
+/* Profile bio grid */
+.biogrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.biocell{background:#fff;border:1px solid var(--stone-100);border-radius:12px;padding:12px 14px}
+.biocell .bk{font-size:11px;color:var(--stone-400);text-transform:uppercase;letter-spacing:.05em}
+.biocell .bv{font-size:14px;font-weight:500;color:var(--stone-700);margin-top:2px}
 
-        .grid-3 { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; 
-        }
+/* Achievements */
+.achgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ach{background:#fff;border:1px solid var(--stone-200);border-radius:14px;padding:14px;text-align:left}
+.ach.unlocked{background:rgba(138,154,91,.1);border-color:rgba(138,154,91,.3)}
+.ach.locked{opacity:.55}
+.ach .achtop{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+.ach .achtop svg{color:var(--sage-d)}
+.ach.locked .achtop svg{color:var(--stone-400)}
+.ach .achpts{font-size:11px;font-weight:700;color:var(--sage-d)}
+.ach .at{font-size:13px;font-weight:600;color:var(--stone-800);margin-bottom:2px}
+.ach .ad{font-size:11px;color:var(--stone-400)}
 
-        .card {
-            padding: 35px;
-            background: var(--shopify-white);
-            border-radius: 16px;
-            border: 2px solid #E3E3E3;
-            transition: all 0.3s ease;
-        }
+/* Progress journey */
+.journeybanner{display:flex;align-items:center;justify-content:space-between;color:#fff;border-radius:18px;padding:16px;cursor:pointer;background:linear-gradient(135deg,#1c1917,#2a2622)}
+.journeybanner .jb-l{display:flex;align-items:center;gap:12px}
+.journeybanner .jb-ic{width:40px;height:40px;border-radius:50%;background:rgba(252,211,77,.2);color:var(--gold);display:flex;align-items:center;justify-content:center}
+.journeybanner .jb-day{font-weight:600;font-size:14px}
+.journeybanner .jb-sub{font-size:12px;color:rgba(255,255,255,.6)}
+.streakflame{display:flex;align-items:center;gap:6px;background:rgba(252,211,77,.18);color:#92710f;font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.beforeafter{display:flex;align-items:center;gap:10px}
+.snap{flex:1;text-align:center}
+.snapface{height:90px;border-radius:14px;margin-bottom:10px;position:relative;overflow:hidden}
+.snapface.s0{background:radial-gradient(circle at 50% 38%,#cbb89a,#9c8b73)}
+.snapface.s1{background:radial-gradient(circle at 50% 38%,#ecdcab,#b9a86a)}
+.snapface::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 32%,rgba(255,255,255,.35),transparent 62%)}
+.snapface.s1::after{background:radial-gradient(circle at 50% 28%,rgba(255,255,255,.6),transparent 66%)}
+.snapscore{font-family:var(--serif);font-size:24px;color:var(--stone-700)}
+.snapscore.now{color:var(--sage-d)}
+.snap p{font-size:12px;color:var(--stone-400);margin-top:2px}
+.snaparrow{color:var(--sage);flex-shrink:0}
+.streakgrid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
+.streakgrid .dot{aspect-ratio:1;border-radius:4px;background:var(--stone-200)}
+.streakgrid .dot.on{background:var(--sage)}
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 32px rgba(149, 191, 71, 0.2);
-            border-color: var(--shopify-green);
-        }
+/* Auth / membership */
+.signout{display:flex;align-items:center;gap:5px;background:none;border:1px solid var(--stone-200);color:var(--stone-500);font-family:var(--sans);font-size:12px;font-weight:500;padding:7px 12px;border-radius:9px;cursor:pointer;white-space:nowrap}
+.signout:hover{background:var(--stone-100)}
+.member{border-radius:24px;padding:20px;color:#fff;background:linear-gradient(135deg,#3a3a3c,#1c1917)}
+.member .lab{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.7)}
+.authwrap{padding-top:18px;max-width:360px;margin:0 auto}
+.authlogo{font-family:var(--serif);letter-spacing:.18em;font-size:26px;text-align:center;color:#1c1917;margin-bottom:18px}
+.authlogo b{color:var(--gold)}
+.authh{font-size:26px;text-align:center;margin-bottom:8px}
+.authsub{font-size:14px;color:var(--stone-500);text-align:center;margin-bottom:22px;line-height:1.5}
+.authfield{margin-bottom:12px}
+.authfield label{display:block;font-size:12px;font-weight:500;color:var(--stone-500);margin-bottom:6px}
+.authfield input{width:100%;border:1px solid var(--stone-200);border-radius:11px;padding:12px 14px;font-size:14px;font-family:var(--sans);outline:none}
+.authfield input:focus{border-color:var(--sage)}
+.author{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--stone-400);font-size:12px}
+.author::before,.author::after{content:"";flex:1;height:1px;background:var(--stone-200)}
+.authsocial{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;border:1px solid var(--stone-200);background:#fff;border-radius:11px;padding:12px;font-size:14px;font-weight:500;color:var(--stone-700);cursor:pointer;font-family:var(--sans);margin-bottom:10px}
+.authsocial:hover{background:var(--stone-100)}
+.authsocial .prov{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.authsocial .prov-g{background:#fff;border:1px solid var(--stone-200);color:#4285F4;font-weight:700;font-size:12px}
+.authalt{text-align:center;font-size:13px;color:var(--stone-500);margin:14px 0}
+.authalt b{color:var(--sage-d);cursor:pointer}
+.authnote{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--stone-400);margin-top:14px}
+.lockcard{background:#fff;border:1px solid var(--stone-200);border-radius:18px;padding:32px 24px;text-align:center;margin-top:8px}
+.lockic{width:60px;height:60px;border-radius:50%;background:rgba(138,154,91,.12);color:var(--sage-d);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.lockmsg{font-size:14px;color:var(--stone-500);line-height:1.55;margin-bottom:20px}
 
-        .stat-card { 
-            padding: 35px; 
-            background: linear-gradient(135deg, rgba(149, 191, 71, 0.1) 0%, rgba(180, 215, 122, 0.05) 100%); 
-            border-radius: 16px; 
-            border: 2px solid rgba(149, 191, 71, 0.3);
-            transition: all 0.3s ease;
-        }
+/* Scan overlay + sheets */
+.overlay{position:absolute;inset:0;z-index:60;background:rgba(0,0,0,.95);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:0 32px}
+.scanbox{position:relative;width:240px;height:240px;border-radius:28px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:28px}
+.scanline{position:absolute;left:0;right:0;height:2px;background:var(--sage);box-shadow:0 0 16px var(--sage);animation:scan 2.2s ease-in-out infinite alternate}
+@keyframes scan{from{top:8%}to{top:92%}}
+.scan-eyebrow{display:flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--sage);margin-bottom:18px}
+/* Face ID–style segmented capture circle */
+.faceid{position:relative;width:210px;height:210px;margin-bottom:20px;display:flex;align-items:center;justify-content:center}
+.fid-svg{position:absolute;inset:0;width:100%;height:100%}
+.fid-svg line{stroke:rgba(255,255,255,.18);stroke-width:3;stroke-linecap:round;transition:stroke .25s}
+.fid-svg line.on{stroke:#0a84ff}
+.faceid-core{width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7)}
+.faceid-dots{display:flex;gap:8px;margin-top:6px}
+.faceid-dots i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .2s,transform .2s}
+.faceid-dots i.cur{background:#0a84ff;transform:scale(1.35)}
+.faceid-dots i.done{background:#0a84ff}
+.overlay-x{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);border:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2}
+.overlay-x:hover{background:rgba(255,255,255,.2)}
+.scan-single{margin-top:20px;background:none;border:1px solid rgba(255,255,255,.28);color:#fff;font-family:var(--sans);font-size:13px;font-weight:500;padding:9px 18px;border-radius:999px;cursor:pointer}
+.scan-single:hover{background:rgba(255,255,255,.1)}
+.overlay h3{font-family:var(--serif);font-size:24px;margin-bottom:8px;text-align:center}
+.scanprog{width:240px;height:6px;background:rgba(255,255,255,.15);border-radius:999px;overflow:hidden}
+.scanprog>i{display:block;height:100%;width:0;background:var(--sage);border-radius:999px;transition:width .12s linear}
+.overlay .sub{font-size:12px;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:6px}
+@media(prefers-reduced-motion:reduce){.scanline{animation:none;top:50%}}
+.sheet-bg{position:absolute;inset:0;z-index:60;background:rgba(0,0,0,.4);display:flex;align-items:flex-end}
+.sheet{background:#fff;width:100%;border-radius:24px 24px 0 0;padding:24px;animation:up .35s ease both;max-height:80%;overflow-y:auto;scrollbar-width:none}
+.sheet::-webkit-scrollbar{display:none}
+@keyframes up{from{transform:translateY(100%)}to{transform:none}}
+.sheet .grab{width:40px;height:4px;background:var(--stone-200);border-radius:999px;margin:0 auto 16px}
+.sheet .ic{width:48px;height:48px;border-radius:50%;background:rgba(138,154,91,.12);display:flex;align-items:center;justify-content:center;color:var(--sage-d);margin-bottom:12px}
+.sheet h3{font-family:var(--serif);font-size:20px;margin-bottom:8px}
+.sheet p{font-size:14px;color:var(--stone-500);margin-bottom:12px}
+.sheet p.fine{font-size:12px;color:var(--stone-400);margin-bottom:20px}
+.locrow{display:flex;align-items:center;justify-content:space-between;padding:14px 4px;border-top:1px solid var(--stone-100);cursor:pointer}
+.locrow:first-of-type{border-top:none}
+.locrow.on{color:var(--sage-d)}
+.locrow .ln{font-size:15px;font-weight:500;color:var(--stone-700)}
+.locrow.on .ln{color:var(--sage-d)}
+.locrow .lc{font-size:12px;color:var(--stone-400)}
 
-        .stat-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 32px rgba(149, 191, 71, 0.25);
-        }
+/* Chat assistant */
+.chat-fab{position:absolute;bottom:84px;right:18px;width:54px;height:54px;border-radius:50%;z-index:45;border:none;cursor:pointer;background:linear-gradient(135deg,var(--sage),var(--sage-d));color:#fff;box-shadow:0 8px 22px rgba(114,130,72,.5);display:flex;align-items:center;justify-content:center}
+.screen[data-form="tablet"] .chat-fab,.screen[data-form="desktop"] .chat-fab{bottom:24px;right:24px}
+.chat-fab .badge{position:absolute;top:-2px;right:-2px;width:18px;height:18px;background:var(--gold);color:#1c1917;border-radius:50%;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+.chat-panel{position:absolute;z-index:70;background:#fff;display:none;flex-direction:column;overflow:hidden;bottom:0;left:0;right:0;height:86%;border-radius:24px 24px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.2)}
+.chat-panel.open{display:flex;animation:up .3s ease both}
+.screen[data-form="tablet"] .chat-panel,.screen[data-form="desktop"] .chat-panel{left:auto;right:24px;bottom:24px;width:380px;height:560px;border-radius:20px}
+.chat-head{background:linear-gradient(135deg,var(--sage),var(--sage-d));color:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+.chat-head .av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center}
+.chat-head .nm{font-weight:600;font-size:15px}
+.chat-head .st{font-size:11px;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:5px}
+.chat-head .st i{width:7px;height:7px;border-radius:50%;background:#86efac;display:block}
+.chat-head .x{margin-left:auto;background:none;border:none;color:#fff;cursor:pointer;opacity:.8}
+.chat-body{flex:1;overflow-y:auto;padding:16px;background:var(--stone-100);scrollbar-width:none;display:flex;flex-direction:column;gap:10px}
+.chat-body::-webkit-scrollbar{display:none}
+.msg{max-width:80%;padding:10px 13px;border-radius:16px;font-size:13.5px;line-height:1.45;white-space:pre-wrap}
+.msg.bot{background:#fff;color:var(--stone-700);border:1px solid var(--stone-200);align-self:flex-start;border-bottom-left-radius:5px}
+.msg.user{background:var(--sage);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
+.msg.sys{align-self:center;background:rgba(252,211,77,.18);color:#92710f;font-size:11px;text-align:center;max-width:92%}
+.typing{align-self:flex-start;background:#fff;border:1px solid var(--stone-200);padding:12px 14px;border-radius:16px;display:flex;gap:4px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--stone-400);animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{opacity:.3}30%{opacity:1}}
+.cchips{display:flex;flex-wrap:wrap;gap:7px;padding:0 16px 10px;background:var(--stone-100)}
+.cchip{background:#fff;border:1px solid var(--sage);color:var(--sage-d);font-size:12px;font-weight:500;padding:7px 12px;border-radius:999px;cursor:pointer;font-family:var(--sans)}
+.cchip:hover{background:rgba(138,154,91,.1)}
+.chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid var(--stone-200);background:#fff;flex-shrink:0}
+.chat-input input{flex:1;border:1px solid var(--stone-200);border-radius:999px;padding:11px 16px;font-size:14px;font-family:var(--sans);outline:none}
+.chat-input input:focus{border-color:var(--sage)}
+.chat-input button{width:42px;height:42px;border-radius:50%;border:none;background:var(--sage);color:#fff;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.chat-disc{font-size:10px;color:var(--stone-400);text-align:center;padding:6px 12px;background:#fff}
 
-        .stat-number { 
-            font-size: 3rem; 
-            font-weight: 800; 
-            color: var(--shopify-green); 
-            margin-bottom: 10px; 
-        }
+/* Home quick-action CTAs */
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.grid3 .tile{padding:14px 12px}
+.grid3 .tile p.t{font-size:13px}
 
-        .chart-container { 
-            position: relative; 
-            height: 400px; 
-            margin: 40px 0; 
-            padding: 20px; 
-            background: var(--shopify-white); 
-            border-radius: 16px;
-            border: 2px solid #E3E3E3;
-        }
+/* Account tab bar */
+.acctabbar{display:flex;background:var(--stone-100);padding:4px;border-radius:12px;margin:16px 0}
+.acctab{flex:1;border:none;background:none;font-family:var(--sans);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--stone-400);padding:9px 4px;border-radius:9px;cursor:pointer}
+.acctab.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.07)}
+.acctab:hover:not(.on){color:var(--stone-600)}
 
-        .chart-box { 
-            position: relative; 
-            height: 320px; 
-            margin-top: 20px; 
-            padding: 20px; 
-            background: var(--shopify-white); 
-            border-radius: 16px;
-            border: 2px solid #E3E3E3;
-        }
+/* Settings rows + toggles */
+.setrow{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--stone-100);border-radius:14px;padding:13px 16px;margin-bottom:8px}
+.setrow span{font-size:14px;color:var(--stone-700)}
+.tggl{width:44px;height:26px;border-radius:999px;background:var(--stone-300);position:relative;border:none;cursor:pointer;flex-shrink:0;transition:background .2s}
+.tggl::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .2s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.tggl.on{background:var(--sage)}
+.tggl.on::after{left:21px}
 
-        .timeline { 
-            position: relative; 
-            padding: 40px 0; 
-        }
+/* Loyalty member stats (LHW-style) */
+.member .bignum{font-family:var(--serif);font-size:42px;line-height:1;margin:2px 0}
+.member .biglab{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.7)}
+.memberstats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.2)}
+.memberstats .statcol{text-align:center}
+.memberstats .statcol b{font-family:var(--serif);font-size:26px;display:flex;align-items:center;justify-content:center;gap:5px}
+.memberstats .statcol b svg{color:var(--gold)}
+.memberstats .statcol span{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.7);margin-top:3px;display:block}
 
-        .timeline-item { 
-            display: grid; 
-            grid-template-columns: 200px 1fr; 
-            gap: 40px; 
-            margin-bottom: 30px; 
-            padding: 30px; 
-            background: var(--shopify-white); 
-            border-radius: 16px; 
-            border-left: 4px solid var(--shopify-green);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            transition: all 0.3s ease;
-        }
+/* Wallet (LHW-style) */
+.paycard{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--stone-100);border-radius:14px;padding:13px 16px;margin-bottom:10px}
+.paycard .payleft{display:flex;align-items:center;gap:12px}
+.paycard .payic{width:40px;height:40px;border-radius:9px;background:var(--stone-100);color:var(--stone-500);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.paycard .payname{font-size:14px;font-weight:500;color:var(--stone-800)}
+.paycard .payexp{font-size:11px;color:var(--stone-400)}
+.paycard .paydefault{font-size:10px;text-transform:uppercase;font-weight:700;letter-spacing:.05em;background:var(--stone-100);color:var(--stone-500);padding:4px 9px;border-radius:999px}
+.giftcard{border-radius:16px;padding:18px;margin-bottom:10px;color:#fff;background:linear-gradient(135deg,#44403c,#1c1917)}
+.giftcard .giftlab{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7)}
+.giftcard .giftval{font-family:var(--serif);font-size:26px;margin-top:2px}
+.giftcard .giftfoot{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
+.giftcard .giftcode{font-family:monospace;font-size:12px;letter-spacing:1px;color:rgba(255,255,255,.85)}
+.giftcard .giftexp{font-size:11px;color:rgba(255,255,255,.6)}
+.vouchercard{display:flex;align-items:center;justify-content:space-between;background:rgba(138,154,91,.06);border:1px solid var(--sage);border-radius:14px;padding:13px 16px;margin-bottom:10px}
+.vouchercard .vt{font-family:var(--serif);font-size:15px;color:var(--stone-800)}
+.vouchercard .vx{font-size:12px;color:var(--stone-400)}
+.vouchercard .vv{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--sage-d)}
 
-        .timeline-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 4px 16px rgba(149, 191, 71, 0.15);
-        }
+/* Ritual hero (home, top) */
+.ritualhero{position:relative;overflow:hidden;border-radius:24px;padding:22px;color:#fff;background:linear-gradient(135deg,#1c1917,#2a2622);margin-bottom:16px}
+.ritualhero .blob{position:absolute;right:-36px;top:-36px;width:160px;height:160px;border-radius:50%;background:var(--sage);opacity:.18}
+.ritualhero .rh-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;position:relative}
+.ritualhero .rh-title{font-family:var(--serif);font-size:20px}
+.ritualhero .rh-sub{font-size:12px;color:rgba(255,255,255,.6);margin-top:2px}
+.ritualhero .rh-item{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.08);border-radius:14px;margin-bottom:8px;overflow:hidden;transition:background .2s,border-color .2s}
+.ritualhero .rh-item:last-child{margin-bottom:0}
+.ritualhero .rh-item:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2)}
+.ritualhero .rh-item.open{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.22)}
+.ritualhero .rh-step{display:flex;align-items:center;gap:12px;padding:11px 14px;position:relative;cursor:pointer;user-select:none}
+.ritualhero .rh-step.done .rh-name{color:rgba(255,255,255,.55);text-decoration:line-through}
+.ritualhero .rh-num{width:30px;height:30px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:14px;flex-shrink:0}
+.ritualhero .rh-name{flex:1;font-size:14px;font-weight:500;color:#fff}
+.ritualhero .rh-time{font-size:11px;color:rgba(255,255,255,.55)}
+.ritualhero .rh-caret{display:flex;color:rgba(255,255,255,.5);transition:transform .25s}
+.ritualhero .rh-item.open .rh-caret{transform:rotate(180deg);color:#fff}
+.ritualhero .rh-detail{max-height:0;overflow:hidden;transition:max-height .32s ease}
+.ritualhero .rh-item.open .rh-detail{max-height:200px}
+.ritualhero .rh-dtext{padding:0 16px 13px 56px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.72)}
+.rh-check{width:28px;height:28px;border-radius:50%;flex-shrink:0;border:2px solid rgba(255,255,255,.4);background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:background .2s,border-color .2s,transform .1s}
+.rh-check:hover{border-color:#fff;background:rgba(255,255,255,.12)}
+.rh-check:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.rh-check:active{transform:scale(.9)}
+.rh-check.on{background:var(--sage);border-color:var(--sage)}
 
-        .timeline-year { 
-            font-size: 1.5rem; 
-            font-weight: 700; 
-            color: var(--shopify-green); 
-        }
+/* Today's Insight carousel (seasonal moments) */
+.carousel{margin-bottom:16px}
+.carousel .car-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:12px}
+.carousel .car-title{display:flex;align-items:center;gap:9px}
+.carousel .car-title .car-ic{width:34px;height:34px;border-radius:50%;background:rgba(138,154,91,.12);color:var(--sage-d);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.carousel .car-title h3{font-family:var(--serif);font-size:18px;color:#1c1917}
+.carousel .car-title p{font-size:12px;color:var(--stone-400)}
+.carousel .car-arrows{display:flex;gap:6px;flex-shrink:0}
+.carrow{width:32px;height:32px;border-radius:50%;border:1px solid var(--stone-200);background:#fff;color:var(--stone-500);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.carrow:hover{background:var(--stone-100);color:var(--ink)}
+.car-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.car-track::-webkit-scrollbar{display:none}
+.promo{flex:0 0 86%;scroll-snap-align:start;border-radius:20px;padding:18px;color:#fff;position:relative;overflow:hidden;min-height:172px;display:flex;flex-direction:column;justify-content:space-between}
+.promo .promo-emoji{position:absolute;right:-8px;bottom:-12px;font-size:88px;line-height:1;opacity:.22}
+.promo .promo-season{align-self:flex-start;font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;background:rgba(255,255,255,.22);padding:4px 10px;border-radius:999px;position:relative}
+.promo .promo-loc{display:flex;align-items:center;gap:5px;font-size:12px;color:rgba(255,255,255,.85);margin-bottom:3px;position:relative}
+.promo .promo-title{font-family:var(--serif);font-size:20px;margin-bottom:5px;position:relative}
+.promo .promo-desc{font-size:13px;color:rgba(255,255,255,.85);line-height:1.45;max-width:17rem;position:relative}
+.promo .promo-cta{margin-top:14px;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.95);color:var(--ink);font-family:var(--sans);font-size:12px;font-weight:600;border:none;padding:8px 14px;border-radius:999px;cursor:pointer;position:relative}
+.screen[data-form="tablet"] .promo,.screen[data-form="desktop"] .promo{flex-basis:320px}
 
-        .impact-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; 
-            margin-top: 20px; 
-        }
+/* Moments filter/sort toolbar */
+.momtools{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-bottom:14px}
+.mt-cta{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--stone-200);background:#fff;color:var(--stone-700);font-family:var(--sans);font-size:13px;font-weight:500;padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.mt-cta:hover{background:var(--stone-100)}
+.mt-cta.on{border-color:var(--sage);color:var(--sage-d);background:rgba(138,154,91,.08)}
+.mt-cta .mt-badge{background:var(--sage);color:#fff;font-size:10px;font-weight:700;min-width:16px;height:16px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px}
 
-        .impact-card { 
-            padding: 35px; 
-            background: linear-gradient(135deg, rgba(149,191,71,0.08) 0%, rgba(255,255,255,1) 100%); 
-            border-radius: 16px; 
-            border: 2px solid rgba(149,191,71,0.2);
-            transition: all 0.3s ease;
-        }
+/* Moments filters */
+.momfilters{background:#fff;border:1px solid var(--stone-200);border-radius:16px;padding:14px;margin-bottom:16px}
+.momfilters .mf-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.momfilters .mf-title{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--stone-800)}
+.momfilters .mf-title svg{color:var(--sage-d)}
+.momfilters .mf-x{background:none;border:none;color:var(--stone-400);cursor:pointer;display:flex;padding:4px}
+.momfilters .mf-x:hover{color:var(--ink)}
+.momfilters .mf-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
+.momfilters .mf-clear{background:none;border:none;color:var(--sage-d);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans)}
+.momfilters .mf-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.momsel{width:100%;border:1px solid var(--stone-200);border-radius:10px;padding:10px 30px 10px 12px;font-size:13px;font-family:var(--sans);color:var(--stone-700);background-color:#fff;cursor:pointer;outline:none;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2378716c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
+.momsel:focus{border-color:var(--sage)}
+.screen[data-form="tablet"] .momfilters .mf-grid,.screen[data-form="desktop"] .momfilters .mf-grid{grid-template-columns:repeat(3,1fr)}
 
-        .impact-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 32px rgba(149, 191, 71, 0.2);
-        }
+/* Results body map (consult) */
+.bodymap{position:relative;width:172px;margin:0 auto}
+.bodymap svg{width:100%;height:auto;display:block;fill:rgba(138,154,91,.16);stroke:var(--sage-d);stroke-width:1.2;stroke-linejoin:round}
+.bm-marker{position:absolute;transform:translate(-50%,-50%);width:22px;height:22px;border-radius:50%;border:2px solid #fff;cursor:pointer;padding:0;box-shadow:0 2px 7px rgba(0,0,0,.25);transition:transform .15s}
+.bm-marker.sage{background:var(--sage)}
+.bm-marker.gold{background:var(--gold)}
+.bm-marker.alert{background:#c0593b}
+.bm-marker.on{transform:translate(-50%,-50%) scale(1.2);outline:3px solid rgba(138,154,91,.35);outline-offset:1px}
+.bm-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+.bm-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--stone-200);background:#fff;color:var(--stone-600);font-family:var(--sans);font-size:12px;font-weight:500;padding:6px 12px;border-radius:999px;cursor:pointer}
+.bm-chip.on{border-color:var(--sage);color:var(--sage-d);background:rgba(138,154,91,.08)}
+.bm-dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex-shrink:0}
+.bm-dot.sage{background:var(--sage)}.bm-dot.gold{background:var(--gold)}.bm-dot.alert{background:#c0593b}
+.backbtn{display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:var(--stone-500);font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;padding:4px 0}
+.backbtn:hover{color:var(--ink)}
+/* Results "All areas" accordion */
+.acc{background:#fff;border:1px solid var(--stone-200);border-radius:14px;margin-bottom:10px;overflow:hidden}
+.acc.open{border-color:var(--sage)}
+.acc-head{display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;user-select:none}
+.acc-head .bm-dot{flex-shrink:0}
+.acc-label{flex:1;font-family:var(--serif);font-size:16px;color:#1c1917}
+.acc-caret{display:flex;color:var(--stone-400);transition:transform .25s;flex-shrink:0}
+.acc.open .acc-caret{transform:rotate(180deg);color:var(--sage-d)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.acc.open .acc-body{max-height:2000px}
+.acc-inner{padding:0 16px 16px}
+.foodchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
+.foodchip{display:inline-flex;align-items:center;gap:5px;background:rgba(138,154,91,.1);color:var(--sage-d);font-size:12px;font-weight:500;padding:7px 12px;border-radius:999px}
 
-        .impact-metric { 
-            font-size: 2.5rem; 
-            font-weight: 800; 
-            color: var(--shopify-green); 
-            margin-bottom: 10px; 
-        }
+/* Upcoming sessions (consult) */
+.session{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--stone-100);border-radius:16px;padding:14px;margin-bottom:10px}
+.session .se-ic{width:46px;height:46px;border-radius:12px;background:rgba(138,154,91,.12);color:var(--sage-d);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.session .se-nm{font-size:14px;font-weight:600;color:var(--stone-700)}
+.session .se-meta{font-size:12px;color:var(--stone-400)}
+.session .se-when{font-size:12px;color:var(--sage-d);font-weight:500;margin-top:2px}
+.session .se-right{margin-left:auto;text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end}
 
-        .impact-description { 
-            color: var(--text-gray); 
-            line-height: 1.6; 
-        }
+/* Moments (LHW-style) */
+.mfeature{position:relative;overflow:hidden;border-radius:22px;padding:24px;color:#fff;background:linear-gradient(135deg,#2a2622,#1c1917);margin-bottom:20px}
+.mfeature .mf-emoji{position:absolute;right:-12px;top:-14px;font-size:120px;line-height:1;opacity:.16}
+.mfeature .mf-tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:999px;position:relative}
+.mfeature h3{font-family:var(--serif);font-size:24px;margin:14px 0 8px;position:relative}
+.mfeature p{font-size:13px;color:rgba(255,255,255,.8);line-height:1.5;margin-bottom:14px;max-width:24rem;position:relative}
+.mfeature .mf-meta{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,.7);margin-bottom:16px;position:relative}
+.mfeature .mf-btn{position:relative;background:#fff;color:#1c1917;border:none;font-family:var(--sans);font-size:13px;font-weight:600;padding:11px 20px;border-radius:10px;cursor:pointer}
+.mfeature .mf-btn[disabled]{background:rgba(255,255,255,.25);color:rgba(255,255,255,.7);cursor:not-allowed}
+/* Moments featured = full-width gallery carousel (one large tile per view) */
+.car-track .mfeature{flex:0 0 100%;scroll-snap-align:center;margin-bottom:0}
+.mcard{background:#fff;border:1px solid var(--stone-100);border-radius:16px;overflow:hidden;margin-bottom:12px}
+.mcard .mc-img{height:120px;display:flex;align-items:center;justify-content:center;font-size:54px;background:linear-gradient(135deg,rgba(138,154,91,.13),rgba(252,211,77,.13))}
+.mcard .mc-body{padding:16px}
+.mcard .mc-title{font-family:var(--serif);font-size:18px;color:#1c1917;margin-bottom:4px}
+.mcard .mc-loc{font-size:12px;color:var(--stone-400);margin-bottom:12px;display:flex;align-items:center;gap:5px}
+.mcard .mc-foot{display:flex;align-items:center;justify-content:space-between}
+.mcard .mc-pts{font-family:var(--serif);font-size:17px;color:var(--sage-d)}
+.mbalance{background:rgba(138,154,91,.08);border:1px solid rgba(138,154,91,.25);border-radius:18px;padding:24px;text-align:center}
+.mbalance .mb-num{font-family:var(--serif);font-size:34px;color:var(--sage-d)}
+.mbalance .mb-lab{font-size:13px;color:var(--stone-500);margin-bottom:14px}
 
-        .skills-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 20px; 
-            margin-top: 20px; 
-        }
+/* Site footer (Figma-style) */
+.sitefooter{background:#1c1917;color:#fff;border-radius:24px;padding:28px 22px;margin:8px 0 4px}
+.sitefooter .ft-top{display:flex;flex-direction:column;gap:24px}
+.sitefooter .ft-logo{font-family:var(--serif);letter-spacing:.18em;font-size:22px}
+.sitefooter .ft-logo b{color:var(--gold)}
+.sitefooter .ft-tag{font-size:12px;color:rgba(255,255,255,.55);margin-top:8px;max-width:16rem}
+.sitefooter .ft-socials{display:flex;gap:10px;margin-top:14px}
+.ft-soc{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.8);cursor:pointer;transition:background .2s,color .2s}
+.ft-soc:hover{background:var(--sage);color:#fff}
+.ft-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px 16px}
+.ft-col h5{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:10px}
+.ft-col a{display:block;font-size:13px;color:rgba(255,255,255,.8);text-decoration:none;margin-bottom:9px;cursor:pointer;transition:color .15s}
+.ft-col a:hover{color:var(--gold)}
+.ft-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:24px;padding-top:16px;text-align:center}
+.ft-bottom p{font-size:11px;color:rgba(255,255,255,.45);line-height:1.7}
+.ft-bottom a{color:rgba(255,255,255,.6);text-decoration:none;cursor:pointer}
+.ft-bottom a:hover{color:var(--gold)}
 
-        .skill-category { 
-            padding: 25px; 
-            background: var(--shopify-white); 
-            border-radius: 12px; 
-            border-left: 4px solid var(--shopify-green);
-            border: 2px solid #E3E3E3;
-        }
-
-        .comparison-table { 
-            width: 100%; 
-            margin-top: 20px; 
-            border-collapse: collapse; 
-        }
-
-        .table-responsive { 
-            overflow-x: auto; 
-            -webkit-overflow-scrolling: touch; 
-            padding-bottom: 8px; 
-        }
-
-        .comparison-table { 
-            min-width: 680px; 
-            width: 100%; 
-            table-layout: auto; 
-        }
-
-        .comparison-table th, .comparison-table td { 
-            padding: 20px; 
-            text-align: left; 
-            border-bottom: 1px solid #E3E3E3; 
-            white-space: normal; 
-            word-break: break-word; 
-        }
-
-        .comparison-table th { 
-            background: linear-gradient(135deg, rgba(149,191,71,0.1) 0%, rgba(180,215,122,0.05) 100%); 
-            color: var(--shopify-dark); 
-            font-weight: 700; 
-        }
-
-        .comparison-table tr:hover { 
-            background: rgba(149,191,71,0.05); 
-        }
-
-        .progress-bar { 
-            width: 100%; 
-            height: 10px; 
-            background: #E3E3E3; 
-            border-radius: 10px; 
-            margin: 10px 0; 
-            overflow: hidden; 
-        }
-
-        .progress-fill { 
-            height: 100%; 
-            background: linear-gradient(90deg, var(--shopify-green) 0%, var(--shopify-light-green) 100%); 
-            border-radius: 10px; 
-            transition: width 1s ease; 
-        }
-
-        .btn { 
-            background: var(--shopify-green); 
-            color: var(--shopify-white); 
-            padding: 16px 40px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            border-radius: 8px;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(149, 191, 71, 0.3);
-        }
-
-        .btn:hover {
-            background: var(--shopify-dark-green);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(149, 191, 71, 0.4);
-        }
-
-        /* Shopify-style banner */
-        .shopify-banner { 
-            background: linear-gradient(135deg, var(--shopify-green) 0%, var(--shopify-dark-green) 100%); 
-            padding: 60px 24px; 
-            border-radius: 20px; 
-            margin-top: 30px; 
-            text-align: center;
-            box-shadow: 0 8px 24px rgba(149, 191, 71, 0.3);
-        }
-
-        .shopify-banner h2 { 
-            color: var(--shopify-white); 
-            margin-bottom: 15px; 
-        }
-
-        .shopify-banner p { 
-            max-width: 900px; 
-            margin: 0 auto; 
-            color: rgba(255,255,255,0.95);
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        footer { 
-            padding: 60px 4%; 
-            text-align: center; 
-            background: var(--shopify-dark);
-            color: var(--shopify-white);
-        }
-
-        footer p {
-            color: rgba(255,255,255,0.8);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-toggle { display: block; }
-            .nav-links { 
-                display: none; 
-                position: absolute; 
-                top: 70px; 
-                left: 0; 
-                right: 0; 
-                background: var(--shopify-white); 
-                flex-direction: column; 
-                padding: 12px 4%; 
-                gap: 8px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            }
-            .nav-links.open { display: flex; }
-            .nav-links a { margin: 8px 0; }
-            h2 { font-size: 1.8rem; }
-            .timeline-item { grid-template-columns: 1fr; }
-            .slide { padding: 40px 24px; }
-            .chart-container, .chart-box { height: 280px; }
-            .impact-grid, .grid-3, .skills-grid { grid-template-columns: 1fr; }
-            .parallax-layer-1, .parallax-layer-2, .parallax-layer-3 { display: none; }
-        }
-    </style>
+.screen[data-form="tablet"] .achgrid,.screen[data-form="desktop"] .achgrid{grid-template-columns:1fr 1fr 1fr}
+.screen[data-form="tablet"] .sitefooter .ft-top,.screen[data-form="desktop"] .sitefooter .ft-top{flex-direction:row;justify-content:space-between;align-items:flex-start}
+.screen[data-form="tablet"] .sitefooter .ft-cols,.screen[data-form="desktop"] .sitefooter .ft-cols{grid-template-columns:repeat(4,auto);gap:48px}
+</style>
 </head>
 <body>
 
-    <!-- Shopify Nav -->
-    <nav id="navbar">
-        <div style="display:flex;align-items:center;gap:12px;">
-            <div class="logo">RHAM KETMAYURA</div>
-            <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-        </div>
-        <div class="nav-links" id="navLinks">
-            <a href="#vision">Vision</a>
-            <a href="#impact">Impact</a>
-            <a href="#deepdive">Journey</a>
-            <a href="#leadership">Leadership</a>
-        </div>
-    </nav>
+<div class="previewbar">
+  <span class="title">AURA<b>.</b></span>
+  <div class="seg" id="deviceSeg"></div>
+  <div class="spacer"></div>
+  <button class="iconbtn" id="rotateBtn" title="Rotate (tablets)" disabled>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+  </button>
+</div>
 
-    <!-- Parallax Hero -->
-    <div class="parallax-container">
-        <div class="parallax-bg" id="parallaxBg"></div>
-        <div class="parallax-layer-1" id="parallaxLayer1"></div>
-        <div class="parallax-layer-2" id="parallaxLayer2"></div>
-        <div class="parallax-layer-3" id="parallaxLayer3"></div>
-        
-        <section class="hero" id="vision">
-            <div class="hero-content">
-                <div class="badge">PRINCIPAL TPM • SHOPIFY</div>
-                <h1>Scaling Merchant Joy through Personalization</h1>
-                <p>Expertise in building merchant-centric platforms that democratize commerce and put independence within reach for entrepreneurs at scale.</p>
-                <div style="margin-top:24px;"><a href="#impact" class="btn">View Impact & Metrics</a></div>
-            </div>
-        </section>
-    </div>
+<div class="stage" id="stage"><div class="scaler" id="scaler"></div></div>
 
-    <!-- Content -->
-    <div class="presentation" id="content">
+<!-- ===================== Public data layer (catalog/services/SEO — no PII) ===================== -->
+<script type="application/json" id="aura-data">
+{
+  "meta":{"app":"AURA","edition":"Connected Ecosystem","version":"4.0.0","mode":"demo","locale":"en-US"},
+  "keywordTaxonomy":{"skinConcerns":["dryness","aging","acne","oil control","pollution","sun damage","sensitivity"],"ingredients":["ceramides","hyaluronic acid","retinol","niacinamide","vitamin c","mineral spf","collagen peptides"],"dietCategories":["cellular cleanse","collagen support","gut health","antioxidant","electrolyte"],"travelConcerns":["sun","dryness","oil","city","cold"],"wellnessGoals":["glow","calm","protect","restore","hydrate"]},
+  "analysis":{"score":82,"concerns":[
+    {"key":"Hydration","level":"Needs attention","pct":54,"tone":"sage","note":"Signs of dryness around the cheeks and under-eye."},
+    {"key":"Barrier","level":"Good","pct":78,"tone":"sage","note":"Skin barrier looks resilient with mild sensitivity."},
+    {"key":"Even tone","level":"Watch","pct":66,"tone":"gold","note":"Some uneven tone consistent with sun exposure."}]},
+  "bodyScan":{"accuracy":96,"areas":[
+    {"key":"hair","label":"Hair & scalp","level":"Good","tone":"sage","confidence":92,"x":50,"y":6,"note":"Scalp hydration is balanced; mid-lengths and ends read slightly dry.","products":[6],"foods":["Brazil nuts","Pumpkin seeds","Eggs"],"diet":"Protein- and biotin-forward plan to support keratin and a healthy scalp.","dietId":6},
+    {"key":"eyes","label":"Eye area","level":"Watch","tone":"gold","confidence":90,"x":50,"y":12.5,"note":"Mild dryness and fatigue shadowing around the under-eye.","products":[1],"foods":["Blueberries","Spinach","Oily fish"],"diet":"Anti-inflammatory, omega-3 forward plan to reduce puffiness.","dietId":5},
+    {"key":"face","label":"Facial skin","level":"Needs attention","tone":"alert","confidence":95,"x":50,"y":16.5,"note":"Dryness across the cheeks with some uneven tone from sun exposure.","products":[1,2],"foods":["Salmon","Avocado","Tomatoes"],"diet":"Hydration + antioxidant plan to calm dryness and even tone.","dietId":5},
+    {"key":"arm","label":"Arms","level":"Good","tone":"sage","confidence":93,"x":25,"y":38,"note":"Even texture and well hydrated; keep up barrier support.","products":[4],"foods":["Walnuts","Flaxseed","Citrus"],"diet":"Collagen-support plan with vitamin C to maintain skin texture.","dietId":6},
+    {"key":"leg","label":"Legs","level":"Watch","tone":"gold","confidence":91,"x":62,"y":73,"note":"Dryness along the shins, consistent with climate and sun exposure.","products":[7],"foods":["Cucumber","Watermelon","Chia seeds"],"diet":"Water-dense, electrolyte-forward plan to combat shin dryness.","dietId":5}]},
+  "products":[
+    {"id":1,"category":"Skin","name":"Glacial Lipid Restore","brand":"Aura Labs","price":185,"tags":["DRYNESS"],"emoji":"🧴","match":99,"rating":4.8,"reviews":284},
+    {"id":2,"category":"Skin","name":"Bio-Retinol Night","brand":"Tata Harper","price":140,"tags":["AGING"],"emoji":"🌙","match":88,"rating":4.9,"reviews":412},
+    {"id":3,"category":"Tech","name":"LED Spectral Mask","brand":"Dr. Dennis Gross","price":455,"tags":["TECH"],"emoji":"🎭","match":94,"rating":4.6,"reviews":156},
+    {"id":4,"category":"Skin","name":"Pollution Shield","brand":"Dr. Sturm","price":95,"tags":["CITY"],"emoji":"🌫️","match":85,"rating":4.7,"reviews":203},
+    {"id":5,"category":"Diet","name":"Cellular Cleanse","brand":"Sakara Life","price":210,"tags":["DIET"],"emoji":"🥒","match":92,"rating":4.8,"reviews":389},
+    {"id":6,"category":"Diet","name":"Collagen Peptides","brand":"Vital Proteins","price":45,"tags":["DIET"],"emoji":"✨","match":88,"rating":4.9,"reviews":892},
+    {"id":7,"category":"Skin","name":"Alpine Lipid Balm","brand":"Aura Labs","price":185,"tags":["DRYNESS"],"emoji":"🏔️","match":98,"rating":4.9,"reviews":104},
+    {"id":8,"category":"Skin","name":"Matte Gel SPF 50","brand":"SkinCeuticals","price":65,"tags":["OIL"],"emoji":"☀️","match":96,"rating":4.7,"reviews":520}],
+  "foods":[
+    {"id":1,"name":"Omega-3 rich foods","examples":"Salmon, walnuts, flaxseed","why":"Supports skin lipids and hydration from within.","for":"Hydration","emoji":"🐟"},
+    {"id":2,"name":"Water-dense produce","examples":"Cucumber, watermelon, oranges","why":"Adds fluid and antioxidants for supple skin.","for":"Hydration","emoji":"🥒"},
+    {"id":3,"name":"Probiotic foods","examples":"Yogurt, kefir, kimchi","why":"A balanced gut is linked to a calmer barrier.","for":"Barrier","emoji":"🥛"},
+    {"id":4,"name":"Colorful antioxidants","examples":"Berries, leafy greens, tomatoes","why":"Helps defend against uneven tone from sun.","for":"Even tone","emoji":"🫐"}],
+  "experts":[
+    {"id":1,"name":"Dr. Alisha S.","role":"Dermatologist","specialty":"Acne & hormonal skin","rate":250,"initial":"A"},
+    {"id":2,"name":"Sarah Jenkins","role":"Holistic Dietitian","specialty":"Gut health & glow","rate":150,"initial":"S"},
+    {"id":3,"name":"Aura AI Triage","role":"Instant Analysis","specialty":"24/7 guidance","rate":0,"initial":"AI"}],
+  "tiers":[
+    {"id":"discovery","name":"Discovery","price":49,"benefits":["3 deluxe samples","Free shipping"]},
+    {"id":"elevate","name":"Elevate","price":129,"benefits":["Full-size hero product","Travel Mode unlock"]},
+    {"id":"prestige","name":"Prestige","price":299,"benefits":["Concierge access","Free telehealth","Early access"]}],
+  "locations":{
+    "home":{"name":"Austin, TX","uv":8.5,"label":"Home","concern":"Sun Damage","tag":"OIL"},
+    "aspen":{"name":"Aspen, CO","uv":9.2,"label":"Trip","concern":"Extreme Dryness","tag":"DRYNESS"},
+    "tulum":{"name":"Tulum, MX","uv":11.0,"label":"Trip","concern":"Oil Control","tag":"OIL"},
+    "london":{"name":"London, UK","uv":2.5,"label":"Trip","concern":"Pollution","tag":"CITY"}},
+  "ritualsByLocation":{
+    "home":[{"name":"Gentle Enzyme Cleanser","time":"2 min","how":"Massage a pea-size amount onto damp skin for 60 seconds, then rinse with lukewarm water and pat dry."},{"name":"Hyaluronic Acid Serum","time":"1 min","how":"Press 2–3 drops onto slightly damp skin before moisturizer to draw in and seal hydration."},{"name":"Mineral SPF 50+","time":"2 min","how":"Smooth two finger-lengths over face and neck as your final step; reapply every 2 hours of sun."},{"name":"Chlorophyll Water","time":"Nutrition","how":"Stir one sachet into 16 oz of cold water and sip through the morning for an antioxidant boost."}],
+    "aspen":[{"name":"Oil-Based Balm Cleanser","time":"3 min","how":"Warm a scoop between palms, massage over dry skin to lift buildup, then emulsify with water and rinse."},{"name":"Glacial Lipid Serum","time":"1 min","how":"Press 3–4 drops over damp skin to replenish lipids against the dry alpine air."},{"name":"Rich Ceramide Cream","time":"Leave on","how":"Layer a generous amount last and let it absorb overnight to rebuild the moisture barrier."},{"name":"Warm Bone Broth","time":"Nutrition","how":"Sip a warm cup midday for collagen and minerals that support skin from within."}],
+    "tulum":[{"name":"Salicylic Gel Wash","time":"2 min","how":"Lather over damp skin, focus on the T-zone for 30 seconds, then rinse away sweat and oil."},{"name":"Niacinamide Drops","time":"30 sec","how":"Apply a few drops to balance oil and refine the look of pores before sunscreen."},{"name":"Matte Gel SPF 30","time":"Reapply","how":"Dab on an even layer and reapply after swimming or heavy sweating to stay protected."},{"name":"Coconut Electrolytes","time":"Hydration","how":"Drink one serving after sun or activity to replace lost fluids and minerals."}],
+    "london":[{"name":"Double Cleanse Routine","time":"4 min","how":"Start with an oil cleanser to dissolve pollution, then follow with a gentle gel wash to purify."},{"name":"Vitamin C Complex","time":"1 min","how":"Apply 3–4 drops each morning to brighten tone and defend against free radicals."},{"name":"Anti-Pollution Mist","time":"All day","how":"Spritz over skin or makeup throughout the day to shield against urban particulates."},{"name":"Green Matcha Tea","time":"Antioxidant","how":"Whisk and sip one cup for a steady antioxidant lift without a caffeine spike."}]},
+  "promotions":[
+    {"location":"Cabo San Lucas, MX","season":"Spring Escape","title":"Desert Glow Ritual","desc":"Sun-recovery facials and deep hydration by the sea.","emoji":"🌵","grad":"linear-gradient(135deg,#e9a36b,#c2703d)"},
+    {"location":"Aspen, CO","season":"Winter Renewal","title":"Alpine Barrier Retreat","desc":"Lipid-rich treatments built for cold, dry mountain air.","emoji":"🏔️","grad":"linear-gradient(135deg,#6c7a8c,#3c4858)"},
+    {"location":"Hawaii, US","season":"Summer Radiance","title":"Volcanic Detox Days","desc":"Mineral clay rituals and reef-safe sun protection.","emoji":"🌺","grad":"linear-gradient(135deg,#e76f7d,#b5455e)"},
+    {"location":"Bahamas","season":"Spring Reset","title":"Ocean Calm Spa","desc":"Salt-air hydration and gentle barrier repair.","emoji":"🐚","grad":"linear-gradient(135deg,#4bb8c4,#2b7a8c)"},
+    {"location":"Phuket, Thailand","season":"Monsoon Calm","title":"Jungle Botanical Reset","desc":"Herbal compress facials and gut-glow nutrition.","emoji":"🌴","grad":"linear-gradient(135deg,#6fa86b,#3f7244)"},
+    {"location":"Queenstown, New Zealand","season":"Autumn Restore","title":"Glacial Spring Therapy","desc":"Cool-water facials and antioxidant infusions.","emoji":"⛰️","grad":"linear-gradient(135deg,#7b8f9e,#4a5b68)"},
+    {"location":"Ubud, Bali","season":"Year-round Glow","title":"Rice-Field Renewal","desc":"Volcanic-ash purifying and tropical hydration.","emoji":"🌾","grad":"linear-gradient(135deg,#c2a35b,#8a6f33)"},
+    {"location":"Fiji","season":"Summer Hydration","title":"Coral Lagoon Retreat","desc":"Deep marine hydration and electrolyte rituals.","emoji":"🏝️","grad":"linear-gradient(135deg,#3fb0a0,#1f7a6e)"}],
+  "rewards":[
+    {"id":5,"title":"Wellness Retreat in Tulum","points":15000,"location":"Tulum, MX","icon":"🏝️","featured":true,"dates":"Apr 15–20, 2026","guests":"Limited to 12 guests","desc":"Five days of transformation with expert dermatologists — accommodations, meals, and personalized skincare consultations.","continent":"North America","country":"Mexico","state":"","type":"Retreat","month":"Apr","year":2026},
+    {"id":6,"title":"Alpine Renewal Retreat","points":18000,"location":"Aspen, CO","icon":"🏔️","featured":true,"dates":"Jan 12–17, 2026","guests":"Limited to 10 guests","desc":"A winter reset of lipid-rich facials, cold-air barrier recovery, and slope-side mindfulness with our dermatology team.","continent":"North America","country":"United States","state":"Colorado","type":"Retreat","month":"Jan","year":2026},
+    {"id":7,"title":"Coastal Glow Masterclass","points":9000,"location":"Santorini, GR","icon":"🌊","featured":true,"dates":"Jun 8–11, 2026","guests":"Limited to 20 guests","desc":"Three days of Mediterranean skincare rituals, sun-smart routines, and chef-led antioxidant dining by the caldera.","continent":"Europe","country":"Greece","state":"","type":"Masterclass","month":"Jun","year":2026},
+    {"id":8,"title":"Onsen & Ritual Immersion","points":22000,"location":"Kyoto, JP","icon":"♨️","featured":true,"dates":"Nov 3–8, 2026","guests":"Limited to 8 guests","desc":"A mineral hot-spring journey paired with barrier-repair treatments and traditional tea-led nutrition.","continent":"Asia","country":"Japan","state":"","type":"Immersion","month":"Nov","year":2026},
+    {"id":9,"title":"Desert Detox Escape","points":12000,"location":"Marrakech, MA","icon":"🐫","featured":true,"dates":"Mar 2–6, 2026","guests":"Limited to 14 guests","desc":"Hammam clay rituals, hydration therapy, and rose-garden mindfulness in the Atlas foothills.","continent":"Africa","country":"Morocco","state":"","type":"Detox","month":"Mar","year":2026},
+    {"id":1,"title":"Skincare Lab Tour","points":1500,"location":"Austin, TX","icon":"🔬","continent":"North America","country":"United States","state":"Texas","type":"Tour","month":"Jul","year":2026},
+    {"id":2,"title":"Michelin Chef Dinner","points":2500,"location":"New York, NY","icon":"🍽️","continent":"North America","country":"United States","state":"New York","type":"Dining","month":"Sep","year":2026},
+    {"id":3,"title":"Private Yoga Session","points":3500,"location":"Los Angeles, CA","icon":"🧘","continent":"North America","country":"United States","state":"California","type":"Yoga","month":"Feb","year":2026},
+    {"id":4,"title":"Spa Day at Aman Tokyo","points":5000,"location":"Tokyo, JP","icon":"🧖","continent":"Asia","country":"Japan","state":"","type":"Spa","month":"Dec","year":2026},
+    {"id":10,"title":"Vineyard Glow Facial","points":4000,"location":"Queenstown, NZ","icon":"🍇","continent":"Oceania","country":"New Zealand","state":"","type":"Facial","month":"Sep","year":2026},
+    {"id":11,"title":"Amazonian Botanical Ritual","points":4500,"location":"Rio de Janeiro, BR","icon":"🌿","continent":"South America","country":"Brazil","state":"","type":"Ritual","month":"Feb","year":2027},
+    {"id":12,"title":"Outback Recovery Spa","points":3800,"location":"Sydney, AU","icon":"🌊","continent":"Oceania","country":"Australia","state":"New South Wales","type":"Spa","month":"Oct","year":2026},
+    {"id":13,"title":"Alpine Nutrition Workshop","points":2800,"location":"Zurich, CH","icon":"🥗","continent":"Europe","country":"Switzerland","state":"","type":"Nutrition","month":"May","year":2027},
+    {"id":14,"title":"Coastal Collagen Retreat","points":6000,"location":"Cape Town, ZA","icon":"🏖️","continent":"Africa","country":"South Africa","state":"Western Cape","type":"Retreat","month":"Aug","year":2027}],
+  "achievements":[
+    {"title":"Welcome Aboard","desc":"Join AURA","points":100,"unlocked":true},
+    {"title":"First Scan","desc":"Complete skin analysis","points":50,"unlocked":true},
+    {"title":"Ritual Master","desc":"7-day streak","points":150,"unlocked":true},
+    {"title":"Commitment","desc":"30-day streak","points":500,"unlocked":true},
+    {"title":"Global Explorer","desc":"Try Travel Mode","points":200,"unlocked":false},
+    {"title":"Beauty Maven","desc":"Purchase 10 products","points":300,"unlocked":false}],
+  "journey":{"currentDay":100,"streak":100,"startDate":"Mar 9, 2026",
+    "snapshots":[{"day":0,"score":61,"label":"Day 0"},{"day":100,"score":82,"label":"Today"}],
+    "metrics":{"skinScore":[{"d":0,"v":61},{"d":20,"v":66},{"d":40,"v":71},{"d":60,"v":75},{"d":80,"v":79},{"d":100,"v":82}]}}
+}
+</script>
 
-        <!-- SLIDE 2: JOURNEY -->
-        <div class="slide" id="deepdive">
-            <h2>Product & AI/ML Journey: 2016 → 2026</h2>
-            <p class="subtitle">A Pioneer in AI-Powered Commerce - Built for Merchants Before It Was Mainstream</p>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">2016-2018<br><span style="font-size: 0.9rem; color: var(--text-gray);">GM North America</span></div>
-                    <div class="timeline-content">
-                        <h4>Built ML Recommendations (Pre-ChatGPT Era) 🚀</h4>
-                        <p><strong>What:</strong> Pioneered ML-powered recommendation system for GM's e-commerce platform using Neural Networks, Decision Trees</p>
-                        <p><strong>Impact:</strong> +50% traffic, 30% of vehicle sales online ($1B+ GMV), democratized online sales for small dealers</p>
-                        <p><strong>Why It Matters:</strong> Built production AI systems 4 years before mainstream adoption - gave small merchants tools to compete with giants</p>
-                    </div>
-                </div>
+<!-- ===================== User data (DEMO ONLY) =====================
+     In production this is served per-user over an AUTHENTICATED API and is NEVER in public page source.
+     It is inlined here only so the prototype can render the profile. Contains fictional demo data. -->
+<script type="application/json" id="aura-user">
+{
+  "member":{"name":"Alexandra Hamilton","firstName":"Alexandra","tier":"prestige","memberId":"8821","memberSince":"2023","wellnessScore":92,"wellnessLabel":"Excellent","streak":100,"rituals":47,"years":3,"points":2450,"nextRewardAt":3000,
+    "email":"alex.h@aura.com","phone":"+1 (512) 555-0123","address":"1200 Congress Ave, Austin, TX","dob":"Oct 24, 1994",
+    "birthdayReward":{"label":"$25 birthday credit","note":"Yours to use all birthday month"},
+    "profile":{"Skin type":"Combination / Sensitive","Hair type":"2A Wavy","Sex":"Female","Height":"5'7\"","Weight":"135 lbs","Allergies":"Sulfates","Conditions":"Rosacea (mild)","Focus":"Hydration & calm"}},
+  "wallet":{
+    "cards":[{"type":"Visa","last4":"4242","cls":"visa","expiry":"12/28","isDefault":true},{"type":"Apple Pay","last4":"Connected","cls":"apple","expiry":"","isDefault":false}],
+    "vouchers":[{"title":"Birthday Treat","value":"20% OFF","expiry":"Oct 31"},{"title":"Spa Credit","value":"$25","expiry":"Nov 15"}],
+    "certificates":[{"name":"Holiday Gift Card","value":"$50.00","code":"AURA-GIFT-882","expiry":"Dec 31"}]}
+}
+</script>
 
-                <div class="timeline-item">
-                    <div class="timeline-year">2018-2019<br><span style="font-size: 0.9rem; color: var(--text-gray);">IBM</span></div>
-                    <div class="timeline-content">
-                        <h4>Led Watson AI Program Strategy 🧠</h4>
-                        <p><strong>What:</strong> IBM Watson AI + Adobe Sensei integration for personalization, search, recommendations at merchant scale</p>
-                        <p><strong>Impact:</strong> 2.13% revenue increase, +14 NPS points, 612% ROI on Pepsi implementation</p>
-                        <p><strong>Why It Matters:</strong> Proved ability to translate AI research into measurable merchant and customer value</p>
-                    </div>
-                </div>
+<script>
+(function(){
+  "use strict";
+  window.dataLayer = window.dataLayer || [];
+  function track(ev,props){ var p=Object.assign({event:ev,ts:Date.now()},props||{}); window.dataLayer.push(p); if(DATA.meta.mode==="demo") console.log("[analytics]",ev,props||{}); }
 
-                <div class="timeline-item">
-                    <div class="timeline-year">2019-Present<br><span style="font-size: 0.9rem; color: var(--text-gray);">TCS</span></div>
-                    <div class="timeline-content">
-                        <h4>Driving GenAI Commerce Transformations ⚡</h4>
-                        <p><strong>What:</strong> Leading GenAI & commerce program initiatives for Fortune 500 enterprises</p>
-                        <p><strong>Impact:</strong> 20-40% operational efficiency improvements, reducing barriers for merchants to serve customers</p>
-                        <p><strong>Why It Matters:</strong> At forefront of GenAI revolution in commerce, partnering with C-level on merchant-centric AI strategy</p>
-                    </div>
-                </div>
+  var DATA = JSON.parse(document.getElementById('aura-data').textContent);
+  var USER = JSON.parse(document.getElementById('aura-user').textContent); // prod: authenticated API
 
-                <div class="timeline-item">
-                    <div class="timeline-year">2024<br><span style="font-size: 0.9rem; color: var(--text-gray);">Continuous Learning</span></div>
-                    <div class="timeline-content">
-                        <h4>Stayed Current with AI Evolution 📚</h4>
-                        <p><strong>What:</strong> Completed 4 Google AI certifications (Vertex AI, Transformers, BERT, Encoder-Decoder)</p>
-                        <p><strong>Why It Matters:</strong> Growth mindset - continuously learning as AI landscape evolves to better serve merchants</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+  /* Icons */
+  var ICONS={home:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',scan:'<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>',shop:'<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',leaf:'<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/>',user:'<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',sparkles:'<path d="M9 3v2m0 10v2m-6-8h2m10 0h2M6.6 6.6l1.4 1.4m8 8l1.4 1.4M6.6 17.4l1.4-1.4m8-8l1.4-1.4"/>',check:'<polyline points="20 6 9 17 4 12"/>',drop:'<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/>',info:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>',shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',bookmark:'<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>',arrow:'<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',camera:'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',bowl:'<path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M12 2v3M8 4l1 2M16 4l-1 2"/>',chat:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',send:'<line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>',wifi:'<path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/>',battery:'<rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/>',activity:'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',flame:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.2-2.2.6-3.3a1 1 0 0 1 .6 2 4.5 4.5 0 0 0 2.3 3.3z"/>',lock:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',gift:'<polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>',logOut:'<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>',star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',pin:'<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',stethoscope:'<path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/>',crown:'<path d="M2 18h20l-2-9-5 4-3-7-3 7-5-4z"/>',ticket:'<path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4z"/>',creditCard:'<rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>',award:'<circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>',instagram:'<rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>',linkedin:'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',facebook:'<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',youtube:'<path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>',chevron:'<polyline points="6 9 12 15 18 9"/>',cart:'<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>',calendar:'<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',video:'<polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/>',filter:'<line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/>',sort:'<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="9" y2="18"/>',close:'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',back:'<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>'};
+  function icon(n,s){s=s||20;return '<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(ICONS[n]||'')+'</svg>';}
 
-        <!-- SLIDE 3: IMPACT -->
-        <div class="slide" id="impact">
-            <h2>Measurable Impact: Empowering Merchants</h2>
-            <p class="subtitle">Every initiative focused on reducing barriers and increasing merchant independence</p>
-            <div class="grid-3" style="margin-top:24px;">
-                <div class="impact-card">
-                    <div class="impact-metric">$1B+</div>
-                    <div class="impact-description"><strong>GMV Generated</strong><br>Shop+Click+Drive platform - enabled small dealers to compete online for first time</div>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-metric">612%</div>
-                    <div class="impact-description"><strong>ROI on AI Implementation</strong><br>Pepsi Frito-Lay route optimization - helped delivery drivers work smarter</div>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-metric">200+</div>
-                    <div class="impact-description"><strong>Merchant Interviews</strong><br>Deep empathy drives every product decision - voice of the merchant</div>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-metric">+50%</div>
-                    <div class="impact-description"><strong>Traffic Increase</strong><br>ML recommendations made discovery easier for millions of customers</div>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-metric">30%</div>
-                    <div class="impact-description"><strong>Sales Captured Online</strong><br>COVID-critical channel - merchants achieved independence they never thought possible</div>
-                </div>
-                <div class="impact-card">
-                    <div class="impact-metric">20-40%</div>
-                    <div class="impact-description"><strong>Friction Reduction</strong><br>GenAI transformations helping merchants serve customers more efficiently</div>
-                </div>
-            </div>
+  var DEVICES={'ios-phone':{os:'ios',form:'phone',w:390,h:844,label:'iPhone'},'android-phone':{os:'android',form:'phone',w:412,h:892,label:'Android'},'ios-tablet':{os:'ios',form:'tablet',w:834,h:1112,label:'iPad'},'android-tablet':{os:'android',form:'tablet',w:800,h:1232,label:'Android Tablet'},'web':{os:'web',form:'desktop',w:1200,h:800,label:'Web'}};
+  var currentDevice='ios-phone', landscape=false;
 
-            <div class="chart-box" style="margin-top:32px;">
-                <canvas id="impactChart"></canvas>
-            </div>
-        </div>
+  var state={view:'home',scanComplete:false,saved:[],loggedIn:true,location:'home',tier:USER.member.tier,points:USER.member.points,redeemed:[],accountTab:'loyalty',doneSteps:[],expandedSteps:[],sessions:[{expert:'Dr. Alisha S.',role:'Dermatologist',when:'Tomorrow · 2:30 PM',status:'Confirmed'}],momFilter:{continent:'all',country:'all',state:'all',type:'all',month:'all',year:'all'},momPanel:'none',momSort:{key:'none',dir:'asc'},consultTab:'experts',bodyArea:null,resultsSaved:false,expandedAreas:[],cart:[]};
 
-        <!-- SLIDE 4: COMPETENCIES -->
-        <div class="slide" id="leadership">
-            <h2>Core Competencies: Merchant-Centric Product Leadership</h2>
-            <p class="subtitle">Deep expertise in building products that empower entrepreneurs</p>
-            <div class="grid-3" style="margin-top:24px;">
-                <div class="skill-category card">
-                    <h4>🎯 E-Commerce & AI/ML</h4>
-                    <ul style="color:var(--text-gray); line-height: 1.8;">
-                        <li>Recommendation Systems at Scale</li>
-                        <li>Personalization Engines</li>
-                        <li>Search & Discovery</li>
-                        <li>GenAI & LLMs for Commerce</li>
-                        <li>ML-Powered Product Matching</li>
-                    </ul>
-                </div>
-                <div class="skill-category card">
-                    <h4>🚀 Product Leadership</h4>
-                    <ul style="color:var(--text-gray); line-height: 1.8;">
-                        <li>Merchant Empathy (200+ Interviews)</li>
-                        <li>0-to-1 Product Innovation</li>
-                        <li>Rapid Prototyping (Cursor, Claude Code)</li>
-                        <li>OKR Planning & Execution</li>
-                        <li>Dogfooding & User Research</li>
-                    </ul>
-                </div>
-                <div class="skill-category card">
-                    <h4>⚡ Execution Excellence</h4>
-                    <ul style="color:var(--text-gray); line-height: 1.8;">
-                        <li>Cross-Functional Teams (104+ people)</li>
-                        <li>Weekly Delivery Cadence</li>
-                        <li>A/B Testing Frameworks (50+ annually)</li>
-                        <li>Quality + Speed (Never OR, Always AND)</li>
-                        <li>Getting Shit Done at Pace</li>
-                    </ul>
-                </div>
-                <div class="skill-category card">
-                    <h4>🛠️ Technical Tools</h4>
-                    <ul style="color:var(--text-gray); line-height: 1.8;">
-                        <li>AI: Cursor, Claude Code, SageMaker, Watson</li>
-                        <li>Design: Figma, GitHub, VS Code</li>
-                        <li>Analytics: Adobe, Google Analytics, Tableau</li>
-                        <li>Cloud: AWS, Azure, GCP</li>
-                        <li>Code: JavaScript, React, Python, Java</li>
-                    </ul>
-                </div>
-            </div>
+  var DISC='<div class="disclaimer">'+icon('info',14)+'<span>AURA offers wellness guidance, not medical advice. For diagnosis or treatment of any skin or health condition, consult a licensed dermatologist, physician, or registered dietitian.</span></div>';
 
-            <h3 style="margin-top: 40px; color: var(--shopify-dark);">Skills Visualization</h3>
-            <div class="chart-box" style="margin-top:16px;"><canvas id="skillsRadar"></canvas></div>
-        </div>
+  /* ---------------- Views ---------------- */
+  function homeFooter(){
+    var explore=[['Home','home',''],['Shop','shop',''],['Consult','consult',''],['Moments','moments','']];
+    var account=[['Profile','account','profile'],['Saved','saved',''],['Loyalty','account','loyalty'],['Wallet','account','wallet']];
+    var company=['About','Careers','Press','Sustainability'];
+    var support=['Help center','Contact','FAQ','Medical disclaimer'];
+    function navlinks(arr){return arr.map(function(x){return '<a data-nav="'+x[1]+'"'+(x[2]?' data-tab="'+x[2]+'"':'')+'>'+x[0]+'</a>';}).join('');}
+    function plain(arr){return arr.map(function(t){return '<a>'+t+'</a>';}).join('');}
+    var socials=['instagram','linkedin','facebook','youtube'].map(function(s){return '<a class="ft-soc" aria-label="'+s+'">'+icon(s,17)+'</a>';}).join('');
+    return '<footer class="sitefooter reveal"><div class="ft-top"><div class="ft-brand"><div class="ft-logo">AURA<b>.</b></div><p class="ft-tag">Connected luxury wellness — guidance, not medical advice.</p><div class="ft-socials">'+socials+'</div></div><div class="ft-cols"><div class="ft-col"><h5>Explore</h5>'+navlinks(explore)+'</div><div class="ft-col"><h5>Account</h5>'+navlinks(account)+'</div><div class="ft-col"><h5>Company</h5>'+plain(company)+'</div><div class="ft-col"><h5>Support</h5>'+plain(support)+'</div></div></div><div class="ft-bottom"><p>© 2026 AURA Wellness. All rights reserved. · <a>Privacy Policy</a> · <a>Terms of Service</a> · <a>Cookie Preferences</a></p></div></footer>';
+  }
+  function homeInsights(){
+    var slides=DATA.promotions.map(function(p){
+      return '<div class="promo" style="background:'+p.grad+'"><span class="promo-emoji">'+p.emoji+'</span><div><span class="promo-season">'+p.season+'</span><div class="promo-loc" style="margin-top:10px">'+icon('pin',12)+' '+p.location+'</div><h4 class="promo-title">'+p.title+'</h4><p class="promo-desc">'+p.desc+'</p></div><button class="promo-cta" data-nav="moments">Explore moment '+icon('arrow',13)+'</button></div>';
+    }).join('');
+    return '<div class="carousel reveal"><div class="car-head"><div class="car-title"><div class="car-ic">'+icon('sparkles',18)+'</div><div><h3>Today\'s Insight</h3><p>Seasonal moments &amp; retreats</p></div></div><div class="car-arrows"><button class="carrow" data-act="carPrev" data-track="promoTrack" aria-label="Previous"><span style="display:flex;transform:rotate(180deg)">'+icon('arrow',15)+'</span></button><button class="carrow" data-act="carNext" data-track="promoTrack" aria-label="Next">'+icon('arrow',15)+'</button></div></div><div class="car-track" id="promoTrack">'+slides+'</div></div>';
+  }
+  function vHome(){
+    var loc=DATA.locations[state.location];
+    var ritual=DATA.ritualsByLocation[state.location];
+    var greet=state.loggedIn?'Good morning, '+USER.member.firstName:'Welcome';
+    var steps=ritual.map(function(r,i){
+      var key=state.location+'-'+i, done=state.doneSteps.indexOf(key)>-1, open=state.expandedSteps.indexOf(key)>-1;
+      return '<div class="rh-item'+(open?' open':'')+'"><div class="rh-step'+(done?' done':'')+'" data-rstep="'+key+'" role="button" aria-expanded="'+open+'"><div class="rh-num">'+(i+1)+'</div><span class="rh-name">'+r.name+'</span><span class="rh-time">'+r.time+'</span><span class="rh-caret">'+icon('chevron',16)+'</span><button class="rh-check'+(done?' on':'')+'" data-step="'+key+'" aria-label="Mark '+r.name+' '+(done?'incomplete':'complete')+'">'+(done?icon('check',15):'')+'</button></div><div class="rh-detail"><p class="rh-dtext">'+(r.how||'')+'</p></div></div>';
+    }).join('');
+    var ritualHero='<div class="ritualhero reveal"><div class="blob"></div><div class="rh-head"><div><div class="rh-title">'+loc.label+' ritual</div><div class="rh-sub">'+loc.concern+' · '+ritual.length+' steps</div></div><span class="pill gold">Today</span></div>'+steps+'</div>';
+    var scanCard=!state.scanComplete
+      ? '<button class="tile" data-act="scan"><div class="ic">'+icon('camera',20)+'</div><p class="t">Start scan</p><p class="s">Multi-angle AI</p></button>'
+      : '<button class="tile" data-nav="consult" data-ctab="results"><div class="ic">'+icon('sparkles',20)+'</div><p class="t">Skin score '+DATA.analysis.score+'</p><p class="s">View results</p></button>';
+    var cards=scanCard+
+      '<button class="tile" data-nav="moments"><div class="ic">'+icon('gift',20)+'</div><p class="t">Moments</p><p class="s">Redeem points</p></button>'+
+      '<button class="tile" data-nav="account" data-tab="loyalty"><div class="ic">'+icon('star',20)+'</div><p class="t">Achievements</p><p class="s">View milestones</p></button>'+
+      '<button class="tile" data-nav="saved"><div class="ic">'+icon('bookmark',20)+'</div><p class="t">Saved</p><p class="s">'+state.saved.length+' item'+(state.saved.length===1?'':'s')+'</p></button>'+
+      '<button class="tile" data-nav="consult"><div class="ic">'+icon('stethoscope',20)+'</div><p class="t">Consult</p><p class="s">Derm · dietitian</p></button>'+
+      '<button class="tile" data-nav="shop"><div class="ic">'+icon('shop',20)+'</div><p class="t">The Edit</p><p class="s">Curated picks</p></button>';
+    var banner=state.loggedIn
+      ? '<div class="journeybanner" data-nav="account" data-tab="loyalty"><div class="jb-l"><div class="jb-ic">'+icon('flame',18)+'</div><div><p class="jb-day">Day '+DATA.journey.currentDay+' · '+DATA.journey.streak+'-day streak</p><p class="jb-sub">See your transformation</p></div></div>'+icon('arrow',18)+'</div>'
+      : '<div class="journeybanner" data-nav="account"><div class="jb-l"><div class="jb-ic">'+icon('lock',18)+'</div><div><p class="jb-day">Sign in to track your progress</p><p class="jb-sub">Loyalty points, rewards &amp; your journey</p></div></div>'+icon('arrow',18)+'</div>';
+    return '<div class="view">'+
+      '<section style="padding-top:8px"><div class="flexb mb16"><div><p class="eyebrow">'+greet+'</p><h1 class="h1" style="margin-bottom:0">Your daily ritual</h1></div></div>'+
+      '<button class="travelpill" data-act="travel">'+icon('pin',15)+' '+loc.name+' <span class="uv">· UV '+loc.uv+'</span></button></section>'+
+      '<section style="margin-top:16px">'+ritualHero+'</section>'+
+      '<section style="margin-top:16px">'+homeInsights()+'</section>'+
+      '<section class="grid3 mb16" style="margin-top:16px">'+cards+'</section>'+
+      '<section class="mb16">'+banner+'</section>'+
+      '<section class="mb16">'+DISC+'</section>'+
+      homeFooter()+'</div>';
+  }
 
-        <!-- SLIDE 5: ADVANTAGE -->
-        <div class="slide">
-            <h2>Unique Competitive Advantage</h2>
-            <p class="subtitle">What makes me different from other Principal PM candidates</p>
-            <div class="table-responsive">
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Attribute</th>
-                        <th>Typical Candidate</th>
-                        <th style="color:var(--shopify-green)">Rham Ketmayura</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>E-Commerce Experience</td><td>Built features for existing platforms</td><td style="color:var(--shopify-green)">Built $1B+ GMV platform from zero - democratized online sales</td></tr>
-                    <tr><td>Merchant Empathy</td><td>Talked to customers occasionally</td><td style="color:var(--shopify-green)">200+ interviews, ride-alongs, dogfooding - obsessed with merchant voice</td></tr>
-                    <tr><td>AI/ML Experience</td><td>Started post-2022 (ChatGPT era)</td><td style="color:var(--shopify-green)">Started 2016 - 6+ years pre-GenAI boom, production systems at scale</td></tr>
-                    <tr><td>Technical Depth</td><td>Product manager who reviews code</td><td style="color:var(--shopify-green)">UI Engineer writing production JS/React - talks to merchants AND writes code</td></tr>
-                    <tr><td>Measurable Results</td><td>"Led successful initiatives"</td><td style="color:var(--shopify-green)">$1B+ GMV, 612% ROI, +50% traffic, 30% sales online - quantified merchant impact</td></tr>
-                    <tr><td>Scale Leadership</td><td>Managed 10-30 person teams</td><td style="color:var(--shopify-green)">Led 104-person teams, operated at weekly pace across continents</td></tr>
-                    <tr><td>0-to-1 Products</td><td>Launched features</td><td style="color:var(--shopify-green)">Built Shop+Click+Drive from zero - 4 years pre-COVID strategic foresight</td></tr>
-                </tbody>
-            </table>
-            </div>
-        </div>
+  function vResults(){
+    var bars=DATA.analysis.concerns.map(function(c){var col=c.tone==='gold'?'var(--gold)':'var(--sage)';return '<div class="mb16"><div class="flexb" style="margin-bottom:6px"><span style="font-size:14px;font-weight:500;color:var(--stone-700)">'+c.key+'</span><span class="pill '+(c.tone==='gold'?'gold':'sage')+'">'+c.level+'</span></div><div class="bar"><i style="width:'+c.pct+'%;background:'+col+'"></i></div><p style="font-size:12px;color:var(--stone-400);margin-top:6px">'+c.note+'</p></div>';}).join('');
+    var foods=DATA.foods.map(function(f){return '<div class="food"><div class="top"><div class="emoji">'+f.emoji+'</div><div style="flex:1"><p style="font-weight:500;color:var(--stone-700)">'+f.name+'</p><span class="pill sage">Supports '+f.for+'</span></div></div><p style="font-size:13px;color:var(--stone-500)"><span style="color:var(--stone-400)">Try: </span>'+f.examples+'</p></div>';}).join('');
+    return '<div class="view"><section style="padding-top:8px"><button class="backbtn" data-nav="consult" data-ctab="results">'+icon('back',18)+' Back to results</button><p class="eyebrow" style="margin-top:8px">Vision AI reading</p><h1 class="h1">Your skin analysis</h1></section>'+
+      '<section class="card reveal mb16" style="padding:20px">'+bars+'</section>'+
+      '<section class="mb16"><div class="disclaimer warn">'+icon('info',14)+'<span>Cosmetic wellness estimate from a photo — not a medical diagnosis. Persistent or concerning skin issues should be reviewed by a licensed dermatologist or physician.</span></div></section>'+
+      '<section class="grid2 mb16"><button class="tile" data-nav="shop"><div class="ic">'+icon('shop',20)+'</div><p class="t">Matched products</p><p class="s">For your concerns</p></button><button class="tile" data-nav="consult"><div class="ic">'+icon('stethoscope',20)+'</div><p class="t">Ask an expert</p><p class="s">Telehealth</p></button></section>'+
+      '<section class="mb12"><h3 class="h3 mb12">Supportive foods</h3>'+foods+'</section></div>';
+  }
 
-        <!-- SLIDE 6: WHY SHOPIFY -->
-        <div class="slide">
-            <h2>Why Shopify?</h2>
-            <p class="subtitle">Perfect alignment of mission, experience, and passion</p>
-            
-            <div class="shopify-banner">
-                <h2 style="margin-bottom: 20px;">Making Commerce Better for Everyone</h2>
-                <p style="margin-bottom: 30px;">Shopify's mission resonates deeply. I've spent my career building platforms that put independence within reach for entrepreneurs. At GM, I watched thousands of car dealers (small business owners) struggle with digital tools and fractured experiences. I built Shop+Click+Drive to provide a simplified path to purchase and personalized experiences — an online sales platform with zero barriers. +50% traffic, 30% of vehicle sales online ($1B+ GMV), a new revenue channel and a lifeline during the pandemic.</p>
-                <p><strong>That's commerce with more voices, not fewer. That's what drives me. That's why Shopify is where I need to be.</strong></p>
-            </div>
+  var shopFilter='ALL';
+  function productCard(p){
+    var loc=DATA.locations[state.location];
+    var on=state.saved.indexOf(p.id)>-1;
+    var rec=p.tags.indexOf(loc.tag)>-1;
+    var saveBtn=state.loggedIn?('<button class="save'+(on?' on':'')+'" data-save="'+p.id+'">'+icon('bookmark',13)+(on?'Saved':'Save')+'</button>'):('<button class="save" data-nav="account">'+icon('lock',13)+'Sign in</button>');
+    var cartBtn='<button class="addcart" data-cart="'+p.id+'" aria-label="Add '+p.name+' to cart" title="Add to cart">'+icon('cart',14)+'</button>';
+    return '<div class="prod reveal"><div class="thumb">'+p.emoji+'</div><div style="flex:1;min-width:0"><div style="margin-bottom:5px"><span class="pill sage">'+p.match+'% match</span> '+(rec?'<span class="pill gold">'+loc.label+' pick</span>':'<span class="pill ink">'+p.category+'</span>')+'</div><p class="name">'+p.name+'</p><p class="brand">'+p.brand+'</p><div class="meta">'+icon('star',12)+' '+p.rating+' · '+p.reviews+' reviews</div><div class="flexb"><span class="price">$'+p.price+'</span><div class="prodbtns">'+cartBtn+saveBtn+'</div></div></div></div>';
+  }
+  function vShop(){
+    var cats=['ALL','Skin','Diet','Tech'];
+    var loc=DATA.locations[state.location];
+    var chips=cats.map(function(c){return '<button class="fchip'+(shopFilter===c?' on':'')+'" data-fchip="'+c+'">'+c+'</button>';}).join('');
+    var list=DATA.products.filter(function(p){return shopFilter==='ALL'||p.category===shopFilter;}).map(productCard).join('');
+    return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Curated for '+loc.name+'</p><h1 class="h1">The Edit</h1></section>'+
+      '<section><div class="chips">'+chips+'</div></section>'+
+      '<section class="mb12">'+DISC+'</section>'+
+      '<section class="cardgrid">'+list+'</section></div>';
+  }
 
-            <div style="margin-top: 50px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-                <div class="card">
-                    <h3 style="color:var(--shopify-green); margin-bottom: 12px;">🎯 Voice of the Merchant</h3>
-                    <p style="color:var(--text-gray);">200+ merchant interviews, obsessively focused on experiences that empower and delight. Every product decision driven by deep understanding of merchant pain points.</p>
-                </div>
-                <div class="card">
-                    <h3 style="color:var(--shopify-green); margin-bottom: 12px;">⚡ High-Octane Pace</h3>
-                    <p style="color:var(--text-gray);">Weekly delivery cadence, 50+ A/B tests annually, 5 POCs in 9 months. Getting shit done at unrelenting pace while maintaining sky-high quality standards.</p>
-                </div>
-                <div class="card">
-                    <h3 style="color:var(--shopify-green); margin-bottom: 12px;">💪 Elite Mindset</h3>
-                    <p style="color:var(--text-gray);">Pro athlete (World #113 tennis, NCAA D1 Champion). Brings discipline, resilience, competitive drive. 8+ years digital-first remote leadership.</p>
-                </div>
-            </div>
-        </div>
+  function vSaved(){
+    if(!state.loggedIn) return lockedView('Saved','Sign in to save products to your wishlist and pick up where you left off.');
+    var items=DATA.products.filter(function(p){return state.saved.indexOf(p.id)>-1;});
+    var body=items.length
+      ? '<section class="cardgrid">'+items.map(productCard).join('')+'</section>'
+      : '<section class="lockcard reveal"><div class="lockic">'+icon('bookmark',26)+'</div><p class="lockmsg">You haven\'t saved anything yet. Tap Save on products in The Edit to keep them here.</p><button class="btn" data-nav="shop">'+icon('shop',16)+' Browse The Edit</button></section>';
+    return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Your wishlist</p><div class="flexb"><h1 class="h1" style="margin-bottom:0">Saved</h1><span class="pill sage">'+items.length+' item'+(items.length===1?'':'s')+'</span></div></section><section style="margin-top:16px">'+body+'</section></div>';
+  }
 
-    </div>
+  function bodySVG(areas,selKey){
+    var fig='<svg viewBox="0 0 120 220" aria-hidden="true">'+
+      '<circle cx="60" cy="26" r="16"/>'+
+      '<rect x="55" y="40" width="10" height="9"/>'+
+      '<path d="M40 51 Q60 45 80 51 L83 112 Q60 120 37 112 Z"/>'+
+      '<rect x="28" y="54" width="11" height="52" rx="5"/>'+
+      '<rect x="81" y="54" width="11" height="52" rx="5"/>'+
+      '<rect x="44" y="112" width="14" height="84" rx="7"/>'+
+      '<rect x="62" y="112" width="14" height="84" rx="7"/>'+
+      '</svg>';
+    var markers=areas.map(function(a){return '<button class="bm-marker '+a.tone+(a.key===selKey?' on':'')+'" data-bodyarea="'+a.key+'" style="top:'+a.y+'%;left:'+a.x+'%" aria-label="'+a.label+'"></button>';}).join('');
+    return '<div class="bodymap">'+fig+markers+'</div>';
+  }
+  function consultResults(){
+    if(!state.scanComplete) return '<section class="lockcard reveal" style="margin-top:8px"><div class="lockic">'+icon('scan',26)+'</div><p class="lockmsg">Run a guided multi-angle Vision scan (about 8 seconds) to generate your personalized results map across face, hair, eyes, skin and more.</p><button class="btn" data-act="scan">'+icon('camera',16)+' Start Vision scan</button></section>';
+    var areas=DATA.bodyScan.areas;
+    var selKey=state.bodyArea;
+    if(!selKey){ var att=areas.filter(function(a){return a.tone==='alert';})[0]; selKey=att?att.key:areas[0].key; }
+    var sub='font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--stone-400);font-weight:600;margin:0 0 8px';
+    function remediesOf(a){
+      var prods=(a.products||[]).map(function(id){return DATA.products.filter(function(p){return p.id===id;})[0];}).filter(Boolean).map(productCard).join('');
+      var foodchips=(a.foods||[]).map(function(fd){return '<span class="foodchip">'+icon('leaf',12)+' '+fd+'</span>';}).join('');
+      var dObj=a.dietId?DATA.products.filter(function(p){return p.id===a.dietId;})[0]:null, dProd=dObj?productCard(dObj):'';
+      return (prods?'<p style="'+sub+'">Products</p>'+prods:'')+
+        (foodchips?'<p style="'+sub+';margin-top:14px">Foods</p><div class="foodchips">'+foodchips+'</div>':'')+
+        (a.diet?'<p style="'+sub+';margin-top:14px">Diet</p><div class="card" style="padding:14px;margin-bottom:12px"><p style="font-size:13px;color:var(--stone-600);line-height:1.5">'+a.diet+'</p></div>'+dProd:'');
+    }
+    var legend='<button class="bm-chip'+(selKey==='all'?' on':'')+'" data-bodyarea="all">'+icon('activity',12)+' All areas</button>'+
+      areas.map(function(a){return '<button class="bm-chip'+(a.key===selKey?' on':'')+'" data-bodyarea="'+a.key+'"><i class="bm-dot '+a.tone+'"></i>'+a.label+'</button>';}).join('');
+    var summary='<section class="card reveal mb16" style="padding:20px"><div class="flexb mb12"><div><p class="eyebrow" style="text-transform:uppercase;letter-spacing:.06em">Personalized results</p><h2 class="serif" style="font-size:24px">Skin score '+DATA.analysis.score+'</h2><div style="margin-top:8px"><span class="pill sage">'+DATA.bodyScan.accuracy+'% accuracy</span> <span class="pill ink">High precision</span></div></div><div class="ring" style="background:conic-gradient(var(--sage) '+(DATA.analysis.score*3.6)+'deg, var(--stone-200) 0deg)"><div>'+DATA.analysis.score+'</div></div></div><div class="flexb" style="gap:10px"><button class="btn'+(state.resultsSaved?' dark':'')+'" data-act="saveResults" style="flex:1">'+icon('bookmark',16)+' '+(state.resultsSaved?'Saved':'Save results')+'</button><button class="btn ghost" data-nav="results" style="flex:1">Full analysis '+icon('arrow',15)+'</button></div></section>'+
+      '<section class="mb16"><p class="eyebrow" style="text-align:center;margin-bottom:8px">'+(selKey==='all'?'Showing all areas — tap a result to expand':'Tap an area, or choose “All areas”')+'</p>'+bodySVG(areas,selKey)+'<div class="bm-chips">'+legend+'</div></section>';
+    // Every filtered selection (a single type OR "All") renders as expandable/collapsible rows
+    var shown=selKey==='all'?areas:areas.filter(function(a){return a.key===selKey;});
+    if(!shown.length) shown=areas;
+    var items=shown.map(function(a){
+      var open=state.expandedAreas.indexOf(a.key)>-1;
+      return '<div class="acc'+(open?' open':'')+'"><div class="acc-head" data-areaexp="'+a.key+'" role="button" aria-expanded="'+open+'"><i class="bm-dot '+a.tone+'"></i><span class="acc-label">'+a.label+'</span><span class="pill '+(a.tone==='sage'?'sage':'gold')+'">'+a.level+'</span><span class="acc-caret">'+icon('chevron',16)+'</span></div><div class="acc-body"><div class="acc-inner"><p style="font-size:13px;color:var(--stone-500);margin-bottom:10px">'+a.note+'</p><div class="flexb" style="font-size:12px;color:var(--stone-400)"><span>Detection confidence</span><span style="color:var(--sage-d);font-weight:600">'+a.confidence+'%</span></div><div class="bar" style="margin:6px 0 14px"><i style="width:'+a.confidence+'%;background:var(--sage)"></i></div>'+remediesOf(a)+'</div></div></div>';
+    }).join('');
+    var detail='<section class="mb12"><div class="flexb mb12"><h3 class="h3">'+(selKey==='all'?'All results':'Result')+'</h3><span class="pill ink">'+(selKey==='all'?areas.length+' areas':'1 of '+areas.length)+'</span></div>'+items+'</section>';
+    return summary+detail+
+      '<section><div class="disclaimer warn">'+icon('info',14)+'<span>Cosmetic wellness estimate from a photo — not a medical diagnosis. Persistent or concerning skin issues should be reviewed by a licensed dermatologist or physician.</span></div></section>';
+  }
+  function consultSessions(){
+    var sessHtml=state.sessions.length
+      ? state.sessions.map(function(s){
+          var conf=s.status==='Confirmed';
+          return '<div class="session reveal"><div class="se-ic">'+icon('calendar',20)+'</div><div style="flex:1;min-width:0"><p class="se-nm">'+s.expert+'</p><p class="se-meta">'+s.role+'</p><p class="se-when">'+s.when+'</p></div><div class="se-right"><span class="pill '+(conf?'sage':'gold')+'">'+s.status+'</span>'+(conf?'<button class="bookbtn" data-act="joinSession" style="margin-top:8px">'+icon('video',13)+' Join</button>':'')+'</div></div>';
+        }).join('')
+      : '<div class="card" style="padding:22px;text-align:center"><div class="lockic" style="margin:0 auto 10px;background:var(--stone-100);color:var(--stone-400)">'+icon('calendar',22)+'</div><p style="font-size:13px;color:var(--stone-400)">No appointments scheduled yet.</p></div>';
+    return '<section class="mb16"><h3 class="h3 mb12">Upcoming sessions</h3>'+sessHtml+'</section>'+
+      '<section><button class="btn ghost" data-consulttab="experts">'+icon('stethoscope',16)+' Book a new session</button></section>';
+  }
+  function consultExperts(){
+    var ex=DATA.experts.map(function(e){
+      var rate=e.rate===0?'Free':'$'+e.rate;
+      return '<div class="expert reveal"><div class="av">'+e.initial+'</div><div style="flex:1;min-width:0"><p class="nm">'+e.name+'</p><p class="ro">'+e.role+'</p><p class="sp">'+e.specialty+'</p></div><div class="rate"><b>'+rate+'</b><span>'+(e.rate===0?'24/7':'per visit')+'</span><button class="bookbtn" data-book="'+e.id+'" style="margin-top:6px">Book</button></div></div>';
+    }).join('');
+    return '<section class="mb16"><div class="disclaimer warn">'+icon('info',14)+'<span>Consultations are provided by independent, licensed professionals. AURA does not itself diagnose or treat conditions. For emergencies, contact your doctor or emergency services.</span></div></section>'+
+      '<section>'+ex+'</section>'+
+      (state.tier==='prestige'?'<section style="margin-top:6px"><div class="disclaimer">'+icon('crown',14)+'<span>Your Prestige membership includes complimentary telehealth visits.</span></div></section>':'');
+  }
+  function vConsult(){
+    var tab=state.consultTab||'experts';
+    var tabs=[['results','Results'],['sessions','Sessions'],['experts','Experts']].map(function(t){return '<button class="acctab'+(tab===t[0]?' on':'')+'" data-consulttab="'+t[0]+'">'+t[1]+'</button>';}).join('');
+    var body=tab==='results'?consultResults():tab==='sessions'?consultSessions():consultExperts();
+    return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Telehealth</p><h1 class="h1" style="margin-bottom:0">Consult</h1></section>'+
+      '<div class="acctabbar">'+tabs+'</div>'+
+      body+'</div>';
+  }
 
-    <!-- Footer -->
-    <footer>
-        <p style="margin-bottom: 24px; font-size: 1.2rem;">Ready to help Shopify merchants achieve independence at scale.</p>
-        <a href="https://forms.gle/3pZUAeJbUmmcCHz49" target="_blank" class="btn">Let's Connect</a>
-    </footer>
+  function redeemState(r){
+    var done=state.redeemed.indexOf(r.id)>-1, afford=state.points>=r.points;
+    return {done:done,afford:afford};
+  }
+  function vMoments(){
+    if(!state.loggedIn) return lockedView('Moments','Sign in to redeem your loyalty points for curated experiences.');
+    var featList=DATA.rewards.filter(function(r){return r.featured;});
+    var rest=DATA.rewards.filter(function(r){return !r.featured;});
+    var featuredHtml='';
+    if(featList.length){
+      var slides=featList.map(function(feat){
+        var fs=redeemState(feat);
+        var fbtn=fs.done?'<button class="mf-btn" disabled>Redeemed</button>':(fs.afford?'<button class="mf-btn" data-redeem="'+feat.id+'">Redeem '+feat.points.toLocaleString()+' points</button>':'<button class="mf-btn" disabled>'+(feat.points-state.points).toLocaleString()+' points to unlock</button>');
+        return '<div class="mfeature"><span class="mf-emoji">'+feat.icon+'</span><span class="mf-tag">Featured</span><h3>'+feat.title+'</h3><p>'+feat.desc+'</p><div class="mf-meta"><span>'+icon('pin',12)+' '+feat.location+'</span><span>📅 '+feat.dates+'</span><span>👥 '+feat.guests+'</span></div>'+fbtn+'</div>';
+      }).join('');
+      featuredHtml='<section><div class="carousel reveal"><div class="car-head"><div class="car-title"><div class="car-ic">'+icon('crown',18)+'</div><div><h3>Featured moments</h3><p>Curated retreats &amp; experiences</p></div></div><div class="car-arrows"><button class="carrow" data-act="carPrev" data-track="featTrack" aria-label="Previous"><span style="display:flex;transform:rotate(180deg)">'+icon('arrow',15)+'</span></button><button class="carrow" data-act="carNext" data-track="featTrack" aria-label="Next">'+icon('arrow',15)+'</button></div></div><div class="car-track" id="featTrack">'+slides+'</div></div></section>';
+    }
+    // ---- Filter + sort state ----
+    var f=state.momFilter, panel=state.momPanel, MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    function uniq(list,field){var seen={},out=[];list.forEach(function(r){var v=r[field];if(v!==undefined&&v!==''&&!seen[v]){seen[v]=1;out.push(v);}});return out;}
+    var byCont=f.continent==='all'?rest:rest.filter(function(r){return r.continent===f.continent;});
+    var byCountry=f.country==='all'?byCont:byCont.filter(function(r){return r.country===f.country;});
+    function sel(key,label,opts,cur){
+      return '<select class="momsel" data-momfilter="'+key+'" aria-label="'+label+'"><option value="all"'+(cur==='all'?' selected':'')+'>'+label+'</option>'+opts.map(function(v){return '<option value="'+v+'"'+(String(cur)===String(v)?' selected':'')+'>'+v+'</option>';}).join('')+'</select>';
+    }
+    function ssel(key,label,opts,cur){
+      return '<select class="momsel" data-momsort="'+key+'" aria-label="'+label+'">'+opts.map(function(o){return '<option value="'+o[0]+'"'+(String(cur)===String(o[0])?' selected':'')+'>'+o[1]+'</option>';}).join('')+'</select>';
+    }
+    var fcount=['continent','country','state','type','month','year'].filter(function(k){return f[k]!=='all';}).length;
+    // ---- Apply filters ----
+    var results=rest.filter(function(r){
+      return (f.continent==='all'||r.continent===f.continent)
+        &&(f.country==='all'||r.country===f.country)
+        &&(f.state==='all'||r.state===f.state)
+        &&(f.type==='all'||r.type===f.type)
+        &&(f.month==='all'||r.month===f.month)
+        &&(f.year==='all'||String(r.year)===String(f.year));
+    });
+    // ---- Apply sort ----
+    var sk=state.momSort.key, dir=state.momSort.dir==='desc'?-1:1;
+    if(sk!=='none'){
+      results=results.slice().sort(function(a,b){
+        var av,bv;
+        if(sk==='year'){av=a.year;bv=b.year;}
+        else if(sk==='cost'){av=a.points;bv=b.points;}
+        else {av=a.title.toLowerCase();bv=b.title.toLowerCase();}
+        return av<bv?-1*dir:(av>bv?1*dir:0);
+      });
+    }
+    // ---- Collapsible Filter / Sort panels (above the hero) ----
+    var filterPanel='<section class="momfilters reveal"><div class="mf-head"><span class="mf-title">'+icon('filter',15)+' Filter moments</span><button class="mf-x" data-act="momPanelClose" aria-label="Close">'+icon('close',18)+'</button></div><div class="mf-grid">'+
+      sel('continent','All continents',uniq(rest,'continent').sort(),f.continent)+
+      sel('country','All countries',uniq(byCont,'country').sort(),f.country)+
+      sel('state','All states/regions',uniq(byCountry,'state').sort(),f.state)+
+      sel('type','All treatments',uniq(rest,'type').sort(),f.type)+
+      sel('month','Any month',uniq(rest,'month').sort(function(a,b){return MONTHS.indexOf(a)-MONTHS.indexOf(b);}),f.month)+
+      sel('year','Any year',uniq(rest,'year').sort(),f.year)+
+      '</div><div class="mf-actions">'+(fcount?'<button class="mf-clear" data-act="momReset">Clear all</button>':'<span></span>')+'<button class="btn" data-act="momPanelClose" style="width:auto;padding:11px 22px">Apply filters</button></div></section>';
+    var sortPanel='<section class="momfilters reveal"><div class="mf-head"><span class="mf-title">'+icon('sort',15)+' Sort moments</span><button class="mf-x" data-act="momPanelClose" aria-label="Close">'+icon('close',18)+'</button></div><div class="mf-grid">'+
+      ssel('key','Sort by',[['none','Default order'],['year','Year'],['cost','Cost'],['alpha','Alphabetical']],state.momSort.key)+
+      ssel('dir','Order',[['asc','Ascending'],['desc','Descending']],state.momSort.dir)+
+      '</div><div class="mf-actions">'+(sk!=='none'?'<button class="mf-clear" data-act="momSortReset">Reset</button>':'<span></span>')+'<button class="btn" data-act="momPanelClose" style="width:auto;padding:11px 22px">Apply sort</button></div></section>';
+    var panelHtml=panel==='filter'?filterPanel:(panel==='sort'?sortPanel:'');
+    // ---- Toolbar CTAs (above hero, right) ----
+    var sortLabels={none:'Sort',year:'Year',cost:'Cost',alpha:'A–Z'};
+    var toolbar='<section class="momtools">'+
+      '<button class="mt-cta'+(panel==='filter'?' on':'')+'" data-act="momPanelFilter">'+icon('filter',15)+' Filter'+(fcount?' <span class="mt-badge">'+fcount+'</span>':'')+'</button>'+
+      '<button class="mt-cta'+(panel==='sort'?' on':'')+'" data-act="momPanelSort">'+icon('sort',15)+' '+(sk==='none'?'Sort':'Sort · '+sortLabels[sk])+'</button>'+
+      '</section>';
+    // ---- Grid ----
+    var grid=results.length?results.map(function(r){
+      var s=redeemState(r);
+      var btn=s.done?'<button class="redeembtn" disabled>Redeemed</button>':(s.afford?'<button class="redeembtn" data-redeem="'+r.id+'">Redeem</button>':'<button class="redeembtn" disabled>'+(r.points-state.points).toLocaleString()+' more</button>');
+      return '<div class="mcard reveal"><div class="mc-img">'+r.icon+'</div><div class="mc-body"><div class="mb8"><span class="pill sage">'+r.type+'</span></div><p class="mc-title">'+r.title+'</p><p class="mc-loc">'+icon('pin',11)+' '+r.location+' · '+r.month+' '+r.year+'</p><div class="mc-foot"><span class="mc-pts">'+r.points.toLocaleString()+' pts</span>'+btn+'</div></div></div>';
+    }).join('')
+      :'<div class="lockcard reveal"><div class="lockic">'+icon('pin',26)+'</div><p class="lockmsg">No moments match these filters. Try widening your search.</p><button class="btn ghost" data-act="momReset">Clear filters</button></div>';
+    return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Member rewards</p><h1 class="h1" style="margin-bottom:4px">AURA Moments</h1><p style="font-size:13px;color:var(--stone-500);margin-bottom:14px">Exclusive experiences you can\'t buy anywhere else.</p></section>'+
+      toolbar+
+      panelHtml+
+      featuredHtml+
+      '<section class="flexb mb12"><h3 class="h3">Experiences</h3><span class="pill ink">'+results.length+' result'+(results.length===1?'':'s')+'</span></section>'+
+      '<section class="cardgrid mb16">'+grid+'</section>'+
+      '<section class="mb16"><div class="mbalance reveal"><div class="mb-num">'+state.points.toLocaleString()+'</div><div class="mb-lab">Available points</div><button class="redeembtn" data-nav="account" data-tab="loyalty" style="padding:10px 18px">View rewards balance</button></div></section>'+
+      '<section><div class="disclaimer">'+icon('info',14)+'<span>Experiences are illustrative. Redemptions in the live app are subject to availability and member terms.</span></div></section></div>';
+  }
+  function vCart(){
+    if(!state.cart.length) return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Your bag</p><h1 class="h1">Cart</h1></section>'+
+      '<section class="lockcard reveal" style="margin-top:8px"><div class="lockic">'+icon('cart',26)+'</div><p class="lockmsg">Your cart is empty. Discover our curated collection in The Edit, or save pieces to revisit later.</p><button class="btn mb12" data-nav="shop">'+icon('shop',16)+' Shop The Edit</button><button class="btn ghost" data-nav="saved">'+icon('bookmark',16)+' View saved items</button></section>'+
+      '<section style="margin-top:8px"><div class="disclaimer">'+icon('info',14)+'<span>This is a demo cart. No payment is processed in the prototype.</span></div></section></div>';
+    var counts={}; state.cart.forEach(function(id){counts[id]=(counts[id]||0)+1;});
+    var total=0;
+    var rows=Object.keys(counts).map(function(idStr){ var id=parseInt(idStr,10), p=DATA.products.filter(function(x){return x.id===id;})[0]; if(!p)return ''; var qty=counts[idStr]; total+=p.price*qty; return '<div class="prod"><div class="thumb">'+p.emoji+'</div><div style="flex:1;min-width:0"><p class="name">'+p.name+'</p><p class="brand">'+p.brand+'</p><div class="meta">Qty '+qty+' · $'+p.price+' each</div><div class="flexb"><span class="price">$'+(p.price*qty)+'</span><button class="save" data-uncart="'+id+'">'+icon('close',13)+' Remove</button></div></div></div>'; }).join('');
+    return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Your bag</p><div class="flexb"><h1 class="h1" style="margin-bottom:0">Cart</h1><span class="pill ink">'+state.cart.length+' item'+(state.cart.length===1?'':'s')+'</span></div></section>'+
+      '<section style="margin-top:16px">'+rows+'</section>'+
+      '<section class="card mb16" style="padding:16px"><div class="flexb"><span style="font-size:14px;color:var(--stone-500)">Subtotal</span><span class="serif" style="font-size:22px">$'+total+'</span></div></section>'+
+      '<section class="mb16"><button class="btn" data-act="checkout">'+icon('cart',16)+' Checkout</button></section>'+
+      '<section><div class="disclaimer">'+icon('info',14)+'<span>This is a demo cart. No payment is processed in the prototype.</span></div></section></div>';
+  }
 
-    <!-- Scripts -->
-    <script>
-        // Parallax Scrolling Effect
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallaxBg = document.getElementById('parallaxBg');
-            const layer1 = document.getElementById('parallaxLayer1');
-            const layer2 = document.getElementById('parallaxLayer2');
-            const layer3 = document.getElementById('parallaxLayer3');
-            
-            if (parallaxBg) {
-                parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-            }
-            if (layer1) {
-                layer1.style.transform = `translate(${scrolled * 0.15}px, ${scrolled * 0.3}px)`;
-            }
-            if (layer2) {
-                layer2.style.transform = `translate(${-scrolled * 0.1}px, ${scrolled * 0.25}px)`;
-            }
-            if (layer3) {
-                layer3.style.transform = `translate(${scrolled * 0.05}px, ${-scrolled * 0.2}px) scale(${1 + scrolled * 0.0002})`;
-            }
+  function lineChart(series,id){
+    var w=320,h=84,pad=6,maxD=series[series.length-1].d||1;
+    function X(d){return pad+(d/maxD)*(w-2*pad);} function Y(v){return h-pad-(v/100)*(h-2*pad);}
+    var p=series.map(function(s,i){return (i?'L':'M')+X(s.d).toFixed(1)+' '+Y(s.v).toFixed(1);}).join(' ');
+    var area=p+' L'+X(maxD).toFixed(1)+' '+(h-pad)+' L'+X(0).toFixed(1)+' '+(h-pad)+' Z';
+    var last=series[series.length-1];
+    return '<svg viewBox="0 0 '+w+' '+h+'" style="width:100%;height:auto;display:block"><defs><linearGradient id="lg'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8A9A5B" stop-opacity=".22"/><stop offset="1" stop-color="#8A9A5B" stop-opacity="0"/></linearGradient></defs><path d="'+area+'" fill="url(#lg'+id+')"/><path d="'+p+'" fill="none" stroke="#728248" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="'+X(maxD).toFixed(1)+'" cy="'+Y(last.v).toFixed(1)+'" r="4" fill="#728248"/></svg>';
+  }
+  function wellnessRing(score){
+    var r=34,c=2*Math.PI*r,off=c*(1-score/100);
+    return '<svg width="84" height="84" viewBox="0 0 84 84" style="flex-shrink:0"><circle cx="42" cy="42" r="'+r+'" stroke="#e7e5e4" stroke-width="8" fill="none"/><circle cx="42" cy="42" r="'+r+'" stroke="#8A9A5B" stroke-width="8" fill="none" stroke-linecap="round" stroke-dasharray="'+c.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'" transform="rotate(-90 42 42)"/><text x="42" y="43" text-anchor="middle" dominant-baseline="middle" font-family="Playfair Display,serif" font-size="22" fill="#44403c">'+score+'</text></svg>';
+  }
+  function journeyBlock(){
+    var j=DATA.journey, s0=j.snapshots[0], s1=j.snapshots[1], delta=s1.score-s0.score;
+    var dots=''; for(var i=1;i<=100;i++){ dots+='<i class="dot'+(i<=j.streak?' on':'')+'"></i>'; }
+    return '<section class="flexb mb12"><h3 class="h3">Your journey · Day '+j.currentDay+'</h3><span class="streakflame">'+icon('flame',14)+' '+j.streak+'-day streak</span></section>'+
+      '<section class="card reveal" style="padding:18px;margin-bottom:16px"><div class="flexb mb12"><h3 class="h3">Then &amp; now</h3><span class="pill sage">+'+delta+' skin score</span></div><div class="beforeafter"><div class="snap"><div class="snapface s0"></div><div class="snapscore">'+s0.score+'</div><p>'+s0.label+'</p></div><div class="snaparrow">'+icon('arrow',20)+'</div><div class="snap"><div class="snapface s1"></div><div class="snapscore now">'+s1.score+'</div><p>'+s1.label+'</p></div></div></section>'+
+      '<section class="card reveal" style="padding:18px;margin-bottom:16px"><div class="flexb mb12"><h3 class="h3">Skin score over time</h3><span style="font-size:13px;color:var(--stone-400)">'+s0.score+' → '+s1.score+'</span></div>'+lineChart(j.metrics.skinScore,'sk')+'</section>'+
+      '<section class="card reveal" style="padding:18px;margin-bottom:16px"><div class="flexb mb12"><h3 class="h3">Consistency</h3><span class="pill sage">'+j.streak+' / 100 days</span></div><div class="streakgrid">'+dots+'</div></section>';
+  }
+  function achievementsBlock(){
+    var ach=DATA.achievements.map(function(a){return '<div class="ach '+(a.unlocked?'unlocked':'locked')+'"><div class="achtop">'+icon(a.unlocked?'award':'lock',18)+'<span class="achpts">+'+a.points+'</span></div><p class="at">'+a.title+'</p><p class="ad">'+a.desc+'</p></div>';}).join('');
+    return '<section class="reveal" style="margin-bottom:16px"><h3 class="h3 mb12">Achievements</h3><div class="achgrid">'+ach+'</div></section>';
+  }
 
-            // Nav background
-            const nav = document.getElementById('navbar');
-            if (scrolled > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
+  function accLoyalty(){
+    var m=USER.member;
+    var pct=Math.min(100,Math.round(state.points/m.nextRewardAt*100));
+    var tiers=DATA.tiers.map(function(t){
+      var cur=state.tier===t.id;
+      var bens=t.benefits.map(function(b){return '<div class="ben">'+icon('check',13)+' '+b+'</div>';}).join('');
+      return '<div class="tier-card'+(cur?' cur':'')+'"><div class="flexb"><span class="tn">'+t.name+'</span>'+(cur?'<span class="pill sage">Current</span>':'')+'</div><p class="tp"><b>$'+t.price+'</b> / year</p>'+bens+(cur?'':'<button class="upbtn" data-tier="'+t.id+'">Switch to '+t.name+'</button>')+'</div>';
+    }).join('');
+    return '<section class="member reveal" style="margin-bottom:16px"><div class="flexb"><div><span class="lab">'+m.tier+' · since '+m.memberSince+'</span><p class="bignum">'+state.points.toLocaleString()+'</p><p class="biglab">Lifetime points</p></div>'+icon('award',40)+'</div><div style="margin-top:16px"><div class="flexb" style="font-size:12px;color:rgba(255,255,255,.85);margin-bottom:6px"><span>'+m.tier+' tier</span><span>'+(m.nextRewardAt-state.points).toLocaleString()+' to next reward</span></div><div class="bar" style="background:rgba(255,255,255,.2)"><i style="width:'+pct+'%;background:var(--gold)"></i></div></div><div class="memberstats"><div class="statcol"><b>'+m.rituals+'</b><span>Rituals</span></div><div class="statcol"><b>'+icon('flame',16)+m.streak+'</b><span>Day streak</span></div><div class="statcol"><b>'+m.years+'</b><span>Years</span></div></div></section>'+
+      '<section class="card mb16" style="padding:16px;display:flex;align-items:center;gap:12px"><div class="lockic" style="margin:0;width:44px;height:44px;background:rgba(252,211,77,.18);color:#b45309">'+icon('gift',20)+'</div><div><p style="font-size:14px;font-weight:600;color:var(--stone-700)">'+m.birthdayReward.label+'</p><p style="font-size:12px;color:var(--stone-400)">'+m.birthdayReward.note+'</p></div></section>'+
+      journeyBlock()+
+      achievementsBlock()+
+      '<section class="mb16"><h3 class="h3 mb12">Membership</h3>'+tiers+'</section>'+
+      '<section class="mb16"><button class="btn ghost" data-nav="moments">'+icon('gift',16)+' Redeem points for Moments</button></section>';
+  }
+  function accWallet(){
+    var w=USER.wallet;
+    var cards=w.cards.map(function(c){return '<div class="paycard"><div class="payleft"><div class="payic">'+icon('creditCard',20)+'</div><div><div class="payname">'+c.type+' •••• '+c.last4+'</div><div class="payexp">'+(c.expiry?'Expires '+c.expiry:'Connected')+'</div></div></div>'+(c.isDefault?'<span class="paydefault">Default</span>':'')+'</div>';}).join('');
+    var certs=w.certificates.map(function(c){return '<div class="giftcard"><div class="flexb"><div><div class="giftlab">'+c.name+'</div><div class="giftval">'+c.value+'</div></div>'+icon('gift',22)+'</div><div class="giftfoot"><span class="giftcode">'+(c.code||'')+'</span><span class="giftexp">Exp: '+c.expiry+'</span></div></div>';}).join('');
+    var vouchers=w.vouchers.map(function(v){return '<div class="vouchercard"><div><div class="vt">'+v.title+'</div><div class="vx">Expires '+v.expiry+'</div></div><div class="vv">'+v.value+'</div></div>';}).join('');
+    return '<section class="mb16"><div class="flexb mb12"><h3 class="h3">Payment methods</h3><button class="save" data-act="addCard">+ Add new</button></div>'+cards+'</section>'+
+      '<section class="mb16"><h3 class="h3 mb12">Gift certificates</h3>'+certs+'</section>'+
+      '<section class="mb16"><h3 class="h3 mb12">Active vouchers</h3>'+vouchers+'</section>'+
+      '<section><div class="disclaimer">'+icon('info',14)+'<span>Payment details are illustrative. In production, cards are tokenized and never stored in the app.</span></div></section>';
+  }
+  function accProfile(){
+    var m=USER.member;
+    var bio=Object.keys(m.profile).map(function(k){return '<div class="biocell"><div class="bk">'+k+'</div><div class="bv">'+m.profile[k]+'</div></div>';}).join('');
+    var details=[['Email',m.email],['Phone',m.phone],['Address',m.address],['Birthday',m.dob]].map(function(d){return '<div class="li"><span style="color:var(--stone-400)">'+d[0]+'</span><span>'+d[1]+'</span></div>';}).join('');
+    var prefs=[['Email notifications',true],['SMS alerts',false]].map(function(p){return '<div class="setrow"><span>'+p[0]+'</span><button class="tggl'+(p[1]?' on':'')+'" data-toggle aria-label="'+p[0]+'"></button></div>';}).join('');
+    var sec=[['Face ID login',true],['Multi-factor auth (2FA)',false]].map(function(p){return '<div class="setrow"><span>'+p[0]+'</span><button class="tggl'+(p[1]?' on':'')+'" data-toggle aria-label="'+p[0]+'"></button></div>';}).join('');
+    var links=['Privacy & data','Medical disclaimer','Help & support','Change password'].map(function(t){return '<div class="li"><span>'+t+'</span>'+icon('arrow',15)+'</div>';}).join('');
+    return '<section class="reveal" style="display:flex;align-items:center;gap:14px;margin-bottom:16px"><div style="width:60px;height:60px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-size:24px;background:linear-gradient(135deg,var(--sage),var(--sage-d))">'+m.firstName.charAt(0)+'</div><div style="min-width:0"><h3 class="h3" style="font-size:20px">'+m.name+'</h3><p style="font-size:13px;color:var(--stone-400)">'+m.email+'</p></div></section>'+
+      '<section class="card mb16" style="padding:18px"><div class="flexb mb12"><h3 class="h3">Wellness status</h3><span class="pill sage">'+m.wellnessLabel+'</span></div><div style="display:flex;align-items:center;gap:18px">'+wellnessRing(m.wellnessScore)+'<div style="flex:1"><span class="streakflame">'+icon('flame',13)+' '+m.streak+'-day streak</span><p style="font-size:13px;color:var(--stone-500);margin-top:8px">Your skin barrier and hydration levels are tracking well. Keep up the ritual.</p></div></div></section>'+
+      '<section class="mb16"><h3 class="h3 mb12">Personal details</h3><div class="list">'+details+'</div></section>'+
+      '<section class="mb16"><h3 class="h3 mb12">Bio metrics</h3><div class="biogrid">'+bio+'</div></section>'+
+      '<section class="mb16"><h3 class="h3 mb12">Contact preferences</h3>'+prefs+'</section>'+
+      '<section class="mb16"><h3 class="h3 mb12">Security</h3>'+sec+'</section>'+
+      '<section class="list mb16">'+links+'</section>'+
+      '<section class="mb16"><button class="signout" data-act="signOut" style="width:100%;justify-content:center;padding:12px">'+icon('logOut',15)+' Sign out</button></section>'+
+      '<section class="legal"><p class="hd">Important</p><p>AURA provides cosmetic and general wellness information generated with AI. It does not diagnose, treat, cure, or prevent any disease or skin condition and is not a substitute for professional medical, dermatological, or nutritional advice. Telehealth is provided by independent licensed professionals.</p><p>Your personal and health data is private and, in production, served only over an authenticated, encrypted connection.</p></section>';
+  }
+  function vAccount(){
+    if(!state.loggedIn) return vAuth();
+    var m=USER.member;
+    var tab=state.accountTab||'loyalty';
+    var tabs=[['loyalty','Loyalty'],['wallet','Wallet'],['profile','Profile']].map(function(t){return '<button class="acctab'+(tab===t[0]?' on':'')+'" data-acctab="'+t[0]+'">'+t[1]+'</button>';}).join('');
+    var body=tab==='wallet'?accWallet():tab==='profile'?accProfile():accLoyalty();
+    return '<div class="view">'+
+      '<section style="padding-top:8px"><div class="flexb"><div><p class="eyebrow">Member #'+m.memberId+'</p><h1 class="h1" style="margin-bottom:0">'+m.firstName+'</h1></div><button class="signout" data-act="signOut">'+icon('logOut',15)+' Sign out</button></div></section>'+
+      '<div class="acctabbar">'+tabs+'</div>'+
+      body+'</div>';
+  }
 
-        // Lucide icons
-        if (window.lucide && typeof lucide.createIcons === 'function') lucide.createIcons();
+  function vAuth(){
+    return '<div class="view"><section class="authwrap"><div class="authlogo">AURA<b>.</b></div><h1 class="serif authh">Welcome back</h1><p class="authsub">Sign in to unlock your loyalty points, rewards, telehealth, Travel Mode, and your progress journey.</p>'+
+      '<div class="authfield"><label>Email</label><input type="email" placeholder="you@email.com" autocomplete="email"></div>'+
+      '<div class="authfield"><label>Password</label><input type="password" placeholder="Your password" autocomplete="current-password"></div>'+
+      '<button class="btn" data-act="signIn">Sign in</button>'+
+      '<div class="author"><span>or</span></div>'+
+      '<button class="authsocial" data-act="signIn"><span class="prov" style="background:#000"></span>Continue with Apple</button>'+
+      '<button class="authsocial" data-act="signIn"><span class="prov prov-g">G</span>Continue with Google</button>'+
+      '<p class="authalt">New to AURA? <b data-act="signIn">Create an account</b></p>'+
+      '<button class="btn ghost" data-act="continueGuest">Continue as guest</button>'+
+      '<p class="authnote">'+icon('shield',12)+' Secure sign-in (OAuth 2.0 / OIDC). We never see your password.</p></section></div>';
+  }
+  function lockedView(title,msg){
+    return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Members only</p><h1 class="h1">'+title+'</h1></section><section class="lockcard reveal"><div class="lockic">'+icon('lock',26)+'</div><p class="lockmsg">'+msg+'</p><button class="btn" data-nav="account">'+icon('user',16)+' Sign in to unlock</button></section></div>';
+  }
 
-        // Impact Chart
-        (function(){
-            try {
-                const impactEl = document.getElementById('impactChart');
-                if (impactEl && impactEl.getContext) {
-                    const impactCtx = impactEl.getContext('2d');
-                    new Chart(impactCtx, {
-                        type: 'bar',
-                        data: {
-                            labels: ['GM (2016-18)', 'IBM (2018-19)', 'TCS (2019-Present)'],
-                            datasets: [
-                                {
-                                    label: 'Revenue Impact ($M)',
-                                    data: [1000, 28, 75],
-                                    backgroundColor: 'rgba(149, 191, 71, 0.8)',
-                                    borderColor: '#95BF47',
-                                    borderWidth: 2
-                                },
-                                {
-                                    label: 'ROI (%)',
-                                    data: [150, 612, 250],
-                                    backgroundColor: 'rgba(180, 215, 122, 0.8)',
-                                    borderColor: '#B4D77A',
-                                    borderWidth: 2
-                                }
-                            ]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: {
-                                legend: { labels: { color: '#202223', font: { size: 14, weight: '600' } } },
-                                title: { display: true, text: 'Measurable Impact Across Merchant-Focused Roles', color: '#004C3F', font: { size: 18, weight: 'bold' } }
-                            },
-                            scales: { 
-                                y: { beginAtZero: true, grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { color: '#202223' } }, 
-                                x: { grid: { color: 'rgba(0,0,0,0.06)' }, ticks: { color: '#202223' } } 
-                            }
-                        }
-                    });
-                }
-            } catch (e) { console.error('impactChart error', e); }
-        })();
+  var VIEWS={home:vHome,results:vResults,shop:vShop,saved:vSaved,consult:vConsult,moments:vMoments,cart:vCart,account:vAccount};
+  var TABS=[{k:'home',label:'Home',ic:'home'},{k:'shop',label:'Shop',ic:'shop'},{k:'scan',label:'Scan',ic:'scan'},{k:'consult',label:'Consult',ic:'stethoscope'},{k:'moments',label:'Moments',ic:'gift'},{k:'cart',label:'Cart',ic:'cart'},{k:'account',label:'You',ic:'user'}];
+  var TABMAP={}; TABS.forEach(function(t){TABMAP[t.k]=t;});
+  var BOTTOM=['shop','consult','scan','moments','account']; // scan centered (middle of 5)
+  var NAVTABS=TABS.filter(function(t){return t.k!=='scan'&&t.k!=='home';}); // top nav: logo is the home link
 
-        // Skills Radar
-        (function(){
-            try {
-                const skillsEl = document.getElementById('skillsRadar');
-                if (skillsEl && skillsEl.getContext) {
-                    const skillsCtx = skillsEl.getContext('2d');
-                    new Chart(skillsCtx, {
-                        type: 'radar',
-                        data: {
-                            labels: [
-                                'Merchant Empathy',
-                                'E-Commerce Platforms',
-                                'AI/ML Systems',
-                                'Cross-Functional Leadership',
-                                'Rapid Prototyping',
-                                'Product Strategy',
-                                'Technical Execution',
-                                'Data-Driven Decisions'
-                            ],
-                            datasets: [{
-                                label: 'Competency Level',
-                                data: [92,90,95,78,98,90,70,90],
-                                backgroundColor: 'rgba(149, 191, 71, 0.3)',
-                                borderColor: '#95BF47',
-                                borderWidth: 3,
-                                pointBackgroundColor: '#95BF47',
-                                pointBorderColor: '#fff',
-                                pointHoverBackgroundColor: '#fff',
-                                pointHoverBorderColor: '#95BF47'
-                            }]
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            plugins: { 
-                                legend: { labels: { color: '#202223', font: { size: 14, weight: '600' } } }, 
-                                title: { display: true, text: 'Core Competencies (Validated by Results)', color: '#004C3F', font: { size: 18, weight: 'bold' } } 
-                            },
-                            scales: { 
-                                r: { 
-                                    angleLines: { color: 'rgba(0,0,0,0.1)' }, 
-                                    grid: { color: 'rgba(0,0,0,0.1)' }, 
-                                    pointLabels: { color: '#202223', font: { size: 12, weight: '600' } }, 
-                                    ticks: { display: false }, 
-                                    suggestedMin: 0, 
-                                    suggestedMax: 100 
-                                } 
-                            }
-                        }
-                    });
-                }
-            } catch (e) { console.error('skillsRadar error', e); }
-        })();
+  /* ---------------- Device frame ---------------- */
+  function buildDevice(){
+    var dev=DEVICES[currentDevice], w=dev.w, h=dev.h;
+    if(dev.form==='tablet' && landscape){ w=dev.h; h=dev.w; }
+    var osbar=dev.os==='web'?'':'<div class="osbar"><span>9:41</span>'+(dev.os==='ios'?'<div class="island"></div>':'<div class="punch"></div>')+'<span class="sigs">'+icon('wifi',15)+icon('battery',17)+'</span></div>';
+    var webchrome=dev.os==='web'?'<div class="webchrome"><div class="tl"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><div class="addr">'+icon('shield',12)+'aura-wellness.com</div></div>':'';
+    var loc=DATA.locations[state.location];
+    var loyaltyLine=state.loggedIn?'<span class="brandloyalty">'+state.tier+' '+icon('crown',12)+'</span>':''; // tablet/desktop: tier only (points removed), crown to the right
+    var appbarLoyalty=state.loggedIn?'<div class="appbar-loyalty">'+icon('crown',13)+' <b>'+state.points.toLocaleString()+'</b> pts · <span class="tier">'+state.tier+'</span></div>':'';
+    var cartCount=state.cart.length;
+    var topnav='<header class="topnav"><div class="brandblock" data-nav="home" role="button" aria-label="AURA home"><span class="tn-logo">AURA<b>.</b></span>'+loyaltyLine+'</div><nav class="tn-items">'+
+      NAVTABS.map(function(t){return '<button data-nav="'+t.k+'" class="'+(state.view===t.k?'on':'')+'">'+icon(t.ic,18)+'<span>'+t.label+(t.k==='cart'&&cartCount?' ('+cartCount+')':'')+'</span></button>';}).join('')+
+      '</nav><div class="tn-right"><button class="tn-loc" data-act="travel">'+icon('pin',14)+' '+loc.name+'</button><button class="tn-cta" data-act="scan">'+icon('scan',17)+'<span>New scan</span></button></div></header>';
+    var bottomnav='<nav class="bottomnav">'+BOTTOM.map(function(k){var t=TABMAP[k]; if(k==='scan') return '<button class="scan" data-act="scan" aria-label="Scan"><div class="fab">'+icon('scan',24)+'</div></button>'; return '<button data-nav="'+k+'" class="'+(state.view===k?'on':'')+'">'+icon(t.ic,21)+'<span>'+t.label+'</span></button>';}).join('')+'</nav>';
+    var html='<div class="device" data-os="'+dev.os+'" data-form="'+dev.form+'" style="width:'+(w+24)+'px;height:'+(h+(dev.os==='web'?40:24))+'px"><div class="screen" data-form="'+dev.form+'" style="height:'+h+'px">'+webchrome+osbar+'<div class="app">'+topnav+'<div class="appbar"><span class="brand" data-nav="home" role="button" aria-label="AURA home">AURA<b>.</b></span><div class="appbar-right"><button class="appbar-cart" data-nav="cart" aria-label="Cart">'+icon('cart',20)+(cartCount?'<span class="navbadge">'+cartCount+'</span>':'')+'</button>'+appbarLoyalty+'</div></div><div class="applayout"><div class="content" id="content"></div></div>'+bottomnav+'<button class="chat-fab" data-act="openChat" aria-label="Open assistant">'+icon('chat',22)+'<span class="badge">1</span></button>'+buildChatPanel()+'</div>'+(dev.os!=='web'?'<div class="homebar"></div>':'')+'</div></div>';
+    document.getElementById('scaler').innerHTML=html;
+    renderContent(); fitScale();
+  }
+  function renderContent(){
+    var c=document.getElementById('content'); if(!c) return;
+    c.scrollTop=0; c.innerHTML=(VIEWS[state.view]||vHome)();
+    document.querySelectorAll('[data-nav]').forEach(function(b){ if(b.closest('.topnav')||b.closest('.bottomnav')) b.classList.toggle('on', b.getAttribute('data-nav')===state.view); });
+    observeReveals();
+  }
+  function fitScale(){
+    var dev=document.querySelector('.device'); if(!dev) return;
+    var stage=document.getElementById('stage');
+    var scale=Math.min(1,(stage.clientWidth-40)/dev.offsetWidth,(stage.clientHeight-40)/dev.offsetHeight);
+    document.getElementById('scaler').style.transform='scale('+scale+')';
+  }
+  window.addEventListener('resize', fitScale);
 
-        // Progress bars animation
-        window.addEventListener('load', () => {
-            document.querySelectorAll('.progress-fill').forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0%';
-                setTimeout(() => { bar.style.width = width; }, 500);
-            });
-        });
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -30px 0px'}):null;
+  function observeReveals(){ if(!io){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});return;} document.querySelectorAll('.reveal:not(.in)').forEach(function(el){io.observe(el);}); }
+  function go(view){ if(view===state.view)return; state.view=view; track('view_changed',{view:view}); renderContent(); }
 
-        // Mobile nav toggle
-        (function(){
-            const toggle = document.querySelector('.nav-toggle');
-            const links = document.getElementById('navLinks');
-            if (toggle && links) {
-                toggle.addEventListener('click', () => {
-                    links.classList.toggle('open');
-                });
-                links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-            }
-        })();
-    </script>
+  /* ---------------- Travel mode ---------------- */
+  function travelSheet(){
+    var app=document.querySelector('.app'); if(!app)return;
+    var rows=Object.keys(DATA.locations).map(function(k){var l=DATA.locations[k];return '<div class="locrow'+(state.location===k?' on':'')+'" data-loc="'+k+'"><div><p class="ln">'+l.name+'</p><p class="lc">'+l.label+' · '+l.concern+'</p></div><div style="text-align:right"><p class="lc">UV '+l.uv+'</p>'+(state.location===k?icon('check',16):'')+'</div></div>';}).join('');
+    var el=document.createElement('div'); el.className='sheet-bg'; el.id='travelSheet';
+    el.innerHTML='<div class="sheet"><div class="grab"></div><div class="ic">'+icon('pin',22)+'</div><h3>Travel Mode</h3><p>Adapt your ritual and recommendations to your destination\'s climate.</p>'+rows+'<button class="btn ghost" data-act="closeTravel" style="margin-top:14px">Close</button></div>';
+    app.appendChild(el); track('travel_opened');
+  }
+  function setLocation(k){ state.location=k; var s=document.getElementById('travelSheet'); if(s)s.remove(); track('location_changed',{location:k}); renderContent(); }
+
+  /* ---------------- Consult & rewards ---------------- */
+  function bookConsult(id){
+    var e=DATA.experts.filter(function(x){return x.id===id;})[0]; if(!e)return;
+    var app=document.querySelector('.app'); if(!app)return;
+    var el=document.createElement('div'); el.className='sheet-bg'; el.id='bookSheet';
+    var free=e.rate===0||state.tier==='prestige';
+    el.innerHTML='<div class="sheet"><div class="grab"></div><div class="ic">'+icon('stethoscope',22)+'</div><h3>Book with '+e.name+'</h3><p>'+e.role+' · '+e.specialty+'. '+(free?'Included with your membership.':'$'+e.rate+' per visit.')+'</p><p class="fine">A licensed provider will confirm your virtual appointment. AURA does not diagnose or treat conditions.</p><button class="btn" data-confirmbook="'+e.id+'">Confirm request</button><button class="btn ghost" data-act="closeBook" style="margin-top:8px">Not now</button></div>';
+    app.appendChild(el); track('consult_book_opened',{expert:e.role});
+  }
+  function confirmBook(id){
+    var s=document.getElementById('bookSheet'); if(s)s.remove();
+    var e=DATA.experts.filter(function(x){return x.id===id;})[0];
+    if(e) state.sessions.push({expert:e.name,role:e.role,when:'Awaiting confirmation',status:'Pending'});
+    track('consult_booked',{expertId:id});
+    if(state.view==='consult') renderContent();
+    toast('Request sent — a provider will confirm shortly.');
+  }
+  function redeem(id){
+    var r=DATA.rewards.filter(function(x){return x.id===id;})[0]; if(!r)return;
+    if(state.points<r.points) return;
+    state.points-=r.points; state.redeemed.push(id);
+    track('reward_redeemed',{rewardId:id,points:r.points});
+    toast('Redeemed: '+r.title+' 🎉'); renderContent();
+  }
+  function upgradeTier(id){ state.tier=id; track('tier_changed',{tier:id}); renderContent(); toast('Membership updated to '+id+'.'); }
+  function addToCart(id){ var c=document.getElementById('content'), sp=c?c.scrollTop:0; state.cart.push(id); track('cart_add',{id:id}); renderContent(); var c2=document.getElementById('content'); if(c2)c2.scrollTop=sp; toast('Added to cart 🛒'); }
+  function removeFromCart(id){ state.cart=state.cart.filter(function(x){return x!==id;}); track('cart_remove',{id:id}); renderContent(); toast('Removed from cart'); }
+
+  function toast(msg){
+    var app=document.querySelector('.app'); if(!app)return;
+    var t=document.createElement('div'); t.textContent=msg;
+    t.style.cssText='position:absolute;bottom:96px;left:50%;transform:translateX(-50%);background:rgba(28,25,23,.95);color:#fff;font-size:13px;padding:10px 16px;border-radius:999px;z-index:80;max-width:80%;text-align:center';
+    app.appendChild(t); setTimeout(function(){t.remove();},2400);
+  }
+
+  /* ---------------- Scan ---------------- */
+  function consentSheet(){
+    var app=document.querySelector('.app'); if(!app)return;
+    var el=document.createElement('div'); el.className='sheet-bg'; el.id='consent';
+    el.innerHTML='<div class="sheet"><div class="grab"></div><div class="ic">'+icon('shield',22)+'</div><h3>Before your scan</h3><p>Vision AI captures your face from a few angles to estimate cosmetic skin attributes and personalize suggestions. It is wellness guidance, <b style="color:var(--stone-700)">not a medical diagnosis</b>.</p><p class="fine">Hold steady and follow the prompts to turn and tilt your head — multiple angles improve accuracy. Your capture is processed on-device to generate your reading; we don\'t sell your images and you can delete your data anytime.</p><button class="btn mb12" data-act="run">I understand — start scan</button><button class="btn ghost" data-act="closeConsent">Not now</button></div>';
+    app.appendChild(el); track('scan_consent_shown');
+  }
+  var activeScan=null;
+  function runScan(){
+    var c=document.getElementById('consent'); if(c)c.remove();
+    var app=document.querySelector('.app'); if(!app)return; track('scan_started');
+    // Face ID–style guided capture: multiple angles for best accuracy
+    var angles=[
+      {k:'center',label:'Center your face in the circle'},
+      {k:'right',label:'Slowly turn to the right'},
+      {k:'left',label:'Slowly turn to the left'},
+      {k:'up',label:'Tilt your chin up'},
+      {k:'down',label:'Lower your chin down'}
+    ];
+    var PER=1400, SETTLE=1200, N=48;
+    var ticks='';
+    for(var ti=0; ti<N; ti++){ var a=(ti/N)*6.2831853-1.5707963, x1=(60+46*Math.cos(a)).toFixed(1), y1=(60+46*Math.sin(a)).toFixed(1), x2=(60+54*Math.cos(a)).toFixed(1), y2=(60+54*Math.sin(a)).toFixed(1); ticks+='<line id="ft'+ti+'" x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'"/>'; }
+    var ov=document.createElement('div'); ov.className='overlay'; ov.id='overlay';
+    ov.innerHTML='<button class="overlay-x" data-act="closeScan" aria-label="Close scan">'+icon('close',20)+'</button>'+
+      '<p class="scan-eyebrow">'+icon('activity',13)+' AI Dermatology Engine</p>'+
+      '<div class="faceid"><svg class="fid-svg" viewBox="0 0 120 120" aria-hidden="true">'+ticks+'</svg><div class="faceid-core">'+icon('user',46)+'</div></div>'+
+      '<h3 id="scanStage">'+angles[0].label+'</h3>'+
+      '<div class="faceid-dots" id="fidDots">'+angles.map(function(a,i){return '<i class="'+(i===0?'cur':'')+'"></i>';}).join('')+'</div>'+
+      '<p class="sub" style="margin-top:14px">'+icon('shield',12)+' Clinical-grade • on-device • <span id="scanPct">0%</span></p>'+
+      '<button class="scan-single" data-act="scanSingle">Continue with a single angle</button>';
+    app.appendChild(ov);
+    var ring=null, stepTimer=null, safety=null, finished=false, idx=0;
+    function setProgress(p){ var k=Math.round(p/100*N); for(var i=0;i<N;i++){ var el=document.getElementById('ft'+i); if(el) el.setAttribute('class', i<k?'on':''); } var pl=document.getElementById('scanPct'); if(pl) pl.textContent=Math.round(p)+'%'; }
+    function cleanup(){ if(ring){clearInterval(ring);ring=null;} if(stepTimer){clearTimeout(stepTimer);stepTimer=null;} if(safety){clearTimeout(safety);safety=null;} var o=document.getElementById('overlay'); if(o)o.remove(); activeScan=null; }
+    // Guaranteed redirect — re-render directly (go() no-ops when already on consult, e.g. scanning from the Results tab)
+    function finish(){ if(finished)return; finished=true; cleanup(); state.scanComplete=true; state.consultTab='results'; state.bodyArea='all'; state.view='consult'; track('scan_completed',{score:DATA.analysis.score,accuracy:DATA.bodyScan.accuracy}); renderContent(); }
+    function cancel(){ if(finished)return; finished=true; cleanup(); track('scan_cancelled'); } // close X: back to the site, no redirect
+    function single(){ if(finished)return; if(stepTimer){clearTimeout(stepTimer);stepTimer=null;} if(ring){clearInterval(ring);ring=null;} track('scan_single_angle'); var st=document.getElementById('scanStage'); if(st)st.textContent='Compiling your diagnostic summary…'; setProgress(100); var dots=document.getElementById('fidDots'); if(dots){var ds=dots.querySelectorAll('i'); if(ds.forEach)ds.forEach(function(d){d.className='done';});} safety=setTimeout(finish,900); }
+    activeScan={finish:finish,cancel:cancel,single:single};
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce){ setProgress(100); safety=setTimeout(finish,700); return; }
+    var capture=angles.length*PER, elapsed=0;
+    ring=setInterval(function(){ elapsed+=80; setProgress(Math.min(100,elapsed/capture*100)); if(elapsed>=capture){ clearInterval(ring); ring=null; } },80);
+    safety=setTimeout(finish, capture+SETTLE+900); // hard safety: always redirect even if a step errors
+    (function step(){
+      var dots=document.getElementById('fidDots'), ds=dots?dots.querySelectorAll('i'):[];
+      if(idx>=angles.length){ var st=document.getElementById('scanStage'); if(st)st.textContent='Compiling your diagnostic summary…'; if(ds.forEach)ds.forEach(function(d){d.className='done';}); stepTimer=setTimeout(finish,SETTLE); return; }
+      var st2=document.getElementById('scanStage'); if(st2)st2.textContent=angles[idx].label;
+      if(ds.forEach)ds.forEach(function(d,j){ d.className=j<idx?'done':(j===idx?'cur':''); });
+      idx++; stepTimer=setTimeout(step,PER);
+    })();
+  }
+
+  /* ---------------- Chat assistant ---------------- */
+  var chat={open:false,msgs:[],awaiting:null,ticketSeq:1042};
+  function buildChatPanel(){
+    return '<div class="chat-panel" id="chatPanel"><div class="chat-head"><div class="av">'+icon('sparkles',18)+'</div><div><div class="nm">AURA Assistant</div><div class="st"><i></i> Online · replies instantly</div></div><button class="x" data-act="closeChat">'+icon('arrow',18)+'</button></div><div class="chat-body" id="chatBody"></div><div class="cchips" id="chatChips"></div><div class="chat-input"><input id="chatInput" placeholder="Ask anything…" autocomplete="off"><button data-act="sendChat" aria-label="Send">'+icon('send',18)+'</button></div><div class="chat-disc">AI assistant — can make mistakes. Not medical advice; consult a professional for health concerns.</div></div>';
+  }
+  function openChat(){
+    chat.open=true; var p=document.getElementById('chatPanel'); if(p)p.classList.add('open');
+    var fab=document.querySelector('.chat-fab'); if(fab)fab.style.display='none';
+    if(chat.msgs.length===0){ botSay("Hi, I'm your AURA Assistant 🌿 I can help with skincare, booking a consult, your rewards, Travel Mode, or your membership. What do you need?"); setChips(["Skincare question","Book a consult","My rewards","Membership"]); } else { renderChat(); }
+    track('chat_opened');
+  }
+  function closeChat(){ chat.open=false; var p=document.getElementById('chatPanel'); if(p)p.classList.remove('open'); var fab=document.querySelector('.chat-fab'); if(fab)fab.style.display='flex'; }
+  function renderChat(){ var b=document.getElementById('chatBody'); if(!b)return; b.innerHTML=chat.msgs.map(function(m){return '<div class="msg '+m.role+'">'+escapeHtml(m.text)+'</div>';}).join(''); b.scrollTop=b.scrollHeight; }
+  function setChips(arr){ var c=document.getElementById('chatChips'); if(!c)return; c.innerHTML=(arr||[]).map(function(t){return '<button class="cchip" data-cchip="'+escapeHtml(t)+'">'+escapeHtml(t)+'</button>';}).join(''); }
+  function botSay(t){ chat.msgs.push({role:'bot',text:t}); renderChat(); }
+  function userSay(t){ chat.msgs.push({role:'user',text:t}); renderChat(); }
+  function sysSay(t){ chat.msgs.push({role:'sys',text:t}); renderChat(); }
+  function showTyping(){ var b=document.getElementById('chatBody'); if(!b)return; var t=document.createElement('div'); t.className='typing'; t.id='typing'; t.innerHTML='<i></i><i></i><i></i>'; b.appendChild(t); b.scrollTop=b.scrollHeight; }
+  function hideTyping(){ var t=document.getElementById('typing'); if(t)t.remove(); }
+  function sendChat(text){
+    text=(text||'').trim(); if(!text)return; userSay(text); var inp=document.getElementById('chatInput'); if(inp)inp.value=''; setChips([]); showTyping(); track('chat_message_sent');
+    // PROD: replace with fetch('/api/assistant', {credentials:'same-origin', body:{message,history}}) → backend proxies Claude/OpenAI with key SERVER-SIDE
+    setTimeout(function(){ hideTyping(); agentRespond(text); }, 600+Math.random()*400);
+  }
+  function agentRespond(text){
+    var t=text.toLowerCase();
+    if(chat.awaiting==='ticket_desc'){ chat.awaiting=null; var id='AURA-'+(chat.ticketSeq++); sysSay('🎫 Ticket '+id+' created'); botSay("Thanks — I've logged that for our team.\nTicket "+id+" · Status: Open\nWe'll email an update within 24 hours. Anything else?"); setChips(["Book a consult","My rewards","No, thanks"]); track('support_ticket_created',{ticketId:id}); return; }
+    if(/^(hi|hey|hello|yo|good (morning|afternoon|evening))/.test(t)){ botSay("Hi there! 🌿 How can I help — skincare, a consult, rewards, Travel Mode, or membership?"); setChips(["Skincare question","Book a consult","My rewards","Membership"]); return; }
+    if(/(diagnos|disease|rash|eczema|melanoma|infect|rosacea|prescri|medical condition)/.test(t)){ botSay("I want to be careful here — AURA gives cosmetic wellness guidance, not medical advice, so I can't diagnose or treat conditions. The best path is a telehealth consult with our dermatologist. Want me to open booking?"); setChips(["Book a consult","No, thanks"]); return; }
+    if(/(consult|derm|doctor|dietitian|expert|appointment|book|telehealth)/.test(t)){ botSay("Of course. We have Dr. Alisha S. (Dermatologist), Sarah Jenkins (Holistic Dietitian), and 24/7 AI triage. Prestige members get complimentary visits. Open the Consult page to book?"); setChips(["Go to Consult","Membership","No, thanks"]); return; }
+    if(/(point|reward|redeem|moment|experience|loyal)/.test(t)){ botSay("You have "+state.points.toLocaleString()+" points 🌟 redeemable for curated experiences like a spa day or a Michelin dinner. Want to see what you can redeem?"); setChips(["Go to Moments","Membership","No, thanks"]); return; }
+    if(/(travel|trip|location|aspen|tulum|london|climate|uv)/.test(t)){ botSay("Travel Mode adapts your routine to your destination's climate — UV, dryness, pollution, and more. You're currently set to "+DATA.locations[state.location].name+". Want to change location?"); setChips(["Change location","No, thanks"]); return; }
+    if(/(price|cost|plan|member|subscri|upgrade|tier|prestige|elevate|discovery)/.test(t)){ botSay("AURA has three tiers: Discovery ($49), Elevate ($129), and Prestige ($299). Prestige adds concierge access, free telehealth, and early access. Manage it on your account page — want to go there?"); setChips(["Go to membership","No, thanks"]); return; }
+    if(/(skin|product|routine|dry|oily|acne|spf|serum|recommend|hydrat|shop|buy)/.test(t)){ botSay("Happy to help! Start with a Vision scan so I can match products to your skin, or browse The Edit. Your top focus is hydration right now. Scan or shop?"); setChips(["Start my scan","Go to shop","Go to Consult"]); return; }
+    if(/(problem|issue|bug|broken|refund|cancel|complain|wrong|charge|help)/.test(t)){ botSay("Sorry about that. Tell me what's happening in a sentence and I'll open a support ticket."); chat.awaiting='ticket_desc'; return; }
+    if(/(thank|thanks|thx|ty)/.test(t)){ botSay("Anytime! 🌿"); setChips(["Book a consult","My rewards"]); return; }
+    if(/(no|nope|nothing|bye|that.?s all)/.test(t)){ botSay("I'll be right here if anything comes up. Take care! 🌿"); setChips([]); return; }
+    botSay("I can help with skincare & products, booking a telehealth consult, your rewards & points, Travel Mode, or your membership. Which is closest?"); setChips(["Skincare question","Book a consult","My rewards","Membership"]);
+  }
+  function handleChip(label){
+    var l=label.toLowerCase();
+    if(l==='go to consult'||l==='book a consult'){ closeChat(); go('consult'); return; }
+    if(l==='go to moments'||l==='my rewards'){ closeChat(); go('moments'); return; }
+    if(l==='go to shop'){ closeChat(); go('shop'); return; }
+    if(l==='go to membership'||l==='membership'){ closeChat(); go('account'); return; }
+    if(l==='change location'){ closeChat(); travelSheet(); return; }
+    if(l==='start my scan'){ closeChat(); consentSheet(); return; }
+    sendChat(label);
+  }
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  /* ---------------- Toolbar + events ---------------- */
+  function buildToolbar(){ document.getElementById('deviceSeg').innerHTML=Object.keys(DEVICES).map(function(k){return '<button data-device="'+k+'" class="'+(k===currentDevice?'on':'')+'">'+DEVICES[k].label+'</button>';}).join(''); }
+  function selectDevice(k){ currentDevice=k; if(DEVICES[k].form!=='tablet') landscape=false; document.getElementById('rotateBtn').disabled=DEVICES[k].form!=='tablet'; buildToolbar(); buildDevice(); track('device_changed',{device:k}); }
+
+  document.addEventListener('click', function(e){
+    var t=e.target.closest('[data-device],[data-nav],[data-act],[data-save],[data-cart],[data-uncart],[data-cchip],[data-fchip],[data-loc],[data-book],[data-confirmbook],[data-redeem],[data-tier],[data-acctab],[data-consulttab],[data-bodyarea],[data-areaexp],[data-toggle],[data-step],[data-rstep],#rotateBtn');
+    if(!t) return;
+    if(t.id==='rotateBtn'){ landscape=!landscape; buildDevice(); return; }
+    if(t.dataset.device){ selectDevice(t.dataset.device); return; }
+    if(t.hasAttribute('data-toggle')){ t.classList.toggle('on'); return; }
+    if(t.hasAttribute('data-step')){ var k=t.dataset.step, ix=state.doneSteps.indexOf(k), st=t.closest('.rh-step'); if(ix>-1){ state.doneSteps.splice(ix,1); t.classList.remove('on'); t.innerHTML=''; if(st)st.classList.remove('done'); } else { state.doneSteps.push(k); t.classList.add('on'); t.innerHTML=icon('check',15); if(st)st.classList.add('done'); } track('ritual_step_toggled',{step:k}); return; }
+    if(t.hasAttribute('data-rstep')){ var rk=t.dataset.rstep, ex=state.expandedSteps.indexOf(rk), it=t.closest('.rh-item'); if(ex>-1){ state.expandedSteps.splice(ex,1); if(it)it.classList.remove('open'); t.setAttribute('aria-expanded','false'); } else { state.expandedSteps.push(rk); if(it)it.classList.add('open'); t.setAttribute('aria-expanded','true'); } track('ritual_step_expanded',{step:rk}); return; }
+    if(t.dataset.acctab){ state.accountTab=t.dataset.acctab; renderContent(); return; }
+    if(t.dataset.consulttab){ state.consultTab=t.dataset.consulttab; renderContent(); return; }
+    if(t.hasAttribute('data-areaexp')){ var ak=t.dataset.areaexp, aix=state.expandedAreas.indexOf(ak), ac=t.closest('.acc'); if(aix>-1){ state.expandedAreas.splice(aix,1); if(ac)ac.classList.remove('open'); t.setAttribute('aria-expanded','false'); } else { state.expandedAreas.push(ak); if(ac)ac.classList.add('open'); t.setAttribute('aria-expanded','true'); } track('result_area_toggled',{area:ak}); return; }
+    if(t.dataset.bodyarea){ var bav=t.dataset.bodyarea; state.bodyArea=bav; if(bav!=='all'&&state.expandedAreas.indexOf(bav)<0) state.expandedAreas.push(bav); track('body_area_selected',{area:bav}); renderContent(); return; }
+    if(t.dataset.nav){ if(t.dataset.tab) state.accountTab=t.dataset.tab; if(t.dataset.ctab) state.consultTab=t.dataset.ctab; go(t.dataset.nav); return; }
+    if(t.dataset.cchip){ handleChip(t.dataset.cchip); return; }
+    if(t.dataset.fchip){ shopFilter=t.dataset.fchip; renderContent(); return; }
+    if(t.dataset.loc){ setLocation(t.dataset.loc); return; }
+    if(t.dataset.book){ bookConsult(parseInt(t.dataset.book,10)); return; }
+    if(t.dataset.confirmbook){ confirmBook(parseInt(t.dataset.confirmbook,10)); return; }
+    if(t.dataset.redeem){ redeem(parseInt(t.dataset.redeem,10)); return; }
+    if(t.dataset.tier){ upgradeTier(t.dataset.tier); return; }
+    if(t.dataset.save){ var id=parseInt(t.dataset.save,10); var i=state.saved.indexOf(id); if(i>-1){state.saved.splice(i,1);track('product_unsaved',{id:id});}else{state.saved.push(id);track('product_saved',{id:id});} renderContent(); return; }
+    if(t.dataset.cart){ addToCart(parseInt(t.dataset.cart,10)); return; }
+    if(t.dataset.uncart){ removeFromCart(parseInt(t.dataset.uncart,10)); return; }
+    var act=t.dataset.act;
+    if(act==='scan') consentSheet();
+    else if(act==='run') runScan();
+    else if(act==='closeScan'){ if(activeScan) activeScan.cancel(); }
+    else if(act==='scanSingle'){ if(activeScan) activeScan.single(); }
+    else if(act==='closeConsent'){ var c=document.getElementById('consent'); if(c)c.remove(); }
+    else if(act==='travel') travelSheet();
+    else if(act==='closeTravel'){ var s=document.getElementById('travelSheet'); if(s)s.remove(); }
+    else if(act==='closeBook'){ var b=document.getElementById('bookSheet'); if(b)b.remove(); }
+    else if(act==='openChat') openChat();
+    else if(act==='closeChat') closeChat();
+    else if(act==='sendChat'){ var inp=document.getElementById('chatInput'); if(inp) sendChat(inp.value); }
+    else if(act==='signIn'){ state.loggedIn=true; track('logged_in'); renderContent(); }
+    else if(act==='signOut'){ state.loggedIn=false; track('logged_out'); renderContent(); }
+    else if(act==='continueGuest'){ track('continue_guest'); go('home'); }
+    else if(act==='addCard') toast('Payment management is available in the live app.');
+    else if(act==='checkout') toast('Checkout is a demo — no payment is taken.');
+    else if(act==='joinSession') toast('Your secure video room opens at the scheduled time.');
+    else if(act==='saveResults'){ DATA.bodyScan.areas.forEach(function(a){(a.products||[]).forEach(function(id){ if(state.saved.indexOf(id)<0) state.saved.push(id); });}); state.resultsSaved=true; track('results_saved'); renderContent(); toast('Results & product suggestions saved.'); }
+    else if(act==='momReset'){ state.momFilter={continent:'all',country:'all',state:'all',type:'all',month:'all',year:'all'}; track('moments_filter_cleared'); renderContent(); }
+    else if(act==='momSortReset'){ state.momSort={key:'none',dir:'asc'}; track('moments_sort_cleared'); renderContent(); }
+    else if(act==='momPanelFilter'){ state.momPanel=state.momPanel==='filter'?'none':'filter'; renderContent(); }
+    else if(act==='momPanelSort'){ state.momPanel=state.momPanel==='sort'?'none':'sort'; renderContent(); }
+    else if(act==='momPanelClose'){ state.momPanel='none'; renderContent(); }
+    else if(act==='carPrev'||act==='carNext'){ var tr=document.getElementById(t.dataset.track); if(tr){ var fc=tr.firstElementChild, step=fc?Math.round(fc.getBoundingClientRect().width+12):Math.round(tr.clientWidth*0.85); tr.scrollBy({left:(act==='carNext'?1:-1)*step,behavior:'smooth'}); } }
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Enter' && e.target && e.target.id==='chatInput'){ sendChat(e.target.value); } });
+  document.addEventListener('change', function(e){
+    var fe=e.target.closest('[data-momfilter]');
+    if(fe){ var k=fe.getAttribute('data-momfilter'); state.momFilter[k]=fe.value; if(k==='continent'){ state.momFilter.country='all'; state.momFilter.state='all'; } else if(k==='country'){ state.momFilter.state='all'; } track('moments_filtered',{key:k,value:fe.value}); renderContent(); return; }
+    var se=e.target.closest('[data-momsort]');
+    if(se){ var sk=se.getAttribute('data-momsort'); state.momSort[sk]=se.value; track('moments_sorted',{key:sk,value:se.value}); renderContent(); return; }
+  });
+
+  buildToolbar(); selectDevice('ios-phone'); track('app_loaded',{view:state.view});
+})();
+</script>
 </body>
 </html>
