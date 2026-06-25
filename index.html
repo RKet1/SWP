@@ -1014,8 +1014,12 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
   }
   function vMoments(){
     if(!state.loggedIn) return lockedView('Moments','Sign in to redeem your loyalty points for curated experiences.');
-    var featList=DATA.rewards.filter(function(r){return r.featured;});
-    var rest=DATA.rewards.filter(function(r){return !r.featured;});
+    var all=DATA.rewards, f=state.momFilter, sk=state.momSort.key, dir=state.momSort.dir==='desc'?-1:1;
+    function momMatch(r){ return (f.continent==='all'||r.continent===f.continent)&&(f.country==='all'||r.country===f.country)&&(f.state==='all'||r.state===f.state)&&(f.type==='all'||r.type===f.type)&&(f.month==='all'||r.month===f.month)&&(f.year==='all'||String(r.year)===String(f.year)); }
+    function momSortFn(list){ if(sk==='none')return list; return list.slice().sort(function(a,b){ var av,bv; if(sk==='year'){av=a.year;bv=b.year;} else if(sk==='cost'){av=a.points;bv=b.points;} else {av=a.title.toLowerCase();bv=b.title.toLowerCase();} return av<bv?-1*dir:(av>bv?1*dir:0); }); }
+    var featList=all.filter(function(r){return r.featured;});        // featured stays curated — NOT filtered/sorted
+    var rest=all.filter(function(r){return !r.featured;});
+    var results=momSortFn(rest.filter(momMatch));                     // only the experiences grid is filtered + sorted
     var featuredHtml='';
     if(featList.length){
       var slides=featList.map(function(feat){
@@ -1026,7 +1030,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       featuredHtml='<section><div class="carousel reveal"><div class="car-head"><div class="car-title"><div class="car-ic">'+icon('crown',18)+'</div><div><h3>Featured moments</h3><p>Curated retreats &amp; experiences</p></div></div><div class="car-arrows"><button class="carrow" data-act="carPrev" data-track="featTrack" aria-label="Previous"><span style="display:flex;transform:rotate(180deg)">'+icon('arrow',15)+'</span></button><button class="carrow" data-act="carNext" data-track="featTrack" aria-label="Next">'+icon('arrow',15)+'</button></div></div><div class="car-track" id="featTrack">'+slides+'</div></div></section>';
     }
     // ---- Filter + sort state ----
-    var f=state.momFilter, panel=state.momPanel, MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var panel=state.momPanel, MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     function uniq(list,field){var seen={},out=[];list.forEach(function(r){var v=r[field];if(v!==undefined&&v!==''&&!seen[v]){seen[v]=1;out.push(v);}});return out;}
     var byCont=f.continent==='all'?rest:rest.filter(function(r){return r.continent===f.continent;});
     var byCountry=f.country==='all'?byCont:byCont.filter(function(r){return r.country===f.country;});
@@ -1037,26 +1041,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       return '<select class="momsel" data-momsort="'+key+'" aria-label="'+label+'">'+opts.map(function(o){return '<option value="'+o[0]+'"'+(String(cur)===String(o[0])?' selected':'')+'>'+o[1]+'</option>';}).join('')+'</select>';
     }
     var fcount=['continent','country','state','type','month','year'].filter(function(k){return f[k]!=='all';}).length;
-    // ---- Apply filters ----
-    var results=rest.filter(function(r){
-      return (f.continent==='all'||r.continent===f.continent)
-        &&(f.country==='all'||r.country===f.country)
-        &&(f.state==='all'||r.state===f.state)
-        &&(f.type==='all'||r.type===f.type)
-        &&(f.month==='all'||r.month===f.month)
-        &&(f.year==='all'||String(r.year)===String(f.year));
-    });
-    // ---- Apply sort ----
-    var sk=state.momSort.key, dir=state.momSort.dir==='desc'?-1:1;
-    if(sk!=='none'){
-      results=results.slice().sort(function(a,b){
-        var av,bv;
-        if(sk==='year'){av=a.year;bv=b.year;}
-        else if(sk==='cost'){av=a.points;bv=b.points;}
-        else {av=a.title.toLowerCase();bv=b.title.toLowerCase();}
-        return av<bv?-1*dir:(av>bv?1*dir:0);
-      });
-    }
+    // (results computed up top; featured is intentionally excluded from filter/sort)
     // ---- Collapsible Filter / Sort panels (above the hero) ----
     var filterPanel='<section class="momfilters reveal"><div class="mf-head"><span class="mf-title">'+icon('filter',15)+' Filter moments</span><button class="mf-x" data-act="momPanelClose" aria-label="Close">'+icon('close',18)+'</button></div><div class="mf-grid">'+
       sel('continent','All continents',uniq(rest,'continent').sort(),f.continent)+
@@ -1073,10 +1058,11 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     var panelHtml=panel==='filter'?filterPanel:(panel==='sort'?sortPanel:'');
     // ---- Toolbar CTAs (above hero, right) ----
     var sortLabels={none:'Sort',year:'Year',cost:'Cost',alpha:'A–Z'};
-    var toolbar='<section class="momtools">'+
+    var toolbar='<div class="momtools" style="margin:0">'+
       '<button class="mt-cta'+(panel==='filter'?' on':'')+'" data-act="momPanelFilter">'+icon('filter',15)+' Filter'+(fcount?' <span class="mt-badge">'+fcount+'</span>':'')+'</button>'+
       '<button class="mt-cta'+(panel==='sort'?' on':'')+'" data-act="momPanelSort">'+icon('sort',15)+' '+(sk==='none'?'Sort':'Sort · '+sortLabels[sk])+'</button>'+
-      '</section>';
+      '<span class="pill ink" style="margin-left:2px">'+results.length+' result'+(results.length===1?'':'s')+'</span>'+
+      '</div>';
     // ---- Grid ----
     var grid=results.length?results.map(function(r){
       var s=redeemState(r);
@@ -1085,10 +1071,9 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     }).join('')
       :'<div class="lockcard reveal"><div class="lockic">'+icon('pin',26)+'</div><p class="lockmsg">No moments match these filters. Try widening your search.</p><button class="btn ghost" data-act="momReset">Clear filters</button></div>';
     return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Member rewards</p><h1 class="h1" style="margin-bottom:4px">AURA Moments</h1><p style="font-size:13px;color:var(--stone-500);margin-bottom:14px">Exclusive experiences you can\'t buy anywhere else.</p></section>'+
-      toolbar+
-      panelHtml+
       featuredHtml+
-      '<section class="flexb mb12"><h3 class="h3">Experiences</h3><span class="pill ink">'+results.length+' result'+(results.length===1?'':'s')+'</span></section>'+
+      '<section class="flexb mb12" style="flex-wrap:wrap;gap:10px"><h3 class="h3">Experiences</h3>'+toolbar+'</section>'+
+      panelHtml+
       '<section class="cardgrid mb16">'+grid+'</section>'+
       '<section class="mb16"><div class="mbalance reveal"><div class="mb-num">'+state.points.toLocaleString()+'</div><div class="mb-lab">Available points</div><button class="redeembtn" data-nav="account" data-tab="loyalty" style="padding:10px 18px">View rewards balance</button></div></section>'+
       '<section><div class="disclaimer">'+icon('info',14)+'<span>Experiences are illustrative. Redemptions in the live app are subject to availability and member terms.</span></div></section></div>';
