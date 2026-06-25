@@ -778,7 +778,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
       '<button class="tile" data-nav="account" data-tab="loyalty"><div class="ic">'+icon('star',20)+'</div><p class="t">Achievements</p><p class="s">View milestones</p></button>'+
       '<button class="tile" data-nav="saved"><div class="ic">'+icon('bookmark',20)+'</div><p class="t">Saved</p><p class="s">'+state.saved.length+' item'+(state.saved.length===1?'':'s')+'</p></button>'+
       '<button class="tile" data-nav="consult"><div class="ic">'+icon('stethoscope',20)+'</div><p class="t">Consult</p><p class="s">Derm · dietitian</p></button>'+
-      '<button class="tile" data-nav="shop"><div class="ic">'+icon('shop',20)+'</div><p class="t">The Edit</p><p class="s">Curated picks</p></button>';
+      '<button class="tile" data-nav="shop"><div class="ic">'+icon('shop',20)+'</div><p class="t">The Shop</p><p class="s">Curated picks</p></button>';
     var banner=state.loggedIn
       ? '<div class="journeybanner" data-nav="account" data-tab="loyalty"><div class="jb-l"><div class="jb-ic">'+icon('flame',18)+'</div><div><p class="jb-day">Day '+DATA.journey.currentDay+' · '+DATA.journey.streak+'-day streak</p><p class="jb-sub">See your transformation</p></div></div>'+icon('arrow',18)+'</div>'
       : '<div class="journeybanner" data-nav="account"><div class="jb-l"><div class="jb-ic">'+icon('lock',18)+'</div><div><p class="jb-day">Sign in to track your progress</p><p class="jb-sub">Loyalty points, rewards &amp; your journey</p></div></div>'+icon('arrow',18)+'</div>';
@@ -817,7 +817,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
     var loc=DATA.locations[state.location];
     var chips=cats.map(function(c){return '<button class="fchip'+(shopFilter===c?' on':'')+'" data-fchip="'+c+'">'+c+'</button>';}).join('');
     var list=DATA.products.filter(function(p){return shopFilter==='ALL'||p.category===shopFilter;}).map(productCard).join('');
-    return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Curated for '+loc.name+'</p><h1 class="h1">The Edit</h1></section>'+
+    return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Curated for '+loc.name+'</p><h1 class="h1">The Shop</h1></section>'+
       '<section><div class="chips">'+chips+'</div></section>'+
       '<section class="mb12">'+DISC+'</section>'+
       '<section class="cardgrid">'+list+'</section></div>';
@@ -828,7 +828,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
     var items=DATA.products.filter(function(p){return state.saved.indexOf(p.id)>-1;});
     var body=items.length
       ? '<section class="cardgrid">'+items.map(productCard).join('')+'</section>'
-      : '<section class="lockcard reveal"><div class="lockic">'+icon('bookmark',26)+'</div><p class="lockmsg">You haven\'t saved anything yet. Tap Save on products in The Edit to keep them here.</p><button class="btn" data-nav="shop">'+icon('shop',16)+' Browse The Edit</button></section>';
+      : '<section class="lockcard reveal"><div class="lockic">'+icon('bookmark',26)+'</div><p class="lockmsg">You haven\'t saved anything yet. Tap Save on products in The Shop to keep them here.</p><button class="btn" data-nav="shop">'+icon('shop',16)+' Browse The Shop</button></section>';
     return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Your wishlist</p><div class="flexb"><h1 class="h1" style="margin-bottom:0">Saved</h1><span class="pill sage">'+items.length+' item'+(items.length===1?'':'s')+'</span></div></section><section style="margin-top:16px">'+body+'</section></div>';
   }
 
@@ -989,7 +989,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
   }
   function vCart(){
     if(!state.cart.length) return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Your bag</p><h1 class="h1">Cart</h1></section>'+
-      '<section class="lockcard reveal" style="margin-top:8px"><div class="lockic">'+icon('cart',26)+'</div><p class="lockmsg">Your cart is empty. Discover our curated collection in The Edit, or save pieces to revisit later.</p><button class="btn mb12" data-nav="shop">'+icon('shop',16)+' Shop The Edit</button><button class="btn ghost" data-nav="saved">'+icon('bookmark',16)+' View saved items</button></section>'+
+      '<section class="lockcard reveal" style="margin-top:8px"><div class="lockic">'+icon('cart',26)+'</div><p class="lockmsg">Your cart is empty. Discover our curated collection in The Shop, or save pieces to revisit later.</p><button class="btn mb12" data-nav="shop">'+icon('shop',16)+' Shop The Shop</button><button class="btn ghost" data-nav="saved">'+icon('bookmark',16)+' View saved items</button></section>'+
       '<section style="margin-top:8px"><div class="disclaimer">'+icon('info',14)+'<span>This is a demo cart. No payment is processed in the prototype.</span></div></section></div>';
     var counts={}; state.cart.forEach(function(id){counts[id]=(counts[id]||0)+1;});
     var total=0;
@@ -1269,7 +1269,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
     if(/(point|reward|redeem|moment|experience|loyal)/.test(t)){ botSay("You have "+state.points.toLocaleString()+" points 🌟 redeemable for curated experiences like a spa day or a Michelin dinner. Want to see what you can redeem?"); setChips(["Go to Moments","Membership","No, thanks"]); return; }
     if(/(travel|trip|location|aspen|tulum|london|climate|uv)/.test(t)){ botSay("Travel Mode adapts your routine to your destination's climate — UV, dryness, pollution, and more. You're currently set to "+DATA.locations[state.location].name+". Want to change location?"); setChips(["Change location","No, thanks"]); return; }
     if(/(price|cost|plan|member|subscri|upgrade|tier|prestige|elevate|discovery)/.test(t)){ botSay("AURA has three tiers: Discovery ($49), Elevate ($129), and Prestige ($299). Prestige adds concierge access, free telehealth, and early access. Manage it on your account page — want to go there?"); setChips(["Go to membership","No, thanks"]); return; }
-    if(/(skin|product|routine|dry|oily|acne|spf|serum|recommend|hydrat|shop|buy)/.test(t)){ botSay("Happy to help! Start with a Vision scan so I can match products to your skin, or browse The Edit. Your top focus is hydration right now. Scan or shop?"); setChips(["Start my scan","Go to shop","Go to Consult"]); return; }
+    if(/(skin|product|routine|dry|oily|acne|spf|serum|recommend|hydrat|shop|buy)/.test(t)){ botSay("Happy to help! Start with a Vision scan so I can match products to your skin, or browse The Shop. Your top focus is hydration right now. Scan or shop?"); setChips(["Start my scan","Go to shop","Go to Consult"]); return; }
     if(/(problem|issue|bug|broken|refund|cancel|complain|wrong|charge|help)/.test(t)){ botSay("Sorry about that. Tell me what's happening in a sentence and I'll open a support ticket."); chat.awaiting='ticket_desc'; return; }
     if(/(thank|thanks|thx|ty)/.test(t)){ botSay("Anytime! 🌿"); setChips(["Book a consult","My rewards"]); return; }
     if(/(no|nope|nothing|bye|that.?s all)/.test(t)){ botSay("I'll be right here if anything comes up. Take care! 🌿"); setChips([]); return; }
