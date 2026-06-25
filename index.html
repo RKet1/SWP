@@ -495,18 +495,21 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .rh-customlink{background:none;border:none;color:var(--gold);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans);padding:0;white-space:nowrap}
 .rh-customlink:hover{opacity:.85}
 .rh-editactions{display:flex;gap:14px}
-.rh-edit-step{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:8px 12px;margin-bottom:8px}
+.rh-edit-step{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:8px 12px;margin-bottom:8px;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .rh-reorder{display:flex;flex-direction:column;gap:3px;flex-shrink:0}
 .rh-reorder button{background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.8);width:24px;height:15px;border-radius:5px;cursor:pointer;font-size:8px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0}
 .rh-reorder button:hover{background:rgba(255,255,255,.22);color:#fff}
 .rh-reorder button:disabled{opacity:.25;cursor:default}
-.rh-edit-step .rh-name{flex:1;color:#fff;font-size:14px;min-width:0}
+.rh-edit-step .rh-name{flex:1;color:#fff;font-size:14px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rh-edit-step .rh-time{color:rgba(255,255,255,.55);font-size:11px;white-space:nowrap}
+.rh-grip{display:flex;align-items:center;justify-content:center;width:20px;flex-shrink:0;color:rgba(255,255,255,.45);cursor:grab;touch-action:none}
+.rh-grip:active{cursor:grabbing;color:#fff}
+.rh-edit-step.dragging{opacity:.96;background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.32);box-shadow:0 10px 26px rgba(0,0,0,.4);position:relative;z-index:5;cursor:grabbing}
 .rh-del{background:rgba(255,255,255,.08);border:none;color:rgba(255,255,255,.7);width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .rh-del:hover{background:#c0593b;color:#fff}
 .rh-add{margin-top:14px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px}
 .rh-add-head{color:rgba(255,255,255,.85);font-size:13px;font-weight:600;margin-bottom:10px}
-.rh-filters{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:8px;scrollbar-width:none}
+.rh-filters{display:flex;flex-wrap:nowrap;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:8px;scrollbar-width:none;-webkit-overflow-scrolling:touch;touch-action:pan-x}
 .rh-filters::-webkit-scrollbar{display:none}
 .rfchip{flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.75);font-size:11px;font-weight:500;padding:5px 11px;border-radius:999px;cursor:pointer;font-family:var(--sans);white-space:nowrap}
 .rfchip.on{background:var(--gold);border-color:var(--gold);color:#1c1917}
@@ -844,7 +847,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     if(state.editRituals){
       var n=ritual.length;
       var editSteps=ritual.map(function(r,i){
-        return '<div class="rh-edit-step"><div class="rh-reorder"><button data-rmove="'+i+':up"'+(i===0?' disabled':'')+' aria-label="Move up">&#9650;</button><button data-rmove="'+i+':down"'+(i===n-1?' disabled':'')+' aria-label="Move down">&#9660;</button></div><div class="rh-num">'+(i+1)+'</div><span class="rh-name">'+r.name+'</span><span class="rh-time">'+r.time+'</span><button class="rh-del" data-rdel="'+i+'" aria-label="Remove '+r.name+'">'+icon('close',15)+'</button></div>';
+        return '<div class="rh-edit-step" data-ridx="'+i+'"><span class="rh-grip" data-rgrip aria-label="Drag to reorder"><svg width="14" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="5" r="1.6"/><circle cx="9" cy="12" r="1.6"/><circle cx="9" cy="19" r="1.6"/><circle cx="15" cy="5" r="1.6"/><circle cx="15" cy="12" r="1.6"/><circle cx="15" cy="19" r="1.6"/></svg></span><div class="rh-reorder"><button data-rmove="'+i+':up"'+(i===0?' disabled':'')+' aria-label="Move up">&#9650;</button><button data-rmove="'+i+':down"'+(i===n-1?' disabled':'')+' aria-label="Move down">&#9660;</button></div><div class="rh-num">'+(i+1)+'</div><span class="rh-name">'+r.name+'</span><span class="rh-time">'+r.time+'</span><button class="rh-del" data-rdel="'+i+'" aria-label="Remove '+r.name+'">'+icon('close',15)+'</button></div>';
       }).join('');
       var have={}; ritual.forEach(function(r){have[r.name]=1;});
       var draftTypes={}; ritual.forEach(function(r){draftTypes[inferType(r)]=1;});
@@ -854,7 +857,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       var chips='<button class="rfchip'+(f==='similar'?' on':'')+'" data-rfilter="similar">Similar</button><button class="rfchip'+(f==='all'?' on':'')+'" data-rfilter="all">All</button>'+rtypes.map(function(tp){return '<button class="rfchip'+(f===tp?' on':'')+'" data-rfilter="'+tp+'">'+tp+'</button>';}).join('');
       var libHtml=lib.length?lib.map(function(it){var gi=RITUAL_LIBRARY.indexOf(it);return '<button class="rh-libitem" data-radd="'+gi+'"><span class="ln">'+it.name+'</span><span class="rh-libtype">'+it.type+'</span><span class="rh-libadd">+</span></button>';}).join(''):'<p class="rh-empty">No matching rituals. Try “All” or another type.</p>';
       var addPanel='<div class="rh-add"><div class="rh-add-head">Add a step</div><div class="rh-filters">'+chips+'</div><div class="rh-lib">'+libHtml+'</div></div>';
-      ritualHero='<div class="ritualhero reveal"><div class="blob"></div><div class="rh-head"><div><div class="rh-title">'+loc.label+' ritual</div><div class="rh-sub">Customize · '+n+' step'+(n===1?'':'s')+'</div></div><div class="rh-editactions"><button class="rh-customlink" data-act="cancelRituals" style="color:rgba(255,255,255,.6)">Cancel</button><button class="rh-customlink" data-act="saveRituals">Save</button></div></div>'+(editSteps||'<p class="rh-empty">No steps yet — add one below.</p>')+addPanel+'</div>';
+      ritualHero='<div class="ritualhero reveal"><div class="blob"></div><div class="rh-head"><div><div class="rh-title">'+loc.label+' ritual</div><div class="rh-sub">Hold &amp; drag or ▲▼ to reorder · '+n+' step'+(n===1?'':'s')+'</div></div><div class="rh-editactions"><button class="rh-customlink" data-act="cancelRituals" style="color:rgba(255,255,255,.6)">Cancel</button><button class="rh-customlink" data-act="saveRituals">Save</button></div></div>'+(editSteps?'<div class="rh-editlist">'+editSteps+'</div>':'<p class="rh-empty">No steps yet — add one below.</p>')+addPanel+'</div>';
     } else {
       var steps=ritual.map(function(r,i){
         var key=state.location+'-'+i, done=state.doneSteps.indexOf(key)>-1, open=state.expandedSteps.indexOf(key)>-1;
@@ -1469,6 +1472,61 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     var se=e.target.closest('[data-momsort]');
     if(se){ var sk=se.getAttribute('data-momsort'); state.momSort[sk]=se.value; track('moments_sorted',{key:sk,value:se.value}); renderContent(); return; }
   });
+
+  /* Drag-to-reorder. TOUCH: long-press (~280ms) to pick up a step — a normal swipe still scrolls the list.
+     MOUSE: click-drag with a small threshold. The ▲▼/× buttons keep working as taps. */
+  var rhDrag=null;
+  function rhCleanup(){
+    if(!rhDrag) return;
+    if(rhDrag.timer){ clearTimeout(rhDrag.timer); rhDrag.timer=null; }
+    var el=rhDrag.el;
+    try{ el.releasePointerCapture(rhDrag.pointerId); }catch(_){}
+    el.removeEventListener('pointermove',rhMove); el.removeEventListener('pointerup',rhUp); el.removeEventListener('pointercancel',rhCancel);
+    rhDrag.row.classList.remove('dragging');
+  }
+  function rhReorder(y){
+    var rows=Array.prototype.slice.call(rhDrag.list.querySelectorAll('.rh-edit-step')), after=null;
+    for(var i=0;i<rows.length;i++){ if(rows[i]===rhDrag.row) continue; var rect=rows[i].getBoundingClientRect(); if(y<rect.top+rect.height/2){ after=rows[i]; break; } }
+    if(after){ if(after!==rhDrag.row.nextSibling) rhDrag.list.insertBefore(rhDrag.row, after); }
+    else if(rhDrag.list.lastElementChild!==rhDrag.row){ rhDrag.list.appendChild(rhDrag.row); }
+  }
+  function rhMove(e){
+    if(!rhDrag) return;
+    var dx=Math.abs(e.clientX-rhDrag.startX), dy=Math.abs(e.clientY-rhDrag.startY);
+    if(!rhDrag.active){
+      if(rhDrag.armed){ if(dx<5&&dy<5) return; rhDrag.active=true; rhDrag.row.classList.add('dragging'); }
+      else { if(dx>8||dy>8){ rhCleanup(); rhDrag=null; } return; } // moved before long-press → let it scroll
+    }
+    e.preventDefault();
+    rhReorder(e.clientY);
+  }
+  function rhUp(){
+    if(!rhDrag) return; var active=rhDrag.active, list=rhDrag.list;
+    rhCleanup();
+    if(active && state.ritualDraft){ var order=Array.prototype.slice.call(list.querySelectorAll('.rh-edit-step')).map(function(r){return parseInt(r.getAttribute('data-ridx'),10);}); var src=state.ritualDraft; state.ritualDraft=order.map(function(ix){return src[ix];}); rhDrag=null; track('ritual_step_dragged'); renderContent(); return; }
+    rhDrag=null;
+  }
+  function rhCancel(){ rhCleanup(); rhDrag=null; }
+  document.addEventListener('pointerdown', function(e){
+    if(!state.editRituals) return;
+    if(e.target.closest('[data-rmove],[data-rdel]')) return;     // ▲▼ / × handle their own taps
+    if(e.pointerType==='mouse' && e.button!==0) return;
+    var row=e.target.closest('.rh-edit-step'), list=row&&row.parentElement;
+    if(!row||!list) return;
+    var touch=e.pointerType==='touch';
+    rhDrag={el:row,row:row,list:list,pointerId:e.pointerId,active:false,armed:!touch,startX:e.clientX,startY:e.clientY,timer:null};
+    row.addEventListener('pointermove',rhMove); row.addEventListener('pointerup',rhUp); row.addEventListener('pointercancel',rhCancel);
+    if(touch){
+      rhDrag.timer=setTimeout(function(){ if(!rhDrag) return; rhDrag.armed=true; rhDrag.active=true; rhDrag.row.classList.add('dragging'); try{ rhDrag.el.setPointerCapture(rhDrag.pointerId); }catch(_){} if(navigator.vibrate){ try{ navigator.vibrate(12); }catch(_){} } }, 280);
+    } else {
+      try{ row.setPointerCapture(e.pointerId); }catch(_){}
+    }
+  });
+  // Mouse-wheel → horizontal scroll for the ritual-type filter row (so all types are reachable on desktop).
+  document.addEventListener('wheel', function(e){
+    var f=e.target&&e.target.closest&&e.target.closest('.rh-filters'); if(!f) return;
+    if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){ f.scrollLeft+=e.deltaY; e.preventDefault(); }
+  }, {passive:false});
 
   (function initEmbed(){
     try{ var q=new URLSearchParams(location.search);
