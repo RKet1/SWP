@@ -1222,7 +1222,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     var webchrome=dev.os==='web'?'<div class="webchrome"><div class="tl"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><div class="addr">'+icon('shield',12)+'aura-wellness.com</div></div>':'';
     var loc=DATA.locations[state.location];
     var loyaltyLine=state.loggedIn?'<span class="brandloyalty">'+state.tier+' '+icon('crown',12)+'</span>':''; // tablet/desktop: tier only (points removed), crown to the right
-    var appbarLoyalty=state.loggedIn?'<div class="appbar-loyalty">'+icon('crown',13)+' <b>'+state.points.toLocaleString()+'</b> pts · <span class="tier">'+state.tier+'</span></div>':'';
+    var appbarLoyalty=state.loggedIn?'<div class="appbar-loyalty"><span class="tier">'+state.tier+'</span> '+icon('crown',13)+' <b>'+state.points.toLocaleString()+'</b> pts</div>':'';
     var cartCount=state.cart.length;
     var topnav='<header class="topnav"><div class="brandblock" data-nav="home" role="button" aria-label="AURA home"><span class="tn-logo">AURA<b>.</b></span>'+loyaltyLine+'</div><nav class="tn-items">'+
       NAVTABS.map(function(t){return '<button data-nav="'+t.k+'" class="'+(state.view===t.k?'on':'')+'">'+icon(t.ic,18)+'<span>'+t.label+(t.k==='cart'&&cartCount?' ('+cartCount+')':'')+'</span></button>';}).join('')+
