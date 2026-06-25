@@ -280,6 +280,17 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .biocell{background:#fff;border:1px solid var(--stone-100);border-radius:12px;padding:12px 14px}
 .biocell .bk{font-size:11px;color:var(--stone-400);text-transform:uppercase;letter-spacing:.05em}
 .biocell .bv{font-size:14px;font-weight:500;color:var(--stone-700);margin-top:2px}
+/* Editable profile sections */
+.editlink{background:none;border:none;color:var(--sage-d);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sans);padding:0}
+.editlink.mute{color:var(--stone-400)}
+.editlink:hover{color:var(--sage)}
+.editactions{display:flex;gap:16px}
+.editform{display:flex;flex-direction:column;gap:10px}
+.editgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.editrow label{display:block;font-size:11px;color:var(--stone-400);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.editfield{width:100%;border:1px solid var(--stone-200);border-radius:10px;padding:9px 12px;font-size:14px;font-family:var(--sans);color:var(--ink);background:#fff;outline:none}
+.editfield:focus{border-color:var(--sage)}
+.editfield::placeholder{color:var(--stone-300)}
 
 /* Achievements */
 .achgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -480,6 +491,32 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .ritualhero .rh-item.open .rh-caret{transform:rotate(180deg);color:#fff}
 .ritualhero .rh-detail{max-height:0;overflow:hidden;transition:max-height .32s ease}
 .ritualhero .rh-item.open .rh-detail{max-height:200px}
+/* Ritual customize editor */
+.rh-customlink{background:none;border:none;color:var(--gold);font-size:12px;font-weight:600;cursor:pointer;font-family:var(--sans);padding:0;white-space:nowrap}
+.rh-customlink:hover{opacity:.85}
+.rh-editactions{display:flex;gap:14px}
+.rh-edit-step{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:8px 12px;margin-bottom:8px}
+.rh-reorder{display:flex;flex-direction:column;gap:3px;flex-shrink:0}
+.rh-reorder button{background:rgba(255,255,255,.1);border:none;color:rgba(255,255,255,.8);width:24px;height:15px;border-radius:5px;cursor:pointer;font-size:8px;line-height:1;display:flex;align-items:center;justify-content:center;padding:0}
+.rh-reorder button:hover{background:rgba(255,255,255,.22);color:#fff}
+.rh-reorder button:disabled{opacity:.25;cursor:default}
+.rh-edit-step .rh-name{flex:1;color:#fff;font-size:14px;min-width:0}
+.rh-edit-step .rh-time{color:rgba(255,255,255,.55);font-size:11px;white-space:nowrap}
+.rh-del{background:rgba(255,255,255,.08);border:none;color:rgba(255,255,255,.7);width:28px;height:28px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.rh-del:hover{background:#c0593b;color:#fff}
+.rh-add{margin-top:14px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px}
+.rh-add-head{color:rgba(255,255,255,.85);font-size:13px;font-weight:600;margin-bottom:10px}
+.rh-filters{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:8px;scrollbar-width:none}
+.rh-filters::-webkit-scrollbar{display:none}
+.rfchip{flex-shrink:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.75);font-size:11px;font-weight:500;padding:5px 11px;border-radius:999px;cursor:pointer;font-family:var(--sans);white-space:nowrap}
+.rfchip.on{background:var(--gold);border-color:var(--gold);color:#1c1917}
+.rh-lib{display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto}
+.rh-libitem{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:9px 12px;cursor:pointer;text-align:left;width:100%;font-family:var(--sans)}
+.rh-libitem:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.22)}
+.rh-libitem .ln{flex:1;color:#fff;font-size:13px;min-width:0}
+.rh-libtype{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.5);white-space:nowrap}
+.rh-libadd{width:22px;height:22px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;line-height:1;flex-shrink:0}
+.rh-empty{color:rgba(255,255,255,.5);font-size:12px;padding:8px 2px}
 .ritualhero .rh-dtext{padding:0 16px 13px 56px;font-size:12.5px;line-height:1.55;color:rgba(255,255,255,.72)}
 .rh-check{width:28px;height:28px;border-radius:50%;flex-shrink:0;border:2px solid rgba(255,255,255,.4);background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:background .2s,border-color .2s,transform .1s}
 .rh-check:hover{border-color:#fff;background:rgba(255,255,255,.12)}
@@ -609,6 +646,16 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .screen[data-form="tablet"] .achgrid,.screen[data-form="desktop"] .achgrid{grid-template-columns:1fr 1fr 1fr}
 .screen[data-form="tablet"] .sitefooter .ft-top,.screen[data-form="desktop"] .sitefooter .ft-top{flex-direction:row;justify-content:space-between;align-items:flex-start}
 .screen[data-form="tablet"] .sitefooter .ft-cols,.screen[data-form="desktop"] .sitefooter .ft-cols{grid-template-columns:repeat(4,auto);gap:48px}
+
+/* Embed mode (?embed=1): screen-only, fills the iframe — no preview bar, device bezel or OS chrome.
+   Used by device-preview.html so each gallery frame IS the device (no device-in-a-device). */
+html.embed,html.embed body{height:100%;overflow:hidden;background:var(--stone-50)}
+html.embed .previewbar{display:none}
+html.embed .stage{position:fixed;inset:0;top:0;padding:0;display:block;overflow:hidden}
+html.embed .scaler{transform:none!important;width:100%;height:100%}
+html.embed .device{width:100%!important;height:100%!important;border-radius:0!important;padding:0!important;background:none!important;box-shadow:none!important}
+html.embed .screen{width:100%!important;height:100%!important;border-radius:0!important}
+html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.embed .webchrome{display:none!important}
 </style>
 </head>
 <body>
@@ -617,7 +664,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
   <span class="title">AURA<b>.</b></span>
   <div class="seg" id="deviceSeg"></div>
   <div class="spacer"></div>
-  <button class="iconbtn" id="rotateBtn" title="Rotate (tablets)" disabled>
+  <button class="iconbtn" id="rotateBtn" title="Rotate">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
   </button>
 </div>
@@ -714,9 +761,9 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 <script type="application/json" id="aura-user">
 {
   "member":{"name":"Alexandra Hamilton","firstName":"Alexandra","tier":"prestige","memberId":"8821","memberSince":"2023","wellnessScore":92,"wellnessLabel":"Excellent","streak":100,"rituals":47,"years":3,"points":2450,"nextRewardAt":3000,
-    "email":"alex.h@aura.com","phone":"+1 (512) 555-0123","address":"1200 Congress Ave, Austin, TX","dob":"Oct 24, 1994",
+    "email":"alex.h@aura.com","phone":"+1 (512) 555-0123","address":"1200 Congress Ave, Austin, TX","dob":"Oct 24, 1994","prefName":"","pronouns":"","emergency":"",
     "birthdayReward":{"label":"$25 birthday credit","note":"Yours to use all birthday month"},
-    "profile":{"Skin type":"Combination / Sensitive","Hair type":"2A Wavy","Sex":"Female","Height":"5'7\"","Weight":"135 lbs","Allergies":"Sulfates","Conditions":"Rosacea (mild)","Focus":"Hydration & calm"}},
+    "profile":{"Skin type":"Combination / Sensitive","Hair type":"2A Wavy","Sex":"Female","Height":"5'7\"","Weight":"135 lbs","Allergies":"Sulfates","Conditions":"Rosacea (mild)","Focus":"Hydration & calm","Blood type":"","Medications":"","Sleep (avg)":"","Hydration goal":""}},
   "wallet":{
     "cards":[{"type":"Visa","last4":"4242","cls":"visa","expiry":"12/28","isDefault":true},{"type":"Apple Pay","last4":"Connected","cls":"apple","expiry":"","isDefault":false}],
     "vouchers":[{"title":"Birthday Treat","value":"20% OFF","expiry":"Oct 31"},{"title":"Spa Credit","value":"$25","expiry":"Nov 15"}],
@@ -733,6 +780,33 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
   var DATA = JSON.parse(document.getElementById('aura-data').textContent);
   var USER = JSON.parse(document.getElementById('aura-user').textContent); // prod: authenticated API
 
+  // Library of ritual steps (for the customize editor). In prod this is a curated, filterable catalog.
+  var RITUAL_LIBRARY=[
+    {name:"Cream Cleanser",time:"2 min",type:"Cleanser",how:"Massage over damp skin and rinse for a gentle, non-stripping clean."},
+    {name:"Micellar Rinse",time:"1 min",type:"Cleanser",how:"Sweep across skin to lift residue when a full wash isn't needed."},
+    {name:"Vitamin C Complex",time:"1 min",type:"Serum",how:"Apply each morning to brighten tone and defend against free radicals."},
+    {name:"Peptide Firming Serum",time:"1 min",type:"Serum",how:"Press a few drops over skin to support firmness and bounce."},
+    {name:"Retinol Treatment",time:"PM only",type:"Treatment",how:"Apply a pea-size amount at night; start 2–3x weekly and build tolerance."},
+    {name:"Soothing Tonic Mist",time:"30 sec",type:"Treatment",how:"Spritz to rebalance and prep skin between steps."},
+    {name:"Clay Detox Mask",time:"10 min",type:"Mask",how:"Apply a thin layer to the T-zone weekly to draw out impurities."},
+    {name:"Hydrating Sheet Mask",time:"15 min",type:"Mask",how:"Leave on to flood skin with moisture, then press in the essence."},
+    {name:"Gel Moisturizer",time:"1 min",type:"Moisturizer",how:"Smooth a light layer for breathable, oil-free hydration."},
+    {name:"Barrier Repair Cream",time:"Leave on",type:"Moisturizer",how:"Layer last to seal in hydration and rebuild the barrier overnight."},
+    {name:"Mineral SPF 50+",time:"2 min",type:"SPF",how:"Apply as your final morning step; reapply every 2 hours of sun."},
+    {name:"Collagen Bone Broth",time:"Nutrition",type:"Nutrition",how:"Sip a warm cup for collagen and minerals that support skin from within."},
+    {name:"Electrolyte Coconut Water",time:"Hydration",type:"Nutrition",how:"Drink after sun or activity to replace lost fluids and minerals."},
+    {name:"Green Matcha Tea",time:"Antioxidant",type:"Nutrition",how:"Whisk and sip for a steady antioxidant lift."}
+  ];
+  function inferType(r){ if(r.type) return r.type; var s=(r.name||'').toLowerCase();
+    if(/cleans|wash|balm|micellar|double/.test(s)) return 'Cleanser';
+    if(/serum|drops|complex|vitamin c|niacinamide|hyaluronic|peptide/.test(s)) return 'Serum';
+    if(/spf|sunscreen|sun/.test(s)) return 'SPF';
+    if(/cream|moistur|ceramide|lipid/.test(s)) return 'Moisturizer';
+    if(/mask|clay|compress|sheet/.test(s)) return 'Mask';
+    if(/mist|tonic|essence|toner/.test(s)) return 'Treatment';
+    if(/water|tea|broth|electrolyte|matcha|coconut|chlorophyll|nutrition|hydration|antioxidant/.test(s)) return 'Nutrition';
+    return 'Treatment'; }
+
   /* Icons */
   var ICONS={home:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',scan:'<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>',shop:'<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',leaf:'<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/>',user:'<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',sparkles:'<path d="M9 3v2m0 10v2m-6-8h2m10 0h2M6.6 6.6l1.4 1.4m8 8l1.4 1.4M6.6 17.4l1.4-1.4m8-8l1.4-1.4"/>',check:'<polyline points="20 6 9 17 4 12"/>',drop:'<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/>',info:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>',shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',bookmark:'<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>',arrow:'<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',camera:'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',bowl:'<path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M12 2v3M8 4l1 2M16 4l-1 2"/>',chat:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',send:'<line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>',wifi:'<path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/>',battery:'<rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/>',activity:'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',flame:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.2-2.2.6-3.3a1 1 0 0 1 .6 2 4.5 4.5 0 0 0 2.3 3.3z"/>',lock:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',gift:'<polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>',logOut:'<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>',star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',pin:'<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',stethoscope:'<path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/>',crown:'<path d="M2 18h20l-2-9-5 4-3-7-3 7-5-4z"/>',ticket:'<path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4z"/>',creditCard:'<rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>',award:'<circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>',instagram:'<rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>',linkedin:'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',facebook:'<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',youtube:'<path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>',chevron:'<polyline points="6 9 12 15 18 9"/>',cart:'<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>',calendar:'<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',video:'<polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/>',filter:'<line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/>',sort:'<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="9" y2="18"/>',close:'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',back:'<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>'};
   function icon(n,s){s=s||20;return '<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(ICONS[n]||'')+'</svg>';}
@@ -740,7 +814,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
   var DEVICES={'ios-phone':{os:'ios',form:'phone',w:390,h:844,label:'iPhone'},'android-phone':{os:'android',form:'phone',w:412,h:892,label:'Android'},'ios-tablet':{os:'ios',form:'tablet',w:834,h:1112,label:'iPad'},'android-tablet':{os:'android',form:'tablet',w:800,h:1232,label:'Android Tablet'},'web':{os:'web',form:'desktop',w:1200,h:800,label:'Web'}};
   var currentDevice='ios-phone', landscape=false;
 
-  var state={view:'home',scanComplete:false,saved:[],loggedIn:true,location:'home',tier:USER.member.tier,points:USER.member.points,redeemed:[],accountTab:'loyalty',doneSteps:[],expandedSteps:[],sessions:[{expert:'Dr. Alisha S.',role:'Dermatologist',when:'Tomorrow · 2:30 PM',status:'Confirmed'}],momFilter:{continent:'all',country:'all',state:'all',type:'all',month:'all',year:'all'},momPanel:'none',momSort:{key:'none',dir:'asc'},consultTab:'experts',bodyArea:null,resultsSaved:false,expandedAreas:[],cart:[]};
+  var state={view:'home',scanComplete:false,saved:[],loggedIn:true,location:'home',tier:USER.member.tier,points:USER.member.points,redeemed:[],accountTab:'loyalty',doneSteps:[],expandedSteps:[],sessions:[{expert:'Dr. Alisha S.',role:'Dermatologist',when:'Tomorrow · 2:30 PM',status:'Confirmed'}],momFilter:{continent:'all',country:'all',state:'all',type:'all',month:'all',year:'all'},momPanel:'none',momSort:{key:'none',dir:'asc'},consultTab:'experts',bodyArea:null,resultsSaved:false,expandedAreas:[],cart:[],editProfile:false,editBio:false,editRituals:false,ritualDraft:null,ritualSaved:{},ritualFilter:'similar'};
 
   var DISC='<div class="disclaimer">'+icon('info',14)+'<span>AURA offers wellness guidance, not medical advice. For diagnosis or treatment of any skin or health condition, consult a licensed dermatologist, physician, or registered dietitian.</span></div>';
 
@@ -763,13 +837,31 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
   }
   function vHome(){
     var loc=DATA.locations[state.location];
-    var ritual=DATA.ritualsByLocation[state.location];
+    var baseRitual=state.ritualSaved[state.location]||DATA.ritualsByLocation[state.location];
+    var ritual=state.editRituals?(state.ritualDraft||[]):baseRitual;
     var greet=state.loggedIn?'Good morning, '+USER.member.firstName:'Welcome';
-    var steps=ritual.map(function(r,i){
-      var key=state.location+'-'+i, done=state.doneSteps.indexOf(key)>-1, open=state.expandedSteps.indexOf(key)>-1;
-      return '<div class="rh-item'+(open?' open':'')+'"><div class="rh-step'+(done?' done':'')+'" data-rstep="'+key+'" role="button" aria-expanded="'+open+'"><div class="rh-num">'+(i+1)+'</div><span class="rh-name">'+r.name+'</span><span class="rh-time">'+r.time+'</span><span class="rh-caret">'+icon('chevron',16)+'</span><button class="rh-check'+(done?' on':'')+'" data-step="'+key+'" aria-label="Mark '+r.name+' '+(done?'incomplete':'complete')+'">'+(done?icon('check',15):'')+'</button></div><div class="rh-detail"><p class="rh-dtext">'+(r.how||'')+'</p></div></div>';
-    }).join('');
-    var ritualHero='<div class="ritualhero reveal"><div class="blob"></div><div class="rh-head"><div><div class="rh-title">'+loc.label+' ritual</div><div class="rh-sub">'+loc.concern+' · '+ritual.length+' steps</div></div><span class="pill gold">Today</span></div>'+steps+'</div>';
+    var ritualHero;
+    if(state.editRituals){
+      var n=ritual.length;
+      var editSteps=ritual.map(function(r,i){
+        return '<div class="rh-edit-step"><div class="rh-reorder"><button data-rmove="'+i+':up"'+(i===0?' disabled':'')+' aria-label="Move up">&#9650;</button><button data-rmove="'+i+':down"'+(i===n-1?' disabled':'')+' aria-label="Move down">&#9660;</button></div><div class="rh-num">'+(i+1)+'</div><span class="rh-name">'+r.name+'</span><span class="rh-time">'+r.time+'</span><button class="rh-del" data-rdel="'+i+'" aria-label="Remove '+r.name+'">'+icon('close',15)+'</button></div>';
+      }).join('');
+      var have={}; ritual.forEach(function(r){have[r.name]=1;});
+      var draftTypes={}; ritual.forEach(function(r){draftTypes[inferType(r)]=1;});
+      var f=state.ritualFilter||'similar';
+      var lib=RITUAL_LIBRARY.filter(function(it){ if(have[it.name])return false; if(f==='all')return true; if(f==='similar')return !!draftTypes[it.type]; return it.type===f; });
+      var rtypes=['Cleanser','Serum','Treatment','Mask','Moisturizer','SPF','Nutrition'];
+      var chips='<button class="rfchip'+(f==='similar'?' on':'')+'" data-rfilter="similar">Similar</button><button class="rfchip'+(f==='all'?' on':'')+'" data-rfilter="all">All</button>'+rtypes.map(function(tp){return '<button class="rfchip'+(f===tp?' on':'')+'" data-rfilter="'+tp+'">'+tp+'</button>';}).join('');
+      var libHtml=lib.length?lib.map(function(it){var gi=RITUAL_LIBRARY.indexOf(it);return '<button class="rh-libitem" data-radd="'+gi+'"><span class="ln">'+it.name+'</span><span class="rh-libtype">'+it.type+'</span><span class="rh-libadd">+</span></button>';}).join(''):'<p class="rh-empty">No matching rituals. Try “All” or another type.</p>';
+      var addPanel='<div class="rh-add"><div class="rh-add-head">Add a step</div><div class="rh-filters">'+chips+'</div><div class="rh-lib">'+libHtml+'</div></div>';
+      ritualHero='<div class="ritualhero reveal"><div class="blob"></div><div class="rh-head"><div><div class="rh-title">'+loc.label+' ritual</div><div class="rh-sub">Customize · '+n+' step'+(n===1?'':'s')+'</div></div><div class="rh-editactions"><button class="rh-customlink" data-act="cancelRituals" style="color:rgba(255,255,255,.6)">Cancel</button><button class="rh-customlink" data-act="saveRituals">Save</button></div></div>'+(editSteps||'<p class="rh-empty">No steps yet — add one below.</p>')+addPanel+'</div>';
+    } else {
+      var steps=ritual.map(function(r,i){
+        var key=state.location+'-'+i, done=state.doneSteps.indexOf(key)>-1, open=state.expandedSteps.indexOf(key)>-1;
+        return '<div class="rh-item'+(open?' open':'')+'"><div class="rh-step'+(done?' done':'')+'" data-rstep="'+key+'" role="button" aria-expanded="'+open+'"><div class="rh-num">'+(i+1)+'</div><span class="rh-name">'+r.name+'</span><span class="rh-time">'+r.time+'</span><span class="rh-caret">'+icon('chevron',16)+'</span><button class="rh-check'+(done?' on':'')+'" data-step="'+key+'" aria-label="Mark '+r.name+' '+(done?'incomplete':'complete')+'">'+(done?icon('check',15):'')+'</button></div><div class="rh-detail"><p class="rh-dtext">'+(r.how||'')+'</p></div></div>';
+      }).join('');
+      ritualHero='<div class="ritualhero reveal"><div class="blob"></div><div class="rh-head"><div><div class="rh-title">'+loc.label+' ritual</div><div class="rh-sub">'+loc.concern+' · '+ritual.length+' steps</div></div><div style="display:flex;align-items:center;gap:12px"><button class="rh-customlink" data-act="customizeRituals">Customize</button><span class="pill gold">Today</span></div></div>'+steps+'</div>';
+    }
     var scanCard=!state.scanComplete
       ? '<button class="tile" data-act="scan"><div class="ic">'+icon('camera',20)+'</div><p class="t">Start scan</p><p class="s">Multi-angle AI</p></button>'
       : '<button class="tile" data-nav="consult" data-ctab="results"><div class="ic">'+icon('sparkles',20)+'</div><p class="t">Skin score '+DATA.analysis.score+'</p><p class="s">View results</p></button>';
@@ -989,7 +1081,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
   }
   function vCart(){
     if(!state.cart.length) return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Your bag</p><h1 class="h1">Cart</h1></section>'+
-      '<section class="lockcard reveal" style="margin-top:8px"><div class="lockic">'+icon('cart',26)+'</div><p class="lockmsg">Your cart is empty. Discover our curated collection in The Shop, or save pieces to revisit later.</p><button class="btn mb12" data-nav="shop">'+icon('shop',16)+' Shop The Shop</button><button class="btn ghost" data-nav="saved">'+icon('bookmark',16)+' View saved items</button></section>'+
+      '<section class="lockcard reveal" style="margin-top:8px"><div class="lockic">'+icon('cart',26)+'</div><p class="lockmsg">Your cart is empty. Discover our curated collection in The Shop, or save pieces to revisit later.</p><button class="btn mb12" data-nav="shop">'+icon('shop',16)+' Browse The Shop</button><button class="btn ghost" data-nav="saved">'+icon('bookmark',16)+' View saved items</button></section>'+
       '<section style="margin-top:8px"><div class="disclaimer">'+icon('info',14)+'<span>This is a demo cart. No payment is processed in the prototype.</span></div></section></div>';
     var counts={}; state.cart.forEach(function(id){counts[id]=(counts[id]||0)+1;});
     var total=0;
@@ -1053,15 +1145,32 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
   }
   function accProfile(){
     var m=USER.member;
-    var bio=Object.keys(m.profile).map(function(k){return '<div class="biocell"><div class="bk">'+k+'</div><div class="bv">'+m.profile[k]+'</div></div>';}).join('');
-    var details=[['Email',m.email],['Phone',m.phone],['Address',m.address],['Birthday',m.dob]].map(function(d){return '<div class="li"><span style="color:var(--stone-400)">'+d[0]+'</span><span>'+d[1]+'</span></div>';}).join('');
+    var escA=function(s){return String(s==null?'':s).replace(/"/g,'&quot;');};
+    var PFIELDS=[['Email','email'],['Phone','phone'],['Address','address'],['Birthday','dob'],['Preferred name','prefName'],['Pronouns','pronouns'],['Emergency contact','emergency']];
+    var pdHeader,pdBody;
+    if(state.editProfile){
+      pdHeader='<div class="editactions"><button class="editlink mute" data-act="cancelProfile">Cancel</button><button class="editlink" data-act="saveProfile">Save</button></div>';
+      pdBody='<div class="editform">'+PFIELDS.map(function(f){return '<div class="editrow"><label>'+f[0]+'</label><input class="editfield" data-pfield="'+f[1]+'" value="'+escA(m[f[1]])+'" placeholder="Add '+f[0].toLowerCase()+'"></div>';}).join('')+'</div>';
+    } else {
+      pdHeader='<button class="editlink" data-act="editProfile">Edit</button>';
+      pdBody='<div class="list">'+PFIELDS.filter(function(f){return (m[f[1]]||'').trim();}).map(function(f){return '<div class="li"><span style="color:var(--stone-400)">'+f[0]+'</span><span>'+m[f[1]]+'</span></div>';}).join('')+'</div>';
+    }
+    var BFIELDS=Object.keys(m.profile);
+    var bmHeader,bmBody;
+    if(state.editBio){
+      bmHeader='<div class="editactions"><button class="editlink mute" data-act="cancelBio">Cancel</button><button class="editlink" data-act="saveBio">Save</button></div>';
+      bmBody='<div class="editgrid">'+BFIELDS.map(function(k){return '<div class="editrow"><label>'+k+'</label><input class="editfield" data-bfield="'+escA(k)+'" value="'+escA(m.profile[k])+'" placeholder="Add '+k.toLowerCase()+'"></div>';}).join('')+'</div>';
+    } else {
+      bmHeader='<button class="editlink" data-act="editBio">Edit</button>';
+      bmBody='<div class="biogrid">'+BFIELDS.filter(function(k){return (m.profile[k]||'').trim();}).map(function(k){return '<div class="biocell"><div class="bk">'+k+'</div><div class="bv">'+m.profile[k]+'</div></div>';}).join('')+'</div>';
+    }
     var prefs=[['Email notifications',true],['SMS alerts',false]].map(function(p){return '<div class="setrow"><span>'+p[0]+'</span><button class="tggl'+(p[1]?' on':'')+'" data-toggle aria-label="'+p[0]+'"></button></div>';}).join('');
     var sec=[['Face ID login',true],['Multi-factor auth (2FA)',false]].map(function(p){return '<div class="setrow"><span>'+p[0]+'</span><button class="tggl'+(p[1]?' on':'')+'" data-toggle aria-label="'+p[0]+'"></button></div>';}).join('');
     var links=['Privacy & data','Medical disclaimer','Help & support','Change password'].map(function(t){return '<div class="li"><span>'+t+'</span>'+icon('arrow',15)+'</div>';}).join('');
     return '<section class="reveal" style="display:flex;align-items:center;gap:14px;margin-bottom:16px"><div style="width:60px;height:60px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-size:24px;background:linear-gradient(135deg,var(--sage),var(--sage-d))">'+m.firstName.charAt(0)+'</div><div style="min-width:0"><h3 class="h3" style="font-size:20px">'+m.name+'</h3><p style="font-size:13px;color:var(--stone-400)">'+m.email+'</p></div></section>'+
       '<section class="card mb16" style="padding:18px"><div class="flexb mb12"><h3 class="h3">Wellness status</h3><span class="pill sage">'+m.wellnessLabel+'</span></div><div style="display:flex;align-items:center;gap:18px">'+wellnessRing(m.wellnessScore)+'<div style="flex:1"><span class="streakflame">'+icon('flame',13)+' '+m.streak+'-day streak</span><p style="font-size:13px;color:var(--stone-500);margin-top:8px">Your skin barrier and hydration levels are tracking well. Keep up the ritual.</p></div></div></section>'+
-      '<section class="mb16"><h3 class="h3 mb12">Personal details</h3><div class="list">'+details+'</div></section>'+
-      '<section class="mb16"><h3 class="h3 mb12">Bio metrics</h3><div class="biogrid">'+bio+'</div></section>'+
+      '<section class="mb16"><div class="flexb mb12"><h3 class="h3">Personal details</h3>'+pdHeader+'</div>'+pdBody+'</section>'+
+      '<section class="mb16"><div class="flexb mb12"><h3 class="h3">Bio metrics</h3>'+bmHeader+'</div>'+bmBody+'</section>'+
       '<section class="mb16"><h3 class="h3 mb12">Contact preferences</h3>'+prefs+'</section>'+
       '<section class="mb16"><h3 class="h3 mb12">Security</h3>'+sec+'</section>'+
       '<section class="list mb16">'+links+'</section>'+
@@ -1105,7 +1214,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
   /* ---------------- Device frame ---------------- */
   function buildDevice(){
     var dev=DEVICES[currentDevice], w=dev.w, h=dev.h;
-    if(dev.form==='tablet' && landscape){ w=dev.h; h=dev.w; }
+    if(landscape){ w=dev.h; h=dev.w; }
     var osbar=dev.os==='web'?'':'<div class="osbar"><span>9:41</span>'+(dev.os==='ios'?'<div class="island"></div>':'<div class="punch"></div>')+'<span class="sigs">'+icon('wifi',15)+icon('battery',17)+'</span></div>';
     var webchrome=dev.os==='web'?'<div class="webchrome"><div class="tl"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i></div><div class="addr">'+icon('shield',12)+'aura-wellness.com</div></div>':'';
     var loc=DATA.locations[state.location];
@@ -1116,7 +1225,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
       NAVTABS.map(function(t){return '<button data-nav="'+t.k+'" class="'+(state.view===t.k?'on':'')+'">'+icon(t.ic,18)+'<span>'+t.label+(t.k==='cart'&&cartCount?' ('+cartCount+')':'')+'</span></button>';}).join('')+
       '</nav><div class="tn-right"><button class="tn-loc" data-act="travel">'+icon('pin',14)+' '+loc.name+'</button><button class="tn-cta" data-act="scan">'+icon('scan',17)+'<span>New scan</span></button></div></header>';
     var bottomnav='<nav class="bottomnav">'+BOTTOM.map(function(k){var t=TABMAP[k]; if(k==='scan') return '<button class="scan" data-act="scan" aria-label="Scan"><div class="fab">'+icon('scan',24)+'</div></button>'; return '<button data-nav="'+k+'" class="'+(state.view===k?'on':'')+'">'+icon(t.ic,21)+'<span>'+t.label+'</span></button>';}).join('')+'</nav>';
-    var html='<div class="device" data-os="'+dev.os+'" data-form="'+dev.form+'" style="width:'+(w+24)+'px;height:'+(h+(dev.os==='web'?40:24))+'px"><div class="screen" data-form="'+dev.form+'" style="height:'+h+'px">'+webchrome+osbar+'<div class="app">'+topnav+'<div class="appbar"><span class="brand" data-nav="home" role="button" aria-label="AURA home">AURA<b>.</b></span><div class="appbar-right"><button class="appbar-cart" data-nav="cart" aria-label="Cart">'+icon('cart',20)+(cartCount?'<span class="navbadge">'+cartCount+'</span>':'')+'</button>'+appbarLoyalty+'</div></div><div class="applayout"><div class="content" id="content"></div></div>'+bottomnav+'<button class="chat-fab" data-act="openChat" aria-label="Open assistant">'+icon('chat',22)+'<span class="badge">1</span></button>'+buildChatPanel()+'</div>'+(dev.os!=='web'?'<div class="homebar"></div>':'')+'</div></div>';
+    var html='<div class="device" data-os="'+dev.os+'" data-form="'+dev.form+'" style="width:'+(w+24)+'px;height:'+(h+(dev.os==='web'?40:24))+'px"><div class="screen" data-form="'+dev.form+'" style="height:'+h+'px">'+webchrome+osbar+'<div class="app">'+topnav+'<div class="appbar"><span class="brand" data-nav="home" role="button" aria-label="AURA home">AURA<b>.</b></span><div class="appbar-right">'+appbarLoyalty+'<button class="appbar-cart" data-nav="cart" aria-label="Cart">'+icon('cart',20)+(cartCount?'<span class="navbadge">'+cartCount+'</span>':'')+'</button></div></div><div class="applayout"><div class="content" id="content"></div></div>'+bottomnav+'<button class="chat-fab" data-act="openChat" aria-label="Open assistant">'+icon('chat',22)+'<span class="badge">1</span></button>'+buildChatPanel()+'</div>'+(dev.os!=='web'?'<div class="homebar"></div>':'')+'</div></div>';
     document.getElementById('scaler').innerHTML=html;
     renderContent(); fitScale();
   }
@@ -1289,16 +1398,20 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 
   /* ---------------- Toolbar + events ---------------- */
   function buildToolbar(){ document.getElementById('deviceSeg').innerHTML=Object.keys(DEVICES).map(function(k){return '<button data-device="'+k+'" class="'+(k===currentDevice?'on':'')+'">'+DEVICES[k].label+'</button>';}).join(''); }
-  function selectDevice(k){ currentDevice=k; if(DEVICES[k].form!=='tablet') landscape=false; document.getElementById('rotateBtn').disabled=DEVICES[k].form!=='tablet'; buildToolbar(); buildDevice(); track('device_changed',{device:k}); }
+  function selectDevice(k){ currentDevice=k; buildToolbar(); buildDevice(); track('device_changed',{device:k}); }
 
   document.addEventListener('click', function(e){
-    var t=e.target.closest('[data-device],[data-nav],[data-act],[data-save],[data-cart],[data-uncart],[data-cchip],[data-fchip],[data-loc],[data-book],[data-confirmbook],[data-redeem],[data-tier],[data-acctab],[data-consulttab],[data-bodyarea],[data-areaexp],[data-toggle],[data-step],[data-rstep],#rotateBtn');
+    var t=e.target.closest('[data-device],[data-nav],[data-act],[data-save],[data-cart],[data-uncart],[data-cchip],[data-fchip],[data-loc],[data-book],[data-confirmbook],[data-redeem],[data-tier],[data-acctab],[data-consulttab],[data-bodyarea],[data-areaexp],[data-toggle],[data-step],[data-rstep],[data-rmove],[data-rdel],[data-radd],[data-rfilter],#rotateBtn');
     if(!t) return;
     if(t.id==='rotateBtn'){ landscape=!landscape; buildDevice(); return; }
     if(t.dataset.device){ selectDevice(t.dataset.device); return; }
     if(t.hasAttribute('data-toggle')){ t.classList.toggle('on'); return; }
     if(t.hasAttribute('data-step')){ var k=t.dataset.step, ix=state.doneSteps.indexOf(k), st=t.closest('.rh-step'); if(ix>-1){ state.doneSteps.splice(ix,1); t.classList.remove('on'); t.innerHTML=''; if(st)st.classList.remove('done'); } else { state.doneSteps.push(k); t.classList.add('on'); t.innerHTML=icon('check',15); if(st)st.classList.add('done'); } track('ritual_step_toggled',{step:k}); return; }
     if(t.hasAttribute('data-rstep')){ var rk=t.dataset.rstep, ex=state.expandedSteps.indexOf(rk), it=t.closest('.rh-item'); if(ex>-1){ state.expandedSteps.splice(ex,1); if(it)it.classList.remove('open'); t.setAttribute('aria-expanded','false'); } else { state.expandedSteps.push(rk); if(it)it.classList.add('open'); t.setAttribute('aria-expanded','true'); } track('ritual_step_expanded',{step:rk}); return; }
+    if(t.dataset.rmove){ var mp=t.dataset.rmove.split(':'), mi=parseInt(mp[0],10), md=mp[1], arr=state.ritualDraft; if(arr){ var mj=md==='up'?mi-1:mi+1; if(mj>=0&&mj<arr.length){ var tmp=arr[mi]; arr[mi]=arr[mj]; arr[mj]=tmp; } } renderContent(); return; }
+    if(t.dataset.rdel){ if(state.ritualDraft) state.ritualDraft.splice(parseInt(t.dataset.rdel,10),1); track('ritual_step_removed'); renderContent(); return; }
+    if(t.dataset.radd){ var li=RITUAL_LIBRARY[parseInt(t.dataset.radd,10)]; if(li&&state.ritualDraft) state.ritualDraft.push({name:li.name,time:li.time,how:li.how,type:li.type}); track('ritual_step_added'); renderContent(); return; }
+    if(t.dataset.rfilter){ state.ritualFilter=t.dataset.rfilter; renderContent(); return; }
     if(t.dataset.acctab){ state.accountTab=t.dataset.acctab; renderContent(); return; }
     if(t.dataset.consulttab){ state.consultTab=t.dataset.consulttab; renderContent(); return; }
     if(t.hasAttribute('data-areaexp')){ var ak=t.dataset.areaexp, aix=state.expandedAreas.indexOf(ak), ac=t.closest('.acc'); if(aix>-1){ state.expandedAreas.splice(aix,1); if(ac)ac.classList.remove('open'); t.setAttribute('aria-expanded','false'); } else { state.expandedAreas.push(ak); if(ac)ac.classList.add('open'); t.setAttribute('aria-expanded','true'); } track('result_area_toggled',{area:ak}); return; }
@@ -1331,6 +1444,15 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
     else if(act==='continueGuest'){ track('continue_guest'); go('home'); }
     else if(act==='addCard') toast('Payment management is available in the live app.');
     else if(act==='checkout') toast('Checkout is a demo — no payment is taken.');
+    else if(act==='editProfile'){ state.editProfile=true; renderContent(); }
+    else if(act==='cancelProfile'){ state.editProfile=false; renderContent(); }
+    else if(act==='saveProfile'){ document.querySelectorAll('[data-pfield]').forEach(function(inp){ USER.member[inp.getAttribute('data-pfield')]=inp.value.trim(); }); state.editProfile=false; track('profile_saved'); renderContent(); toast('Personal details saved.'); }
+    else if(act==='editBio'){ state.editBio=true; renderContent(); }
+    else if(act==='cancelBio'){ state.editBio=false; renderContent(); }
+    else if(act==='saveBio'){ document.querySelectorAll('[data-bfield]').forEach(function(inp){ USER.member.profile[inp.getAttribute('data-bfield')]=inp.value.trim(); }); state.editBio=false; track('bio_saved'); renderContent(); toast('Bio metrics saved.'); }
+    else if(act==='customizeRituals'){ var src=state.ritualSaved[state.location]||DATA.ritualsByLocation[state.location]; state.ritualDraft=src.map(function(r){return {name:r.name,time:r.time,how:r.how,type:r.type};}); state.editRituals=true; state.ritualFilter='similar'; track('ritual_customize_open'); renderContent(); }
+    else if(act==='cancelRituals'){ state.editRituals=false; state.ritualDraft=null; renderContent(); }
+    else if(act==='saveRituals'){ state.ritualSaved[state.location]=state.ritualDraft; state.editRituals=false; state.ritualDraft=null; track('ritual_customized'); renderContent(); toast('Ritual updated.'); }
     else if(act==='joinSession') toast('Your secure video room opens at the scheduled time.');
     else if(act==='saveResults'){ DATA.bodyScan.areas.forEach(function(a){(a.products||[]).forEach(function(id){ if(state.saved.indexOf(id)<0) state.saved.push(id); });}); state.resultsSaved=true; track('results_saved'); renderContent(); toast('Results & product suggestions saved.'); }
     else if(act==='momReset'){ state.momFilter={continent:'all',country:'all',state:'all',type:'all',month:'all',year:'all'}; track('moments_filter_cleared'); renderContent(); }
@@ -1348,7 +1470,16 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
     if(se){ var sk=se.getAttribute('data-momsort'); state.momSort[sk]=se.value; track('moments_sorted',{key:sk,value:se.value}); renderContent(); return; }
   });
 
-  buildToolbar(); selectDevice('ios-phone'); track('app_loaded',{view:state.view});
+  (function initEmbed(){
+    try{ var q=new URLSearchParams(location.search);
+      if(q.get('embed')){
+        document.documentElement.classList.add('embed');
+        var d=q.get('device'); if(d && DEVICES[d]) currentDevice=d;
+        landscape=q.get('landscape')==='1';
+      }
+    }catch(e){}
+  })();
+  buildToolbar(); selectDevice(currentDevice); track('app_loaded',{view:state.view});
 })();
 </script>
 </body>
