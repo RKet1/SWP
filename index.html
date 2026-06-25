@@ -1001,6 +1001,17 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     var done=state.redeemed.indexOf(r.id)>-1, afford=state.points>=r.points;
     return {done:done,afford:afford};
   }
+  // Location-themed gradient for Moments cards (mirrors the home "Today's Insight" promo palette).
+  function momentGrad(r){
+    var L=((r.location||'')+' '+(r.title||'')).toLowerCase();
+    if(/tulum|fiji|coral|lagoon|island|beach|bahamas|cape town|coastal/.test(L)) return 'linear-gradient(135deg,#3fb0a0,#1f7a6e)';   // tropical teal
+    if(/aspen|alpine|glacial|snow|mountain|queenstown|zurich|switzerland/.test(L)) return 'linear-gradient(135deg,#6c7a8c,#3c4858)';   // alpine slate
+    if(/santorini|greece|mediterran|ocean|sydney|sea/.test(L)) return 'linear-gradient(135deg,#4f93c4,#27628f)';                       // coastal blue
+    if(/kyoto|japan|tokyo|onsen|tea/.test(L)) return 'linear-gradient(135deg,#c0796e,#8a4a40)';                                        // warm clay
+    if(/marrakech|desert|morocco|austin|texas/.test(L)) return 'linear-gradient(135deg,#e9a36b,#c2703d)';                              // desert amber
+    if(/bali|ubud|jungle|thailand|rio|brazil|botanical|rice/.test(L)) return 'linear-gradient(135deg,#6fa86b,#3f7244)';                // jungle green
+    return 'linear-gradient(135deg,#8a7bb0,#544a78)';                                                                                  // default plum
+  }
   function vMoments(){
     if(!state.loggedIn) return lockedView('Moments','Sign in to redeem your loyalty points for curated experiences.');
     var featList=DATA.rewards.filter(function(r){return r.featured;});
@@ -1010,7 +1021,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       var slides=featList.map(function(feat){
         var fs=redeemState(feat);
         var fbtn=fs.done?'<button class="mf-btn" disabled>Redeemed</button>':(fs.afford?'<button class="mf-btn" data-redeem="'+feat.id+'">Redeem '+feat.points.toLocaleString()+' points</button>':'<button class="mf-btn" disabled>'+(feat.points-state.points).toLocaleString()+' points to unlock</button>');
-        return '<div class="mfeature"><span class="mf-emoji">'+feat.icon+'</span><span class="mf-tag">Featured</span><h3>'+feat.title+'</h3><p>'+feat.desc+'</p><div class="mf-meta"><span>'+icon('pin',12)+' '+feat.location+'</span><span>📅 '+feat.dates+'</span><span>👥 '+feat.guests+'</span></div>'+fbtn+'</div>';
+        return '<div class="mfeature" style="background:'+momentGrad(feat)+'"><span class="mf-emoji">'+feat.icon+'</span><span class="mf-tag">Featured</span><h3>'+feat.title+'</h3><p>'+feat.desc+'</p><div class="mf-meta"><span>'+icon('pin',12)+' '+feat.location+'</span><span>📅 '+feat.dates+'</span><span>👥 '+feat.guests+'</span></div>'+fbtn+'</div>';
       }).join('');
       featuredHtml='<section><div class="carousel reveal"><div class="car-head"><div class="car-title"><div class="car-ic">'+icon('crown',18)+'</div><div><h3>Featured moments</h3><p>Curated retreats &amp; experiences</p></div></div><div class="car-arrows"><button class="carrow" data-act="carPrev" data-track="featTrack" aria-label="Previous"><span style="display:flex;transform:rotate(180deg)">'+icon('arrow',15)+'</span></button><button class="carrow" data-act="carNext" data-track="featTrack" aria-label="Next">'+icon('arrow',15)+'</button></div></div><div class="car-track" id="featTrack">'+slides+'</div></div></section>';
     }
@@ -1070,7 +1081,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     var grid=results.length?results.map(function(r){
       var s=redeemState(r);
       var btn=s.done?'<button class="redeembtn" disabled>Redeemed</button>':(s.afford?'<button class="redeembtn" data-redeem="'+r.id+'">Redeem</button>':'<button class="redeembtn" disabled>'+(r.points-state.points).toLocaleString()+' more</button>');
-      return '<div class="mcard reveal"><div class="mc-img">'+r.icon+'</div><div class="mc-body"><div class="mb8"><span class="pill sage">'+r.type+'</span></div><p class="mc-title">'+r.title+'</p><p class="mc-loc">'+icon('pin',11)+' '+r.location+' · '+r.month+' '+r.year+'</p><div class="mc-foot"><span class="mc-pts">'+r.points.toLocaleString()+' pts</span>'+btn+'</div></div></div>';
+      return '<div class="mcard reveal"><div class="mc-img" style="background:'+momentGrad(r)+'">'+r.icon+'</div><div class="mc-body"><div class="mb8"><span class="pill sage">'+r.type+'</span></div><p class="mc-title">'+r.title+'</p><p class="mc-loc">'+icon('pin',11)+' '+r.location+' · '+r.month+' '+r.year+'</p><div class="mc-foot"><span class="mc-pts">'+r.points.toLocaleString()+' pts</span>'+btn+'</div></div></div>';
     }).join('')
       :'<div class="lockcard reveal"><div class="lockic">'+icon('pin',26)+'</div><p class="lockmsg">No moments match these filters. Try widening your search.</p><button class="btn ghost" data-act="momReset">Clear filters</button></div>';
     return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Member rewards</p><h1 class="h1" style="margin-bottom:4px">AURA Moments</h1><p style="font-size:13px;color:var(--stone-500);margin-bottom:14px">Exclusive experiences you can\'t buy anywhere else.</p></section>'+
@@ -1237,6 +1248,49 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     c.scrollTop=0; c.innerHTML=(VIEWS[state.view]||vHome)();
     document.querySelectorAll('[data-nav]').forEach(function(b){ if(b.closest('.topnav')||b.closest('.bottomnav')) b.classList.toggle('on', b.getAttribute('data-nav')===state.view); });
     observeReveals();
+    initCarousels();
+  }
+  // Carousels: real touch uses native momentum scroll; MOUSE/PEN get drag-to-scroll (overflow can't be
+  // mouse-dragged natively). A swipe/drag past either end wraps around. Click after a drag is suppressed.
+  function initCarousels(){
+    ['promoTrack','featTrack'].forEach(function(id){
+      var track=document.getElementById(id); if(!track||track.dataset.loop) return;
+      track.dataset.loop='1'; track.style.cursor='grab';
+      var maxL=function(){ return track.scrollWidth-track.clientWidth; };
+      var loopIfPastEnd=function(dx,startScroll){ var m=maxL(),T=30;
+        if(dx<-T && startScroll>=m-2 && track.scrollLeft>=m-2){ track.scrollTo({left:0,behavior:'smooth'}); return true; }
+        if(dx>T && startScroll<=2 && track.scrollLeft<=2){ track.scrollTo({left:m,behavior:'smooth'}); return true; }
+        return false; };
+
+      // ── Real touch: native scroll + boundary loop ──
+      var tx=0, tStart=0;
+      track.addEventListener('touchstart', function(e){ if(e.touches[0]){ tx=e.touches[0].clientX; tStart=track.scrollLeft; } }, {passive:true});
+      track.addEventListener('touchend', function(e){ if(e.changedTouches[0]) loopIfPastEnd(e.changedTouches[0].clientX-tx, tStart); }, {passive:true});
+
+      // ── Mouse / pen: drag-to-scroll ──
+      var down=false, drag=false, sx=0, sStart=0, scale=1;
+      track.addEventListener('pointerdown', function(e){
+        if(e.pointerType==='touch') return;        // touch handled natively above
+        down=true; drag=false; sx=e.clientX; sStart=track.scrollLeft;
+        var r=track.getBoundingClientRect(); scale=track.offsetWidth?r.width/track.offsetWidth:1; // correct for device-frame scaling
+      });
+      track.addEventListener('pointermove', function(e){
+        if(!down) return; var dx=e.clientX-sx;
+        if(!drag){ if(Math.abs(dx)<5) return; drag=true; track.style.cursor='grabbing'; track.style.scrollSnapType='none'; try{ track.setPointerCapture(e.pointerId); }catch(_){} }
+        e.preventDefault();
+        track.scrollLeft=sStart-dx/(scale||1);
+      });
+      var end=function(e){
+        if(!down) return; down=false;
+        if(drag){ loopIfPastEnd(e.clientX-sx, sStart); track.style.cursor='grab'; track.style.scrollSnapType=''; try{ track.releasePointerCapture(e.pointerId); }catch(_){}
+          track.dataset.dragged='1'; setTimeout(function(){ if(track.dataset) delete track.dataset.dragged; },0); }
+        drag=false;
+      };
+      track.addEventListener('pointerup', end);
+      track.addEventListener('pointercancel', end);
+      // a drag shouldn't also click-through to a card's link
+      track.addEventListener('click', function(e){ if(track.dataset.dragged){ e.stopPropagation(); e.preventDefault(); } }, true);
+    });
   }
   function fitScale(){
     var dev=document.querySelector('.device'); if(!dev) return;
@@ -1463,7 +1517,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     else if(act==='momPanelFilter'){ state.momPanel=state.momPanel==='filter'?'none':'filter'; renderContent(); }
     else if(act==='momPanelSort'){ state.momPanel=state.momPanel==='sort'?'none':'sort'; renderContent(); }
     else if(act==='momPanelClose'){ state.momPanel='none'; renderContent(); }
-    else if(act==='carPrev'||act==='carNext'){ var tr=document.getElementById(t.dataset.track); if(tr){ var fc=tr.firstElementChild, step=fc?Math.round(fc.getBoundingClientRect().width+12):Math.round(tr.clientWidth*0.85); tr.scrollBy({left:(act==='carNext'?1:-1)*step,behavior:'smooth'}); } }
+    else if(act==='carPrev'||act==='carNext'){ var tr=document.getElementById(t.dataset.track); if(tr){ var fc=tr.firstElementChild, step=fc?Math.round(fc.getBoundingClientRect().width+12):Math.round(tr.clientWidth*0.85), maxL=tr.scrollWidth-tr.clientWidth; if(act==='carNext'){ if(tr.scrollLeft>=maxL-2) tr.scrollTo({left:0,behavior:'smooth'}); else tr.scrollBy({left:step,behavior:'smooth'}); } else { if(tr.scrollLeft<=2) tr.scrollTo({left:maxL,behavior:'smooth'}); else tr.scrollBy({left:-step,behavior:'smooth'}); } } }
   });
   document.addEventListener('keydown', function(e){ if(e.key==='Enter' && e.target && e.target.id==='chatInput'){ sendChat(e.target.value); } });
   document.addEventListener('change', function(e){
