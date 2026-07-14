@@ -1,10 +1,64 @@
+
+Cloud
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Aura app v4 · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#8A9A5B">
-
+ 
 <!-- ============================ SEO / GEO ============================ -->
 <title>AURA — Connected Wellness Ecosystem: AI Skin Analysis, Telehealth & Travel-Aware Skincare</title>
 <meta name="description" content="AURA is a connected luxury wellness ecosystem: AI skin analysis, personalized skincare, haircare and nutrition, telehealth with dermatologists and dietitians, location-aware Travel Mode routines, and a loyalty rewards program. Wellness guidance, not medical advice.">
@@ -21,12 +75,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AURA — Connected Wellness Ecosystem">
 <meta name="twitter:description" content="AI skin analysis, telehealth, travel-aware routines, and luxury rewards.">
-
+ 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"></noscript>
-
+ 
 <!-- JSON-LD: Organization -->
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"AURA","url":"https://aura-wellness.com/","logo":"https://aura-wellness.com/logo.png","description":"AURA is a connected luxury wellness ecosystem spanning AI skin analysis, personalized skincare and haircare, telehealth with dermatologists and dietitians, location-aware routines, and a loyalty rewards program.","sameAs":["https://instagram.com/aura","https://www.linkedin.com/company/aura"]}
@@ -39,10 +93,10 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is AURA?","acceptedAnswer":{"@type":"Answer","text":"AURA is a connected luxury wellness ecosystem that uses AI computer vision to analyze your skin and recommends personalized skincare, haircare and nutrition, with on-demand telehealth and location-aware routines. It provides wellness guidance, not medical advice."}},{"@type":"Question","name":"Does AURA offer telehealth with real providers?","acceptedAnswer":{"@type":"Answer","text":"AURA connects members with licensed dermatologists and registered dietitians for virtual consultations. AURA itself does not diagnose or treat conditions; consultations are provided by independent licensed professionals."}},{"@type":"Question","name":"What is Travel Mode?","acceptedAnswer":{"@type":"Answer","text":"Travel Mode adapts your skincare routine and product recommendations to your destination's climate and environmental factors, such as UV index, dryness, pollution or humidity."}},{"@type":"Question","name":"Does AURA diagnose skin conditions?","acceptedAnswer":{"@type":"Answer","text":"No. AURA's AI provides cosmetic wellness estimates, not a medical diagnosis. For diagnosis or treatment, consult a licensed dermatologist or physician, and a registered dietitian for nutrition."}}]}
 </script>
-
+ 
 <style>
 :root{
-  --sage:#8A9A5B; --sage-d:#728248; --gold:#FCD34D; --ink:#1c1917;
+  --sage:#8A9A5B; --sage-d:#728248; --gold:#FCD34D; --ink:#1c1917; --taupe:#D2B48C;
   --stone-50:#fafaf9; --stone-100:#f5f5f4; --stone-200:#e7e5e4; --stone-300:#d6d3d1;
   --stone-400:#a8a29e; --stone-500:#78716c; --stone-700:#44403c;
   --serif:'Playfair Display',Georgia,serif; --sans:'Inter',system-ui,sans-serif;
@@ -51,7 +105,7 @@
 html,body{height:100%}
 body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-gradient(circle at 50% 0%,#4a4a4d,#2c2c2e);overflow:hidden}
 .serif{font-family:var(--serif)}
-
+ 
 /* Preview toolbar */
 .previewbar{position:fixed;top:0;left:0;right:0;height:56px;z-index:100;display:flex;align-items:center;gap:6px;padding:0 16px;
   background:rgba(20,20,22,.85);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);overflow-x:auto;scrollbar-width:none}
@@ -66,14 +120,14 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .iconbtn{background:rgba(255,255,255,.06);border:none;color:rgba(255,255,255,.7);width:36px;height:36px;border-radius:9px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .iconbtn:hover{color:#fff;background:rgba(255,255,255,.12)}
 .iconbtn[disabled]{opacity:.3;cursor:not-allowed}
-
+ 
 /* Stage + device */
 .stage{position:fixed;top:56px;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;overflow:auto}
 .scaler{transform-origin:center center}
 .device{position:relative;background:#0a0a0a;border-radius:48px;padding:12px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .device[data-form="tablet"]{border-radius:34px;padding:14px}
 .device[data-os="web"]{border-radius:12px;padding:0;background:#1a1a1c}
-.screen{position:relative;width:100%;height:100%;background:var(--stone-50);overflow:hidden;border-radius:38px;display:flex;flex-direction:column}
+.screen{position:relative;width:100%;height:100%;background:var(--taupe);overflow:hidden;border-radius:38px;display:flex;flex-direction:column}
 .device[data-form="tablet"] .screen{border-radius:22px}
 .device[data-os="web"] .screen{border-radius:0 0 12px 12px}
 .osbar{height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:relative;z-index:5;font-size:13px;font-weight:600;color:#1c1917}
@@ -91,7 +145,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .webchrome .tl{display:flex;gap:7px}
 .webchrome .tl i{width:12px;height:12px;border-radius:50%;display:block}
 .webchrome .addr{flex:1;background:#39393b;border-radius:7px;height:24px;display:flex;align-items:center;padding:0 12px;color:#bbb;font-size:12px;gap:7px}
-
+ 
 /* App shell */
 .app{flex:1;display:flex;flex-direction:column;min-height:0;position:relative}
 .appbar{height:50px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid var(--stone-100)}
@@ -117,9 +171,9 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .content{flex:1;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;min-height:0}
 .content::-webkit-scrollbar{display:none}
 .view{padding:8px 20px 110px;max-width:100%}
-
+ 
 /* Horizontal top nav (tablet/web) */
-.topnav{display:none;align-items:center;gap:6px;padding:12px 22px;border-bottom:1px solid var(--stone-200);background:#fff;flex-shrink:0}
+.topnav{display:none;align-items:center;gap:6px;padding:12px 22px;border-bottom:1px solid var(--stone-200);background:var(--taupe);flex-shrink:0}
 .topnav .tn-logo{font-family:var(--serif);letter-spacing:.16em;font-size:20px;color:#1c1917;margin-right:14px;white-space:nowrap}
 .topnav .tn-logo b{color:var(--gold)}
 .topnav .tn-items{display:flex;align-items:center;gap:2px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
@@ -131,22 +185,22 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .topnav .tn-loc:hover{background:var(--stone-100)}
 .topnav .tn-cta{display:flex;align-items:center;gap:7px;border:none;cursor:pointer;white-space:nowrap;font-family:var(--sans);font-size:14px;font-weight:500;color:#fff;padding:10px 16px;border-radius:10px;background:linear-gradient(135deg,var(--sage),var(--sage-d))}
 .topnav .tn-right{margin-left:auto;display:flex;align-items:center;gap:8px}
-
+ 
 /* Bottom nav (phone) */
-.bottomnav{position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-top:1px solid var(--stone-200);padding:8px 8px 22px;display:flex;justify-content:space-around;align-items:flex-end;z-index:30}
+.bottomnav{position:absolute;bottom:0;left:0;right:0;background:var(--taupe);backdrop-filter:blur(8px);border-top:1px solid var(--stone-200);padding:8px 8px 22px;display:flex;justify-content:space-around;align-items:flex-end;z-index:30}
 .bottomnav button{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px;width:54px;cursor:pointer;color:var(--stone-400);font-family:var(--sans)}
 .bottomnav button.on{color:var(--sage-d)}
 .bottomnav button span{font-size:10px}
 .bottomnav .scan{margin-top:-24px}
 .bottomnav .scan .fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 6px 18px rgba(114,130,72,.45);background:linear-gradient(135deg,var(--sage),var(--sage-d))}
-
+ 
 .screen[data-form="tablet"] .topnav,.screen[data-form="desktop"] .topnav{display:flex}
 .screen[data-form="tablet"] .bottomnav,.screen[data-form="desktop"] .bottomnav{display:none}
 .screen[data-form="tablet"] .appbar,.screen[data-form="desktop"] .appbar{display:none}
 .screen[data-form="tablet"] .view,.screen[data-form="desktop"] .view{padding:24px 32px;max-width:960px;margin:0 auto}
 .screen[data-form="tablet"] .cardgrid,.screen[data-form="desktop"] .cardgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .screen[data-form="tablet"] .cardgrid>*,.screen[data-form="desktop"] .cardgrid>*{margin-bottom:0}
-
+ 
 /* Shared UI */
 .eyebrow{font-size:13px;color:var(--stone-400);margin-bottom:2px}
 .h1{font-family:var(--serif);font-size:30px;line-height:1.1;color:#1c1917;margin-bottom:18px}
@@ -197,19 +251,19 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .list .li{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-top:1px solid var(--stone-100)}
 .list .li:first-child{border-top:none}
 .li span{font-size:14px;color:var(--stone-700)}
-
+ 
 /* Loyalty card */
 .loyalty{border-radius:22px;padding:20px;color:#fff;background:linear-gradient(135deg,var(--sage),var(--sage-d));position:relative;overflow:hidden}
 .loyalty .lab{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.75)}
 .loyalty .pts{font-family:var(--serif);font-size:38px;line-height:1;margin:6px 0}
 .loyalty .tier{display:inline-block;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:999px}
 .loyalty .redeem{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:2px;cursor:pointer}
-
+ 
 /* Travel pill (home) */
 .travelpill{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--stone-200);border-radius:999px;padding:7px 14px;cursor:pointer;font-size:13px;font-weight:500;color:var(--stone-700)}
 .travelpill .uv{font-size:11px;color:var(--stone-400)}
 .travelpill:hover{background:var(--stone-100)}
-
+ 
 /* Product cards */
 .prod{display:flex;gap:14px;background:#fff;border:1px solid var(--stone-100);border-radius:16px;padding:14px;margin-bottom:12px;overflow:hidden}
 .prod .thumb{width:72px;height:72px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:30px;background:linear-gradient(135deg,rgba(138,154,91,.13),rgba(252,211,77,.13))}
@@ -227,12 +281,12 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .chips::-webkit-scrollbar{display:none}
 .fchip{flex-shrink:0;border:1px solid var(--stone-200);background:#fff;color:var(--stone-500);font-size:12px;font-weight:500;padding:7px 14px;border-radius:999px;cursor:pointer;font-family:var(--sans);white-space:nowrap}
 .fchip.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-
+ 
 /* Food cards */
 .food{background:#fff;border:1px solid var(--stone-100);border-radius:16px;padding:16px;margin-bottom:12px}
 .food .top{display:flex;align-items:center;gap:12px;margin-bottom:8px}
 .food .emoji{width:44px;height:44px;border-radius:50%;background:rgba(138,154,91,.12);display:flex;align-items:center;justify-content:center;font-size:20px}
-
+ 
 /* Consult */
 .expert{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--stone-100);border-radius:16px;padding:14px;margin-bottom:12px}
 .expert .av{width:52px;height:52px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-family:var(--serif);font-size:20px;background:linear-gradient(135deg,var(--sage),var(--sage-d))}
@@ -243,7 +297,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .expert .rate b{font-family:var(--serif);font-size:16px;color:var(--stone-700)}
 .expert .rate span{display:block;font-size:11px;color:var(--stone-400)}
 .bookbtn{font-size:12px;font-weight:500;padding:7px 14px;border-radius:9px;border:none;background:var(--sage);color:#fff;cursor:pointer;font-family:var(--sans)}
-
+ 
 /* Moments / rewards */
 .moment{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--stone-100);border-radius:16px;padding:14px;margin-bottom:12px}
 .moment .ico{width:52px;height:52px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:26px;background:var(--stone-100)}
@@ -252,7 +306,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .moment .cost{font-family:var(--serif);font-size:15px;color:var(--sage-d)}
 .redeembtn{font-size:12px;font-weight:500;padding:7px 14px;border-radius:9px;border:none;cursor:pointer;font-family:var(--sans);background:var(--ink);color:#fff;white-space:nowrap}
 .redeembtn[disabled]{background:var(--stone-200);color:var(--stone-400);cursor:not-allowed}
-
+ 
 /* Tiers */
 .tier-card{border:1.5px solid var(--stone-200);border-radius:16px;padding:16px;margin-bottom:12px}
 .tier-card.cur{border-color:var(--sage);background:rgba(138,154,91,.05)}
@@ -262,7 +316,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .tier-card .ben{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--stone-500);margin-bottom:5px}
 .tier-card .ben svg{color:var(--sage-d);flex-shrink:0}
 .upbtn{margin-top:10px;width:100%;padding:10px;border:none;border-radius:10px;background:var(--ink);color:#fff;font-size:13px;font-weight:500;cursor:pointer;font-family:var(--sans)}
-
+ 
 /* Wallet */
 .wcard{border-radius:14px;padding:14px 16px;margin-bottom:10px;color:#fff;display:flex;align-items:center;justify-content:space-between}
 .wcard.visa{background:linear-gradient(135deg,#1a1a2e,#3a3a5e)}
@@ -274,7 +328,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .voucher .vt{font-size:14px;font-weight:600;color:var(--stone-700)}
 .voucher .vx{font-size:11px;color:var(--stone-400)}
 .voucher .vv{margin-left:auto;font-family:var(--serif);font-size:15px;color:var(--sage-d)}
-
+ 
 /* Profile bio grid */
 .biogrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .biocell{background:#fff;border:1px solid var(--stone-100);border-radius:12px;padding:12px 14px}
@@ -291,7 +345,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .editfield{width:100%;border:1px solid var(--stone-200);border-radius:10px;padding:9px 12px;font-size:14px;font-family:var(--sans);color:var(--ink);background:#fff;outline:none}
 .editfield:focus{border-color:var(--sage)}
 .editfield::placeholder{color:var(--stone-300)}
-
+ 
 /* Achievements */
 .achgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ach{background:#fff;border:1px solid var(--stone-200);border-radius:14px;padding:14px;text-align:left}
@@ -303,7 +357,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .ach .achpts{font-size:11px;font-weight:700;color:var(--sage-d)}
 .ach .at{font-size:13px;font-weight:600;color:var(--stone-800);margin-bottom:2px}
 .ach .ad{font-size:11px;color:var(--stone-400)}
-
+ 
 /* Progress journey */
 .journeybanner{display:flex;align-items:center;justify-content:space-between;color:#fff;border-radius:18px;padding:16px;cursor:pointer;background:linear-gradient(135deg,#1c1917,#2a2622)}
 .journeybanner .jb-l{display:flex;align-items:center;gap:12px}
@@ -325,7 +379,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .streakgrid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
 .streakgrid .dot{aspect-ratio:1;border-radius:4px;background:var(--stone-200)}
 .streakgrid .dot.on{background:var(--sage)}
-
+ 
 /* Auth / membership */
 .signout{display:flex;align-items:center;gap:5px;background:none;border:1px solid var(--stone-200);color:var(--stone-500);font-family:var(--sans);font-size:12px;font-weight:500;padding:7px 12px;border-radius:9px;cursor:pointer;white-space:nowrap}
 .signout:hover{background:var(--stone-100)}
@@ -352,7 +406,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .lockcard{background:#fff;border:1px solid var(--stone-200);border-radius:18px;padding:32px 24px;text-align:center;margin-top:8px}
 .lockic{width:60px;height:60px;border-radius:50%;background:rgba(138,154,91,.12);color:var(--sage-d);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .lockmsg{font-size:14px;color:var(--stone-500);line-height:1.55;margin-bottom:20px}
-
+ 
 /* Scan overlay + sheets */
 .overlay{position:absolute;inset:0;z-index:60;background:rgba(0,0,0,.95);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;padding:0 32px}
 .scanbox{position:relative;width:240px;height:240px;border-radius:28px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:28px}
@@ -393,7 +447,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .locrow .ln{font-size:15px;font-weight:500;color:var(--stone-700)}
 .locrow.on .ln{color:var(--sage-d)}
 .locrow .lc{font-size:12px;color:var(--stone-400)}
-
+ 
 /* Chat assistant */
 .chat-fab{position:absolute;bottom:84px;right:18px;width:54px;height:54px;border-radius:50%;z-index:45;border:none;cursor:pointer;background:linear-gradient(135deg,var(--sage),var(--sage-d));color:#fff;box-shadow:0 8px 22px rgba(114,130,72,.5);display:flex;align-items:center;justify-content:center}
 .screen[data-form="tablet"] .chat-fab,.screen[data-form="desktop"] .chat-fab{bottom:24px;right:24px}
@@ -425,18 +479,18 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .chat-input input:focus{border-color:var(--sage)}
 .chat-input button{width:42px;height:42px;border-radius:50%;border:none;background:var(--sage);color:#fff;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .chat-disc{font-size:10px;color:var(--stone-400);text-align:center;padding:6px 12px;background:#fff}
-
+ 
 /* Home quick-action CTAs */
 .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .grid3 .tile{padding:14px 12px}
 .grid3 .tile p.t{font-size:13px}
-
+ 
 /* Account tab bar */
 .acctabbar{display:flex;background:var(--stone-100);padding:4px;border-radius:12px;margin:16px 0}
 .acctab{flex:1;border:none;background:none;font-family:var(--sans);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--stone-400);padding:9px 4px;border-radius:9px;cursor:pointer}
 .acctab.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.07)}
 .acctab:hover:not(.on){color:var(--stone-600)}
-
+ 
 /* Settings rows + toggles */
 .setrow{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--stone-100);border-radius:14px;padding:13px 16px;margin-bottom:8px}
 .setrow span{font-size:14px;color:var(--stone-700)}
@@ -444,7 +498,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .tggl::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:left .2s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
 .tggl.on{background:var(--sage)}
 .tggl.on::after{left:21px}
-
+ 
 /* Loyalty member stats (LHW-style) */
 .member .bignum{font-family:var(--serif);font-size:42px;line-height:1;margin:2px 0}
 .member .biglab{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.7)}
@@ -453,7 +507,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .memberstats .statcol b{font-family:var(--serif);font-size:26px;display:flex;align-items:center;justify-content:center;gap:5px}
 .memberstats .statcol b svg{color:var(--gold)}
 .memberstats .statcol span{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.7);margin-top:3px;display:block}
-
+ 
 /* Wallet (LHW-style) */
 .paycard{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--stone-100);border-radius:14px;padding:13px 16px;margin-bottom:10px}
 .paycard .payleft{display:flex;align-items:center;gap:12px}
@@ -471,7 +525,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .vouchercard .vt{font-family:var(--serif);font-size:15px;color:var(--stone-800)}
 .vouchercard .vx{font-size:12px;color:var(--stone-400)}
 .vouchercard .vv{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--sage-d)}
-
+ 
 /* Ritual hero (home, top) */
 .ritualhero{position:relative;overflow:hidden;border-radius:24px;padding:22px;color:#fff;background:linear-gradient(135deg,#1c1917,#2a2622);margin-bottom:16px}
 .ritualhero .blob{position:absolute;right:-36px;top:-36px;width:160px;height:160px;border-radius:50%;background:var(--sage);opacity:.18}
@@ -526,7 +580,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .rh-check:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 .rh-check:active{transform:scale(.9)}
 .rh-check.on{background:var(--sage);border-color:var(--sage)}
-
+ 
 /* Today's Insight carousel (seasonal moments) */
 .carousel{margin-bottom:16px}
 .carousel .car-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:12px}
@@ -547,14 +601,14 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .promo .promo-desc{font-size:13px;color:rgba(255,255,255,.85);line-height:1.45;max-width:17rem;position:relative}
 .promo .promo-cta{margin-top:14px;align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.95);color:var(--ink);font-family:var(--sans);font-size:12px;font-weight:600;border:none;padding:8px 14px;border-radius:999px;cursor:pointer;position:relative}
 .screen[data-form="tablet"] .promo,.screen[data-form="desktop"] .promo{flex-basis:320px}
-
+ 
 /* Moments filter/sort toolbar */
 .momtools{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-bottom:14px}
 .mt-cta{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--stone-200);background:#fff;color:var(--stone-700);font-family:var(--sans);font-size:13px;font-weight:500;padding:8px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
 .mt-cta:hover{background:var(--stone-100)}
 .mt-cta.on{border-color:var(--sage);color:var(--sage-d);background:rgba(138,154,91,.08)}
 .mt-cta .mt-badge{background:var(--sage);color:#fff;font-size:10px;font-weight:700;min-width:16px;height:16px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;padding:0 4px}
-
+ 
 /* Moments filters */
 .momfilters{background:#fff;border:1px solid var(--stone-200);border-radius:16px;padding:14px;margin-bottom:16px}
 .momfilters .mf-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
@@ -568,7 +622,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .momsel{width:100%;border:1px solid var(--stone-200);border-radius:10px;padding:10px 30px 10px 12px;font-size:13px;font-family:var(--sans);color:var(--stone-700);background-color:#fff;cursor:pointer;outline:none;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2378716c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center}
 .momsel:focus{border-color:var(--sage)}
 .screen[data-form="tablet"] .momfilters .mf-grid,.screen[data-form="desktop"] .momfilters .mf-grid{grid-template-columns:repeat(3,1fr)}
-
+ 
 /* Results body map (consult) */
 .bodymap{position:relative;width:172px;margin:0 auto}
 .bodymap svg{width:100%;height:auto;display:block;fill:rgba(138,154,91,.16);stroke:var(--sage-d);stroke-width:1.2;stroke-linejoin:round}
@@ -597,7 +651,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .acc-inner{padding:0 16px 16px}
 .foodchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:4px}
 .foodchip{display:inline-flex;align-items:center;gap:5px;background:rgba(138,154,91,.1);color:var(--sage-d);font-size:12px;font-weight:500;padding:7px 12px;border-radius:999px}
-
+ 
 /* Upcoming sessions (consult) */
 .session{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--stone-100);border-radius:16px;padding:14px;margin-bottom:10px}
 .session .se-ic{width:46px;height:46px;border-radius:12px;background:rgba(138,154,91,.12);color:var(--sage-d);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -605,7 +659,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .session .se-meta{font-size:12px;color:var(--stone-400)}
 .session .se-when{font-size:12px;color:var(--sage-d);font-weight:500;margin-top:2px}
 .session .se-right{margin-left:auto;text-align:right;flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end}
-
+ 
 /* Moments (LHW-style) */
 .mfeature{position:relative;overflow:hidden;border-radius:22px;padding:24px;color:#fff;background:linear-gradient(135deg,#2a2622,#1c1917);margin-bottom:20px}
 .mfeature .mf-emoji{position:absolute;right:-12px;top:-14px;font-size:120px;line-height:1;opacity:.16}
@@ -627,7 +681,7 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .mbalance{background:rgba(138,154,91,.08);border:1px solid rgba(138,154,91,.25);border-radius:18px;padding:24px;text-align:center}
 .mbalance .mb-num{font-family:var(--serif);font-size:34px;color:var(--sage-d)}
 .mbalance .mb-lab{font-size:13px;color:var(--stone-500);margin-bottom:14px}
-
+ 
 /* Site footer (Figma-style) */
 .sitefooter{background:#1c1917;color:#fff;border-radius:24px;padding:28px 22px;margin:8px 0 4px}
 .sitefooter .ft-top{display:flex;flex-direction:column;gap:24px}
@@ -645,14 +699,14 @@ body{font-family:var(--sans);color:var(--ink);line-height:1.5;background:radial-
 .ft-bottom p{font-size:11px;color:rgba(255,255,255,.45);line-height:1.7}
 .ft-bottom a{color:rgba(255,255,255,.6);text-decoration:none;cursor:pointer}
 .ft-bottom a:hover{color:var(--gold)}
-
+ 
 .screen[data-form="tablet"] .achgrid,.screen[data-form="desktop"] .achgrid{grid-template-columns:1fr 1fr 1fr}
 .screen[data-form="tablet"] .sitefooter .ft-top,.screen[data-form="desktop"] .sitefooter .ft-top{flex-direction:row;justify-content:space-between;align-items:flex-start}
 .screen[data-form="tablet"] .sitefooter .ft-cols,.screen[data-form="desktop"] .sitefooter .ft-cols{grid-template-columns:repeat(4,auto);gap:48px}
-
+ 
 /* Embed mode (?embed=1): screen-only, fills the iframe — no preview bar, device bezel or OS chrome.
    Used by device-preview.html so each gallery frame IS the device (no device-in-a-device). */
-html.embed,html.embed body{height:100%;overflow:hidden;background:var(--stone-50)}
+html.embed,html.embed body{height:100%;overflow:hidden;background:var(--taupe)}
 html.embed .previewbar{display:none}
 html.embed .stage{position:fixed;inset:0;top:0;padding:0;display:block;overflow:hidden}
 html.embed .scaler{transform:none!important;width:100%;height:100%}
@@ -662,7 +716,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
 </style>
 </head>
 <body>
-
+ 
 <div class="previewbar">
   <span class="title">AURA<b>.</b></span>
   <div class="seg" id="deviceSeg"></div>
@@ -671,9 +725,9 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
   </button>
 </div>
-
+ 
 <div class="stage" id="stage"><div class="scaler" id="scaler"></div></div>
-
+ 
 <!-- ===================== Public data layer (catalog/services/SEO — no PII) ===================== -->
 <script type="application/json" id="aura-data">
 {
@@ -757,7 +811,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     "metrics":{"skinScore":[{"d":0,"v":61},{"d":20,"v":66},{"d":40,"v":71},{"d":60,"v":75},{"d":80,"v":79},{"d":100,"v":82}]}}
 }
 </script>
-
+ 
 <!-- ===================== User data (DEMO ONLY) =====================
      In production this is served per-user over an AUTHENTICATED API and is NEVER in public page source.
      It is inlined here only so the prototype can render the profile. Contains fictional demo data. -->
@@ -773,16 +827,16 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     "certificates":[{"name":"Holiday Gift Card","value":"$50.00","code":"AURA-GIFT-882","expiry":"Dec 31"}]}
 }
 </script>
-
+ 
 <script>
 (function(){
   "use strict";
   window.dataLayer = window.dataLayer || [];
   function track(ev,props){ var p=Object.assign({event:ev,ts:Date.now()},props||{}); window.dataLayer.push(p); if(DATA.meta.mode==="demo") console.log("[analytics]",ev,props||{}); }
-
+ 
   var DATA = JSON.parse(document.getElementById('aura-data').textContent);
   var USER = JSON.parse(document.getElementById('aura-user').textContent); // prod: authenticated API
-
+ 
   // Library of ritual steps (for the customize editor). In prod this is a curated, filterable catalog.
   var RITUAL_LIBRARY=[
     {name:"Cream Cleanser",time:"2 min",type:"Cleanser",how:"Massage over damp skin and rinse for a gentle, non-stripping clean."},
@@ -809,18 +863,18 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     if(/mist|tonic|essence|toner/.test(s)) return 'Treatment';
     if(/water|tea|broth|electrolyte|matcha|coconut|chlorophyll|nutrition|hydration|antioxidant/.test(s)) return 'Nutrition';
     return 'Treatment'; }
-
+ 
   /* Icons */
   var ICONS={home:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',scan:'<path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>',shop:'<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>',leaf:'<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/>',user:'<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',sparkles:'<path d="M9 3v2m0 10v2m-6-8h2m10 0h2M6.6 6.6l1.4 1.4m8 8l1.4 1.4M6.6 17.4l1.4-1.4m8-8l1.4-1.4"/>',check:'<polyline points="20 6 9 17 4 12"/>',drop:'<path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/>',info:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>',shield:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',bookmark:'<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>',arrow:'<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',camera:'<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>',bowl:'<path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M12 2v3M8 4l1 2M16 4l-1 2"/>',chat:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',send:'<line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>',wifi:'<path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/>',battery:'<rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/>',activity:'<polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>',flame:'<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.1.2-2.2.6-3.3a1 1 0 0 1 .6 2 4.5 4.5 0 0 0 2.3 3.3z"/>',lock:'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',gift:'<polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>',logOut:'<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>',star:'<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>',pin:'<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',stethoscope:'<path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/>',crown:'<path d="M2 18h20l-2-9-5 4-3-7-3 7-5-4z"/>',ticket:'<path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4z"/>',creditCard:'<rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>',award:'<circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>',instagram:'<rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>',linkedin:'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',facebook:'<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',youtube:'<path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>',chevron:'<polyline points="6 9 12 15 18 9"/>',cart:'<circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>',calendar:'<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',video:'<polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/>',filter:'<line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/>',sort:'<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="9" y2="18"/>',close:'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>',back:'<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>'};
   function icon(n,s){s=s||20;return '<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(ICONS[n]||'')+'</svg>';}
-
+ 
   var DEVICES={'ios-phone':{os:'ios',form:'phone',w:390,h:844,label:'iPhone'},'android-phone':{os:'android',form:'phone',w:412,h:892,label:'Android'},'ios-tablet':{os:'ios',form:'tablet',w:834,h:1112,label:'iPad'},'android-tablet':{os:'android',form:'tablet',w:800,h:1232,label:'Android Tablet'},'web':{os:'web',form:'desktop',w:1200,h:800,label:'Web'}};
   var currentDevice='ios-phone', landscape=false;
-
+ 
   var state={view:'home',scanComplete:false,saved:[],loggedIn:true,location:'home',tier:USER.member.tier,points:USER.member.points,redeemed:[],accountTab:'loyalty',doneSteps:[],expandedSteps:[],sessions:[{expert:'Dr. Alisha S.',role:'Dermatologist',when:'Tomorrow · 2:30 PM',status:'Confirmed'}],momFilter:{continent:'all',country:'all',state:'all',type:'all',month:'all',year:'all'},momPanel:'none',momSort:{key:'none',dir:'asc'},consultTab:'experts',bodyArea:null,resultsSaved:false,expandedAreas:[],cart:[],editProfile:false,editBio:false,editRituals:false,ritualDraft:null,ritualSaved:{},ritualFilter:'similar'};
-
+ 
   var DISC='<div class="disclaimer">'+icon('info',14)+'<span>AURA offers wellness guidance, not medical advice. For diagnosis or treatment of any skin or health condition, consult a licensed dermatologist, physician, or registered dietitian.</span></div>';
-
+ 
   /* ---------------- Views ---------------- */
   function homeFooter(){
     var explore=[['Home','home',''],['Shop','shop',''],['Consult','consult',''],['Moments','moments','']];
@@ -887,7 +941,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       '<section class="mb16">'+DISC+'</section>'+
       homeFooter()+'</div>';
   }
-
+ 
   function vResults(){
     var bars=DATA.analysis.concerns.map(function(c){var col=c.tone==='gold'?'var(--gold)':'var(--sage)';return '<div class="mb16"><div class="flexb" style="margin-bottom:6px"><span style="font-size:14px;font-weight:500;color:var(--stone-700)">'+c.key+'</span><span class="pill '+(c.tone==='gold'?'gold':'sage')+'">'+c.level+'</span></div><div class="bar"><i style="width:'+c.pct+'%;background:'+col+'"></i></div><p style="font-size:12px;color:var(--stone-400);margin-top:6px">'+c.note+'</p></div>';}).join('');
     var foods=DATA.foods.map(function(f){return '<div class="food"><div class="top"><div class="emoji">'+f.emoji+'</div><div style="flex:1"><p style="font-weight:500;color:var(--stone-700)">'+f.name+'</p><span class="pill sage">Supports '+f.for+'</span></div></div><p style="font-size:13px;color:var(--stone-500)"><span style="color:var(--stone-400)">Try: </span>'+f.examples+'</p></div>';}).join('');
@@ -897,7 +951,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       '<section class="grid2 mb16"><button class="tile" data-nav="shop"><div class="ic">'+icon('shop',20)+'</div><p class="t">Matched products</p><p class="s">For your concerns</p></button><button class="tile" data-nav="consult"><div class="ic">'+icon('stethoscope',20)+'</div><p class="t">Ask an expert</p><p class="s">Telehealth</p></button></section>'+
       '<section class="mb12"><h3 class="h3 mb12">Supportive foods</h3>'+foods+'</section></div>';
   }
-
+ 
   var shopFilter='ALL';
   function productCard(p){
     var loc=DATA.locations[state.location];
@@ -917,7 +971,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       '<section class="mb12">'+DISC+'</section>'+
       '<section class="cardgrid">'+list+'</section></div>';
   }
-
+ 
   function vSaved(){
     if(!state.loggedIn) return lockedView('Saved','Sign in to save products to your wishlist and pick up where you left off.');
     var items=DATA.products.filter(function(p){return state.saved.indexOf(p.id)>-1;});
@@ -926,7 +980,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       : '<section class="lockcard reveal"><div class="lockic">'+icon('bookmark',26)+'</div><p class="lockmsg">You haven\'t saved anything yet. Tap Save on products in The Shop to keep them here.</p><button class="btn" data-nav="shop">'+icon('shop',16)+' Browse The Shop</button></section>';
     return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Your wishlist</p><div class="flexb"><h1 class="h1" style="margin-bottom:0">Saved</h1><span class="pill sage">'+items.length+' item'+(items.length===1?'':'s')+'</span></div></section><section style="margin-top:16px">'+body+'</section></div>';
   }
-
+ 
   function bodySVG(areas,selKey){
     var fig='<svg viewBox="0 0 120 220" aria-hidden="true">'+
       '<circle cx="60" cy="26" r="16"/>'+
@@ -996,7 +1050,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       '<div class="acctabbar">'+tabs+'</div>'+
       body+'</div>';
   }
-
+ 
   function redeemState(r){
     var done=state.redeemed.indexOf(r.id)>-1, afford=state.points>=r.points;
     return {done:done,afford:afford};
@@ -1091,7 +1145,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       '<section class="mb16"><button class="btn" data-act="checkout">'+icon('cart',16)+' Checkout</button></section>'+
       '<section><div class="disclaimer">'+icon('info',14)+'<span>This is a demo cart. No payment is processed in the prototype.</span></div></section></div>';
   }
-
+ 
   function lineChart(series,id){
     var w=320,h=84,pad=6,maxD=series[series.length-1].d||1;
     function X(d){return pad+(d/maxD)*(w-2*pad);} function Y(v){return h-pad-(v/100)*(h-2*pad);}
@@ -1116,7 +1170,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     var ach=DATA.achievements.map(function(a){return '<div class="ach '+(a.unlocked?'unlocked':'locked')+'"><div class="achtop">'+icon(a.unlocked?'award':'lock',18)+'<span class="achpts">+'+a.points+'</span></div><p class="at">'+a.title+'</p><p class="ad">'+a.desc+'</p></div>';}).join('');
     return '<section class="reveal" style="margin-bottom:16px"><h3 class="h3 mb12">Achievements</h3><div class="achgrid">'+ach+'</div></section>';
   }
-
+ 
   function accLoyalty(){
     var m=USER.member;
     var pct=Math.min(100,Math.round(state.points/m.nextRewardAt*100));
@@ -1187,7 +1241,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       '<div class="acctabbar">'+tabs+'</div>'+
       body+'</div>';
   }
-
+ 
   function vAuth(){
     return '<div class="view"><section class="authwrap"><div class="authlogo">AURA<b>.</b></div><h1 class="serif authh">Welcome back</h1><p class="authsub">Sign in to unlock your loyalty points, rewards, telehealth, Travel Mode, and your progress journey.</p>'+
       '<div class="authfield"><label>Email</label><input type="email" placeholder="you@email.com" autocomplete="email"></div>'+
@@ -1203,13 +1257,13 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
   function lockedView(title,msg){
     return '<div class="view"><section style="padding-top:8px"><p class="eyebrow">Members only</p><h1 class="h1">'+title+'</h1></section><section class="lockcard reveal"><div class="lockic">'+icon('lock',26)+'</div><p class="lockmsg">'+msg+'</p><button class="btn" data-nav="account">'+icon('user',16)+' Sign in to unlock</button></section></div>';
   }
-
+ 
   var VIEWS={home:vHome,results:vResults,shop:vShop,saved:vSaved,consult:vConsult,moments:vMoments,cart:vCart,account:vAccount};
   var TABS=[{k:'home',label:'Home',ic:'home'},{k:'shop',label:'Shop',ic:'shop'},{k:'scan',label:'Scan',ic:'scan'},{k:'consult',label:'Consult',ic:'stethoscope'},{k:'moments',label:'Moments',ic:'gift'},{k:'cart',label:'Cart',ic:'cart'},{k:'account',label:'You',ic:'user'}];
   var TABMAP={}; TABS.forEach(function(t){TABMAP[t.k]=t;});
   var BOTTOM=['shop','consult','scan','moments','account']; // scan centered (middle of 5)
   var NAVTABS=TABS.filter(function(t){return t.k!=='scan'&&t.k!=='home';}); // top nav: logo is the home link
-
+ 
   /* ---------------- Device frame ---------------- */
   function buildDevice(){
     var dev=DEVICES[currentDevice], w=dev.w, h=dev.h;
@@ -1246,12 +1300,12 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
         if(dx<-T && startScroll>=m-2 && track.scrollLeft>=m-2){ track.scrollTo({left:0,behavior:'smooth'}); return true; }
         if(dx>T && startScroll<=2 && track.scrollLeft<=2){ track.scrollTo({left:m,behavior:'smooth'}); return true; }
         return false; };
-
+ 
       // ── Real touch: native scroll + boundary loop ──
       var tx=0, tStart=0;
       track.addEventListener('touchstart', function(e){ if(e.touches[0]){ tx=e.touches[0].clientX; tStart=track.scrollLeft; } }, {passive:true});
       track.addEventListener('touchend', function(e){ if(e.changedTouches[0]) loopIfPastEnd(e.changedTouches[0].clientX-tx, tStart); }, {passive:true});
-
+ 
       // ── Mouse / pen: drag-to-scroll ──
       var down=false, drag=false, sx=0, sStart=0, scale=1;
       track.addEventListener('pointerdown', function(e){
@@ -1284,11 +1338,11 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     document.getElementById('scaler').style.transform='scale('+scale+')';
   }
   window.addEventListener('resize', fitScale);
-
+ 
   var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -30px 0px'}):null;
   function observeReveals(){ if(!io){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});return;} document.querySelectorAll('.reveal:not(.in)').forEach(function(el){io.observe(el);}); }
   function go(view){ if(view===state.view)return; state.view=view; track('view_changed',{view:view}); renderContent(); }
-
+ 
   /* ---------------- Travel mode ---------------- */
   function travelSheet(){
     var app=document.querySelector('.app'); if(!app)return;
@@ -1298,7 +1352,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     app.appendChild(el); track('travel_opened');
   }
   function setLocation(k){ state.location=k; var s=document.getElementById('travelSheet'); if(s)s.remove(); track('location_changed',{location:k}); renderContent(); }
-
+ 
   /* ---------------- Consult & rewards ---------------- */
   function bookConsult(id){
     var e=DATA.experts.filter(function(x){return x.id===id;})[0]; if(!e)return;
@@ -1326,14 +1380,14 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
   function upgradeTier(id){ state.tier=id; track('tier_changed',{tier:id}); renderContent(); toast('Membership updated to '+id+'.'); }
   function addToCart(id){ var c=document.getElementById('content'), sp=c?c.scrollTop:0; state.cart.push(id); track('cart_add',{id:id}); renderContent(); var c2=document.getElementById('content'); if(c2)c2.scrollTop=sp; toast('Added to cart 🛒'); }
   function removeFromCart(id){ state.cart=state.cart.filter(function(x){return x!==id;}); track('cart_remove',{id:id}); renderContent(); toast('Removed from cart'); }
-
+ 
   function toast(msg){
     var app=document.querySelector('.app'); if(!app)return;
     var t=document.createElement('div'); t.textContent=msg;
     t.style.cssText='position:absolute;bottom:96px;left:50%;transform:translateX(-50%);background:rgba(28,25,23,.95);color:#fff;font-size:13px;padding:10px 16px;border-radius:999px;z-index:80;max-width:80%;text-align:center';
     app.appendChild(t); setTimeout(function(){t.remove();},2400);
   }
-
+ 
   /* ---------------- Scan ---------------- */
   function consentSheet(){
     var app=document.querySelector('.app'); if(!app)return;
@@ -1386,7 +1440,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
       idx++; stepTimer=setTimeout(step,PER);
     })();
   }
-
+ 
   /* ---------------- Chat assistant ---------------- */
   var chat={open:false,msgs:[],awaiting:null,ticketSeq:1042};
   function buildChatPanel(){
@@ -1437,11 +1491,11 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     sendChat(label);
   }
   function escapeHtml(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
-
+ 
   /* ---------------- Toolbar + events ---------------- */
   function buildToolbar(){ document.getElementById('deviceSeg').innerHTML=Object.keys(DEVICES).map(function(k){return '<button data-device="'+k+'" class="'+(k===currentDevice?'on':'')+'">'+DEVICES[k].label+'</button>';}).join(''); }
   function selectDevice(k){ currentDevice=k; buildToolbar(); buildDevice(); track('device_changed',{device:k}); }
-
+ 
   document.addEventListener('click', function(e){
     var t=e.target.closest('[data-device],[data-nav],[data-act],[data-save],[data-cart],[data-uncart],[data-cchip],[data-fchip],[data-loc],[data-book],[data-confirmbook],[data-redeem],[data-tier],[data-acctab],[data-consulttab],[data-bodyarea],[data-areaexp],[data-toggle],[data-step],[data-rstep],[data-rmove],[data-rdel],[data-radd],[data-rfilter],#rotateBtn');
     if(!t) return;
@@ -1511,7 +1565,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     var se=e.target.closest('[data-momsort]');
     if(se){ var sk=se.getAttribute('data-momsort'); state.momSort[sk]=se.value; track('moments_sorted',{key:sk,value:se.value}); renderContent(); return; }
   });
-
+ 
   /* Drag-to-reorder. TOUCH: long-press (~280ms) to pick up a step — a normal swipe still scrolls the list.
      MOUSE: click-drag with a small threshold. The ▲▼/× buttons keep working as taps. */
   var rhDrag=null;
@@ -1566,7 +1620,7 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
     var f=e.target&&e.target.closest&&e.target.closest('.rh-filters'); if(!f) return;
     if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){ f.scrollLeft+=e.deltaY; e.preventDefault(); }
   }, {passive:false});
-
+ 
   (function initEmbed(){
     try{ var q=new URLSearchParams(location.search);
       if(q.get('embed')){
@@ -1581,3 +1635,4 @@ html.embed .osbar,html.embed .island,html.embed .punch,html.embed .homebar,html.
 </script>
 </body>
 </html>
+ 
